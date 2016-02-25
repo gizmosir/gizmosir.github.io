@@ -11,34 +11,37 @@
     
 
     
-    <meta name="description" content="##引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
+    <meta name="description" content="##引言
+排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
 今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，它们是：
 
 Selection sort
 Insertion sort
 Shell sort
-Me">
+M">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法整理">
 <meta property="og:url" content="http://gizmosir.com/2016/02/25/排序算法整理/index.html">
 <meta property="og:site_name" content="Gizmosir的技术博客">
-<meta property="og:description" content="##引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
+<meta property="og:description" content="##引言
+排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
 今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，它们是：
 
 Selection sort
 Insertion sort
 Shell sort
-Me">
-<meta property="og:updated_time" content="2016-02-25T07:53:29.000Z">
+M">
+<meta property="og:updated_time" content="2016-02-25T07:54:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法整理">
-<meta name="twitter:description" content="##引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
+<meta name="twitter:description" content="##引言
+排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
 今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，它们是：
 
 Selection sort
 Insertion sort
 Shell sort
-Me">
+M">
 
     
     <link rel="alternative" href="/atom.xml" title="Gizmosir的技术博客" type="application/atom+xml">
@@ -108,7 +111,8 @@ Me">
 		
 		</div>
 		
-		<p>##引言<br>排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。</p>
+		<p>##引言</p>
+<p>排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。</p>
 <p>今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，它们是：</p>
 <ol>
 <li>Selection sort</li>
@@ -117,7 +121,8 @@ Me">
 <li>Merge sort</li>
 <li>Quick sort</li>
 </ol>
-<p>##Brute force<br>在正式开始介绍排序算法之前，要先讲下 <strong>brute force</strong> 也就是最简单的暴力实现。通过对比 <strong> brute force</strong> 的性能，我们才能对往后介绍的排序算法在性能上有个大概的了解。</p>
+<p>##Brute force</p>
+<p>在正式开始介绍排序算法之前，要先讲下 <strong>brute force</strong> 也就是最简单的暴力实现。通过对比 <strong> brute force</strong> 的性能，我们才能对往后介绍的排序算法在性能上有个大概的了解。</p>
 <p>这里我们假设需要对字符串文本进行字母自然顺序，其文本是：</p>
 <p><code>a</code> <code>l</code> <code>g</code> <code>o</code> <code>r</code> <code>i</code> <code>t</code> <code>h</code> <code>m</code></p>
 <p>那么 <strong>Brute force</strong> 的思路很简单，就是每次遍历剩下的文本字符并找到最小字符串，</p>
