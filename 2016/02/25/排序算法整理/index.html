@@ -4,32 +4,41 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Gizmosir的技术博客</title>
+    <title>排序算法整理 | Gizmosir的技术博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Gizmosir">
     
 
     
-    <meta name="description" content="title: 排序算法整理date: 2016-02-25categories: Algorthm
+    <meta name="description" content="引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
+今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，它们是：
 
-引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
-今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，">
+Selection sort
+Insertion sort
+Shell sort
+Merg">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gizmosir的技术博客">
+<meta property="og:title" content="排序算法整理">
 <meta property="og:url" content="http://gizmosir.com/2016/02/25/排序算法整理/index.html">
 <meta property="og:site_name" content="Gizmosir的技术博客">
-<meta property="og:description" content="title: 排序算法整理date: 2016-02-25categories: Algorthm
+<meta property="og:description" content="引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
+今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，它们是：
 
-引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
-今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，">
-<meta property="og:updated_time" content="2016-02-25T07:59:46.000Z">
+Selection sort
+Insertion sort
+Shell sort
+Merg">
+<meta property="og:updated_time" content="2016-02-25T08:08:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gizmosir的技术博客">
-<meta name="twitter:description" content="title: 排序算法整理date: 2016-02-25categories: Algorthm
+<meta name="twitter:title" content="排序算法整理">
+<meta name="twitter:description" content="引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
+今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，它们是：
 
-引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
-今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，">
+Selection sort
+Insertion sort
+Shell sort
+Merg">
 
     
     <link rel="alternative" href="/atom.xml" title="Gizmosir的技术博客" type="application/atom+xml">
@@ -82,11 +91,11 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/02/25/排序算法整理/" title="" itemprop="url"></a>
+      <a href="/2016/02/25/排序算法整理/" title="排序算法整理" itemprop="url">排序算法整理</a>
   </h1>
   
   <p class="article-time">
-    <time datetime="2016-02-25T07:59:46.000Z" itemprop="datePublished"> 发表于 2016-02-25</time>
+    <time datetime="2016-02-24T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-25</time>
     
   </p>
 </header>
@@ -99,10 +108,7 @@
 		
 		</div>
 		
-		<hr>
-<p>title: 排序算法整理<br>date: 2016-02-25<br>categories: Algorthm</p>
-<hr>
-<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。</p>
+		<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。</p>
 <p>今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，它们是：</p>
 <ol>
 <li>Selection sort</li>
@@ -120,6 +126,11 @@
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Algorthm/">Algorthm</a>
+</div>
+
 
 </div>
 
@@ -127,7 +138,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://gizmosir.com/2016/02/25/排序算法整理/" data-title="Gizmosir的技术博客" data-tsina="undefined" class="share clearfix">
+	  <div data-url="http://gizmosir.com/2016/02/25/排序算法整理/" data-title="排序算法整理 | Gizmosir的技术博客" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -161,6 +172,17 @@
 <aside class="clearfix">
 
   
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Algorthm/" title="Algorthm">Algorthm<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
 
   <div class="rsspart">
 	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
