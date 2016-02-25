@@ -11,34 +11,34 @@
     
 
     
-    <meta name="description" content="引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
-今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，它们是：
+    <meta name="description" content="引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。很多时候仅需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
+简单地整理下比较常用的几个排序算法的思路以及实现，它们是：
 
 Selection sort
 Insertion sort
 Shell sort
-Merg">
+Merge">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法整理">
 <meta property="og:url" content="http://gizmosir.com/2016/02/25/排序算法整理/index.html">
 <meta property="og:site_name" content="Gizmosir的技术博客">
-<meta property="og:description" content="引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
-今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，它们是：
+<meta property="og:description" content="引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。很多时候仅需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
+简单地整理下比较常用的几个排序算法的思路以及实现，它们是：
 
 Selection sort
 Insertion sort
 Shell sort
-Merg">
-<meta property="og:updated_time" content="2016-02-25T08:10:12.000Z">
+Merge">
+<meta property="og:updated_time" content="2016-02-25T09:31:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法整理">
-<meta name="twitter:description" content="引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
-今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，它们是：
+<meta name="twitter:description" content="引言排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。很多时候仅需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。
+简单地整理下比较常用的几个排序算法的思路以及实现，它们是：
 
 Selection sort
 Insertion sort
 Shell sort
-Merg">
+Merge">
 
     
     <link rel="alternative" href="/atom.xml" title="Gizmosir的技术博客" type="application/atom+xml">
@@ -104,12 +104,12 @@ Merg">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Brute-force"><span class="toc-number">2.</span> <span class="toc-text">Brute force</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Selection-sort"><span class="toc-number">3.</span> <span class="toc-text">Selection sort</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Selection-sort"><span class="toc-number">2.</span> <span class="toc-text">Selection sort</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构思"><span class="toc-number">2.1.</span> <span class="toc-text">构思</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现"><span class="toc-number">2.2.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">2.3.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Insertion-sort"><span class="toc-number">3.</span> <span class="toc-text">Insertion sort</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构思-1"><span class="toc-number">3.1.</span> <span class="toc-text">构思</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现-1"><span class="toc-number">3.2.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析-1"><span class="toc-number">3.3.</span> <span class="toc-text">分析</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。只需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。</p>
-<p>今天我打算简单地整理下比较常用的几个排序算法的思路以及实现，它们是：</p>
+		<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>排序是算法中最基础的东西，很多时候都集成在语言或者支持库中。很多时候仅需简单地调用并可以完成排序操作，这也让越来越多的人不解学习排序的意义是什么。其实我个人觉得算法的核心在思路而非实现本身，通过比较简单的排序算法能够培养解决某类问题的思路。</p>
+<p>简单地整理下比较常用的几个排序算法的思路以及实现，它们是：</p>
 <ol>
 <li>Selection sort</li>
 <li>Insertion sort</li>
@@ -117,11 +117,47 @@ Merg">
 <li>Merge sort</li>
 <li>Quick sort</li>
 </ol>
-<h2 id="Brute-force"><a href="#Brute-force" class="headerlink" title="Brute force"></a>Brute force</h2><p>在正式开始介绍排序算法之前，要先讲下 <strong>brute force</strong> 也就是最简单的暴力实现。通过对比 <strong> brute force</strong> 的性能，我们才能对往后介绍的排序算法在性能上有个大概的了解。</p>
-<p>这里我们假设需要对字符串文本进行字母自然顺序，其文本是：</p>
-<p><code>a</code> <code>l</code> <code>g</code> <code>o</code> <code>r</code> <code>i</code> <code>t</code> <code>h</code> <code>m</code></p>
-<p>那么 <strong>Brute force</strong> 的思路很简单，就是每次遍历剩下的文本字符并找到最小字符串，</p>
-<h2 id="Selection-sort"><a href="#Selection-sort" class="headerlink" title="Selection sort"></a>Selection sort</h2>  
+<!-- ## Brute force
+
+在正式开始介绍排序算法之前，要先讲下 **brute force** 也就是最简单的暴力实现。通过对比 ** brute force** 的性能，我们才能对往后介绍的排序算法在性能上有个大概的了解。
+
+这里我们假设需要对字符串文本进行字母自然顺序，其文本是：
+
+`a` `l` `g` `o` `r` `i` `t` `h` `m`
+ ∧
+
+那么 **Brute force** 的思路很简单，就是每次遍历剩下的文本字符并找到最小字符串，
+
+-->
+<h2 id="Selection-sort"><a href="#Selection-sort" class="headerlink" title="Selection sort"></a>Selection sort</h2><h3 id="构思"><a href="#构思" class="headerlink" title="构思"></a>构思</h3><p>假设我们需要对一个字符串文本 <strong>T</strong> 进行排序:<br><code>a</code> <code>l</code> <code>g</code> <code>o</code> <code>r</code> <code>i</code> <code>t</code> <code>h</code> <code>m</code></p>
+<p>则该算法的思路：<!-- 这个有机会换成 Pseudo-code --></p>
+<ol>
+<li>定义两个指针：<code>i</code>，<code>j</code>；</li>
+<li>使用<code>j</code>遍历 <strong>T</strong> 并找到最小的字符；</li>
+<li>将找到的最小的字符与<code>i</code>字符对换位置；</li>
+<li><code>j</code>++；</li>
+<li>循环 2 3 4 直至<code>i</code>到达 <strong>T</strong> 的末端。</li>
+</ol>
+<!-- 这个，，我再考虑下有没有添加的必要吧
+实现过程如下：
+`a` `l` `g` `o` `r` `i` `t` `h` `m`
+a `l` `g` `o` `r` `i` `t` `h` `m`
+a g `l`  `o` `r` `i` `t` `h` `m`
+a g h `l` `o` `r` `i` `t`  `m`                         
+-->
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Java </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Selection</span></span><br><span class="line"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span></span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = a.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> min = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; N; j++)</span><br><span class="line">            <span class="keyword">if</span>(less(a[j], a[min]))</span><br><span class="line">            min = j;</span><br><span class="line">        exch(a, i, min);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>从代码中不难看出，<strong>Selection sort</strong> 算法中字符比较的次数为：$(N-1)+(N+2)+…+1+0$ ~ $N^2/2$，<br>字符互换的次数为：$N$。 </p>
+<p>所以其时间性能为：$O(N^2)$，但由于其是基于字符对换的排序算法，不需要额外的空间，所以其空间性能为：$O(N)$。</p>
+<h2 id="Insertion-sort"><a href="#Insertion-sort" class="headerlink" title="Insertion sort"></a>Insertion sort</h2><h3 id="构思-1"><a href="#构思-1" class="headerlink" title="构思"></a>构思</h3><ol>
+<li>定义指针<code>i</code>；</li>
+<li><code>i</code>++;</li>
+<li>如果新的字符比其左边小，则左移一位；</li>
+<li>循环 3 至新的字符不比其左边的字符小；</li>
+<li>循环 2 3 4 直至<code>i</code>到达 <strong>T</strong>的末端。<h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Insertion</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = a.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; j++)</span><br><span class="line">                <span class="keyword">if</span>(less(a[j], a[j-<span class="number">1</span>]))</span><br><span class="line">                    exch(a, j, j-<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>不同于<strong>Selection sort</strong>，<strong>Insertion sort</strong> 的运行时间与其需要排序的字符串有关。当待排序文本几乎处于已经正序的状态时，其只需 $N-1$ 次对比以及 $0$ 次字符互换；而当带排序文本处于完全反序的状态时，其需要 ~$1/2 N^2$ 次比较以及 ~$1/2 N^2$ 次互换。所以平均来说，<strong>Insertion sort</strong> 的时间复杂度为$O(N^2)$，由于其同样是基于字符对换的排序算法，不需要额外的空间，所以其空间性能也为：$O(N)$。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -131,6 +167,11 @@ Merg">
   <a class="article-category-link" href="/categories/Algorthm/">Algorthm</a>
 </div>
 
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/sort/">sort</a>
+  </div>
 
 </div>
 
