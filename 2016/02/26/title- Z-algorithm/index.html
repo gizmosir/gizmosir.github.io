@@ -4,23 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello World | Gizmosir的技术博客</title>
+    <title>Z-algorithm | Gizmosir的技术博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Gizmosir">
     
 
     
-    <meta name="description" content="这里是Gizmosir畅所欲言其生活、技术的地方，旨在分享有价值的思想，希望你会喜欢！">
+    <meta name="description" content="前言相比于字符串排序，字符串匹配理解起来就没那么容易了，而且实现其实也比较麻烦。这里我整理下最近学的三个字符串匹配算法。但是如果将三个算法放一篇里无疑是太长了。今天先来看看Z-algorithm。
+开篇首先来定义需要解决的问题以及一些可能接下来常用的表示方式。
+
+字串搜寻算法（String searching algorithms，又译字符串搜索算法）又称字串比对算法（string matchin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://gizmosir.com/2016/02/17/hello-world/index.html">
+<meta property="og:title" content="Z-algorithm">
+<meta property="og:url" content="http://gizmosir.com/2016/02/26/title- Z-algorithm/index.html">
 <meta property="og:site_name" content="Gizmosir的技术博客">
-<meta property="og:description" content="这里是Gizmosir畅所欲言其生活、技术的地方，旨在分享有价值的思想，希望你会喜欢！">
-<meta property="og:updated_time" content="2016-02-18T05:08:39.000Z">
+<meta property="og:description" content="前言相比于字符串排序，字符串匹配理解起来就没那么容易了，而且实现其实也比较麻烦。这里我整理下最近学的三个字符串匹配算法。但是如果将三个算法放一篇里无疑是太长了。今天先来看看Z-algorithm。
+开篇首先来定义需要解决的问题以及一些可能接下来常用的表示方式。
+
+字串搜寻算法（String searching algorithms，又译字符串搜索算法）又称字串比对算法（string matchin">
+<meta property="og:updated_time" content="2016-02-27T01:35:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="这里是Gizmosir畅所欲言其生活、技术的地方，旨在分享有价值的思想，希望你会喜欢！">
+<meta name="twitter:title" content="Z-algorithm">
+<meta name="twitter:description" content="前言相比于字符串排序，字符串匹配理解起来就没那么容易了，而且实现其实也比较麻烦。这里我整理下最近学的三个字符串匹配算法。但是如果将三个算法放一篇里无疑是太长了。今天先来看看Z-algorithm。
+开篇首先来定义需要解决的问题以及一些可能接下来常用的表示方式。
+
+字串搜寻算法（String searching algorithms，又译字符串搜索算法）又称字串比对算法（string matchin">
 
     
     <link rel="alternative" href="/atom.xml" title="Gizmosir的技术博客" type="application/atom+xml">
@@ -73,11 +82,11 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/02/17/hello-world/" title="Hello World" itemprop="url">Hello World</a>
+      <a href="/2016/02/26/title- Z-algorithm/" title="Z-algorithm" itemprop="url">Z-algorithm</a>
   </h1>
   
   <p class="article-time">
-    <time datetime="2016-02-16T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-17</time>
+    <time datetime="2016-02-25T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-26</time>
     
   </p>
 </header>
@@ -86,20 +95,34 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开篇"><span class="toc-number">2.</span> <span class="toc-text">开篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考及其他"><span class="toc-number">3.</span> <span class="toc-text">参考及其他</span></a></li></ol>
 		
 		</div>
 		
-		<p>这里是Gizmosir畅所欲言其生活、技术的地方，旨在分享有价值的思想，希望你会喜欢！</p>
+		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>相比于字符串排序，字符串匹配理解起来就没那么容易了，而且实现其实也比较麻烦。这里我整理下最近学的三个字符串匹配算法。但是如果将三个算法放一篇里无疑是太长了。今天先来看看<strong>Z-algorithm</strong>。</p>
+<h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p>首先来定义需要解决的问题以及一些可能接下来常用的表示方式。</p>
+<blockquote>
+<p>字串搜寻算法（String searching algorithms，又译字符串搜索算法）又称字串比对算法（string matching algorithms）是一种搜索算法，是字串算法中的一类，用以试图在一长字符串或文章中，找出其是否包含某一个或多个字符串，以及其位置.[1]</p>
+</blockquote>
+<p>通常使用<strong>T</strong>来表现需要搜寻的文本字符串，使用<strong>P</strong>表示待匹配的字符串。比如：<br><strong>T</strong>: <code>This is a text string</code><br><strong>P</strong>: <code>is</code><br>那么<strong>P</strong>在<strong>T</strong>中出现，且出现次数为2。</p>
+<blockquote>
+<p>虽然中文也能够进行字符串匹配，但是其算法完全不同，这里讨论的是英文字符串的匹配算法。</p>
+</blockquote>
+<h2 id="参考及其他"><a href="#参考及其他" class="headerlink" title="参考及其他"></a>参考及其他</h2><p>[1]: <a href="https://zh.wikipedia.org/wiki/字串搜尋演算法" target="_blank" rel="external">字串搜寻算法 - 维基</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+</div>
+
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/其他/">其他</a>
+  <span></span> <a href="/tags/string-matching/">string matching</a><a href="/tags/字符串匹配/">字符串匹配</a>
   </div>
 
 </div>
@@ -108,7 +131,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://gizmosir.com/2016/02/17/hello-world/" data-title="Hello World | Gizmosir的技术博客" data-tsina="undefined" class="share clearfix">
+	  <div data-url="http://gizmosir.com/2016/02/26/title- Z-algorithm/" data-title="Z-algorithm | Gizmosir的技术博客" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -122,13 +145,21 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/02/25/title- 排序算法整理/" title="排序算法整理">
+ <a href="/2016/02/26/Z-algorithm/" title="Z-algorithm">
   <strong>上一篇：</strong><br/>
   <span>
-  排序算法整理</span>
+  Z-algorithm</span>
 </a>
 </div>
 
+
+<div class="next">
+<a href="/2016/02/25/title- 排序算法整理/"  title="排序算法整理">
+ <strong>下一篇：</strong><br/> 
+ <span>排序算法整理
+</span>
+</a>
+</div>
 
 </nav>
 
