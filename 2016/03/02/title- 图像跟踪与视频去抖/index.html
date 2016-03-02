@@ -16,8 +16,8 @@
 与时间无关：反相、色调分离等；
 与时间相关：图像跟踪、视频压缩、动态模糊等。
 
-&amp;lt;!-- 关于色调分离，你还可以戳[这里]()看之前的讨论。--&amp;gt;
-与时间无关，即对视频的每一帧单独进行处理，与图像处理(Image Processing)完全一样；与时间相关，即对当前帧的处理还与前后帧中图像有关。而今天要讨论的图像跟踪与视频去抖都属于后者">
+与时间无关，即对视频的每一帧单独进行处理，与图像处理(Image Processing)完全一样；与时间相关，即对当前帧的处理还与前后帧中图像有关。而今天要讨论的图像跟踪与视频去抖都属于后者。
+图像跟踪（Motion tracking）思路是在参考帧中选定一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图像跟踪与视频去抖">
 <meta property="og:url" content="http://gizmosir.com/2016/03/02/title- 图像跟踪与视频去抖/index.html">
@@ -27,11 +27,11 @@
 与时间无关：反相、色调分离等；
 与时间相关：图像跟踪、视频压缩、动态模糊等。
 
-&amp;lt;!-- 关于色调分离，你还可以戳[这里]()看之前的讨论。--&amp;gt;
-与时间无关，即对视频的每一帧单独进行处理，与图像处理(Image Processing)完全一样；与时间相关，即对当前帧的处理还与前后帧中图像有关。而今天要讨论的图像跟踪与视频去抖都属于后者">
+与时间无关，即对视频的每一帧单独进行处理，与图像处理(Image Processing)完全一样；与时间相关，即对当前帧的处理还与前后帧中图像有关。而今天要讨论的图像跟踪与视频去抖都属于后者。
+图像跟踪（Motion tracking）思路是在参考帧中选定一">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E7%A8%B3%E5%83%8F-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E5%92%8C%E5%9B%BE%E5%83%8F%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95%E8%B0%83%E7%A0%94%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-02-27%20%E4%B8%8B%E5%8D%884.39.25.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E7%A8%B3%E5%83%8F-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E5%92%8C%E5%9B%BE%E5%83%8F%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95%E8%B0%83%E7%A0%94%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-02-27%20%E4%B8%8B%E5%8D%885.03.44.png">
-<meta property="og:updated_time" content="2016-03-02T04:26:43.000Z">
+<meta property="og:updated_time" content="2016-03-02T04:29:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图像跟踪与视频去抖">
 <meta name="twitter:description" content="前言视频处理(Video processing)通常分为：
@@ -39,8 +39,8 @@
 与时间无关：反相、色调分离等；
 与时间相关：图像跟踪、视频压缩、动态模糊等。
 
-&amp;lt;!-- 关于色调分离，你还可以戳[这里]()看之前的讨论。--&amp;gt;
-与时间无关，即对视频的每一帧单独进行处理，与图像处理(Image Processing)完全一样；与时间相关，即对当前帧的处理还与前后帧中图像有关。而今天要讨论的图像跟踪与视频去抖都属于后者">
+与时间无关，即对视频的每一帧单独进行处理，与图像处理(Image Processing)完全一样；与时间相关，即对当前帧的处理还与前后帧中图像有关。而今天要讨论的图像跟踪与视频去抖都属于后者。
+图像跟踪（Motion tracking）思路是在参考帧中选定一">
 
     
     <link rel="alternative" href="/atom.xml" title="Gizmosir的技术博客" type="application/atom+xml">
@@ -106,7 +106,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像跟踪（Motion-tracking）"><span class="toc-number">2.</span> <span class="toc-text">图像跟踪（Motion tracking）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频去抖-Video-sharking-removal"><span class="toc-number">3.</span> <span class="toc-text">视频去抖(Video sharking removal)</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像跟踪（Motion-tracking）"><span class="toc-number">2.</span> <span class="toc-text">图像跟踪（Motion tracking）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频去抖（Video-sharking-removal）"><span class="toc-number">3.</span> <span class="toc-text">视频去抖（Video sharking removal）</span></a></li></ol>
 		
 		</div>
 		
@@ -115,14 +115,13 @@
 <li>与时间无关：反相、色调分离等；</li>
 <li>与时间相关：图像跟踪、视频压缩、动态模糊等。</li>
 </ol>
-<!-- 关于色调分离，你还可以戳[这里]()看之前的讨论。-->
 <p>与时间无关，即对视频的每一帧单独进行处理，与图像处理(Image Processing)完全一样；与时间相关，即对当前帧的处理还与前后帧中图像有关。而今天要讨论的图像跟踪与视频去抖都属于后者。</p>
 <h2 id="图像跟踪（Motion-tracking）"><a href="#图像跟踪（Motion-tracking）" class="headerlink" title="图像跟踪（Motion tracking）"></a>图像跟踪（Motion tracking）</h2><p>思路是在参考帧中选定一个小范围，通过比对在当前帧中的相邻位置并求绝对差和(Mean Absolute Error) 的方式来判断在当前帧相对参考帧的位移，如下图所示：<br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E7%A8%B3%E5%83%8F-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E5%92%8C%E5%9B%BE%E5%83%8F%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95%E8%B0%83%E7%A0%94%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-02-27%20%E4%B8%8B%E5%8D%884.39.25.png" alt=""><br>图1. 运动跟踪示意图</p>
 <p>上图选取正中白框为参考区域，并在蓝框内进行遍历移动计算绝对差和，最小绝对差和的位置是参考区域在当前帧中所在位置。</p>
 <blockquote>
 <p>除了绝对差和外也可以使用别的误差累加方法，如：均方差（mean square error) 等，这里使用绝对差和仅出于其计算量较小的考虑。</p>
 </blockquote>
-<h2 id="视频去抖-Video-sharking-removal"><a href="#视频去抖-Video-sharking-removal" class="headerlink" title="视频去抖(Video sharking removal)"></a>视频去抖(Video sharking removal)</h2><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E7%A8%B3%E5%83%8F-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E5%92%8C%E5%9B%BE%E5%83%8F%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95%E8%B0%83%E7%A0%94%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-02-27%20%E4%B8%8B%E5%8D%885.03.44.png" alt=""><br>图2. 视频去抖示意图</p>
+<h2 id="视频去抖（Video-sharking-removal）"><a href="#视频去抖（Video-sharking-removal）" class="headerlink" title="视频去抖（Video sharking removal）"></a>视频去抖（Video sharking removal）</h2><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E7%A8%B3%E5%83%8F-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E5%92%8C%E5%9B%BE%E5%83%8F%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95%E8%B0%83%E7%A0%94%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-02-27%20%E4%B8%8B%E5%8D%885.03.44.png" alt=""><br>图2. 视频去抖示意图</p>
 <p>上图中，参考区域在当前帧中有个向右下角的移动，即当前帧相对参考帧有向左上角的移动。通过使参考帧与当前帧参考区域重合的方式，我们就能够去除由摄像头位移导致的抖动。</p>
 <p>需要注意的是：当前帧有部分像素由于不包含于参考帧图像中，所以也不显示在当前帧中；参考帧中同样有部分像素不包含与当前帧中，然而因为这部分像素缺失。解决方法有：</p>
 <ol>
@@ -142,7 +141,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Motion-tracking/">Motion tracking</a><a href="/tags/Video-Compression/">Video Compression</a>
+  <span></span> <a href="/tags/Motion-tracking/">Motion tracking</a>
   </div>
 
 </div>
