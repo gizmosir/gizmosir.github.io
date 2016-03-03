@@ -35,7 +35,7 @@
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-03%20%E4%B8%8B%E5%8D%883.14.58.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-03%20%E4%B8%8B%E5%8D%883.15.10.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-03%20%E4%B8%8B%E5%8D%883.15.34.png">
-<meta property="og:updated_time" content="2016-03-03T07:40:33.000Z">
+<meta property="og:updated_time" content="2016-03-03T07:43:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Z-algorithm">
 <meta name="twitter:description" content="前言相比于字符串排序，字符串匹配理解起来就没那么容易了，而且实现其实也比较麻烦。这里我整理下最近学的三个字符串匹配算法。但是如果将三个算法放一篇里无疑是太长了。今天先来看看Z-algorithm。
@@ -110,7 +110,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开篇"><span class="toc-number">2.</span> <span class="toc-text">开篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#子串（Substring）"><span class="toc-number">2.1.</span> <span class="toc-text">子串（Substring）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前缀（Prefix）和后缀（Suffix）"><span class="toc-number">2.2.</span> <span class="toc-text">前缀（Prefix）和后缀（Suffix）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Z-algorithm"><span class="toc-number">3.</span> <span class="toc-text">Z-algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Z值"><span class="toc-number">3.1.</span> <span class="toc-text">Z值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-number">3.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#举例"><span class="toc-number">3.3.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考及其他"><span class="toc-number">4.</span> <span class="toc-text">参考及其他</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开篇"><span class="toc-number">2.</span> <span class="toc-text">开篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#子串（Substring）"><span class="toc-number">2.1.</span> <span class="toc-text">子串（Substring）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前缀（Prefix）和后缀（Suffix）"><span class="toc-number">2.2.</span> <span class="toc-text">前缀（Prefix）和后缀（Suffix）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Z-algorithm"><span class="toc-number">3.</span> <span class="toc-text">Z-algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Z值"><span class="toc-number">3.1.</span> <span class="toc-text">Z值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-number">3.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#举例"><span class="toc-number">3.3.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">3.4.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考及其他"><span class="toc-number">4.</span> <span class="toc-text">参考及其他</span></a></li></ol>
 		
 		</div>
 		
@@ -155,7 +155,7 @@
 <blockquote>
 <p>本举例来自于<a href="http://www.utdallas.edu/~besp/demo/John2010/z-match.htm" target="_blank" rel="external">这里</a></p>
 </blockquote>
-<p>###分析<br>步骤<code>1</code>将两个字符串组合的时间复杂度取决于数据类型，但最多不超过$O(m+n)$，而步骤<code>3</code>仅需遍历一边<strong>S</strong>，所需时间也是$O(m+n)$，所以Z算法的最终时间复杂度将取决于$Z_i$值计算的时间复杂度。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>步骤<code>1</code>将两个字符串组合的时间复杂度取决于数据类型，但最多不超过$O(m+n)$，而步骤<code>3</code>仅需遍历一边<strong>S</strong>，所需时间也是$O(m+n)$，所以Z算法的最终时间复杂度将取决于$Z_i$值计算的时间复杂度。</p>
 <h2 id="参考及其他"><a href="#参考及其他" class="headerlink" title="参考及其他"></a>参考及其他</h2><p>[1]: <a href="http://ebooks.cambridge.org/chapter.jsf?bid=CBO9780511574931&amp;cid=CBO9780511574931A007" target="_blank" rel="external">D. Gusfield, Algorithms on Strings, Trees, and Sequences:Computer Science and Computational Biology, pp.5-15.</a><br>[2]: <a href="https://zh.wikipedia.org/wiki/字串搜尋演算法" target="_blank" rel="external">字串搜寻算法 - 维基</a></p>
   
 	</div>
