@@ -11,18 +11,14 @@
     
 
     
-    <meta name="description" content="前言
-傅里叶变换（Fourier transform）是一种线性的积分变换，常在将信号在时域（或空域）和频域之间变换时使用，在物理学和工程学中有许多应用。因其基本思想首先由法国学者约瑟夫·傅里叶系统地提出，所以以其名字来命名以示纪念[1]。
-
-傅里叶变换是图像处理中非常重要的工具！但是由于很多教材对傅里叶变换讲的要不就不够透彻，要不就复杂化，导致我之前对傅里叶都心存“恐惧”。直到看到[2]的文章，">
+    <meta name="description" content="$$ \mathcal{F} { x(t) \ast h(t)} = \mathcal{F}{ \int_{-\infty}^\infty x(\tau)h(t - \tau)d\tau} $$
+$$= \int{-\infty}^\infty \left( \int{-\infty}^\infty x(\tau)h(t - \tau)d\tau \right) e^{-j\omega t}dt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从图像处理的角度看傅里叶变换">
 <meta property="og:url" content="http://gizmosir.com/2016/03/09/title- 从图像处理的角度看傅里叶变换/index.html">
 <meta property="og:site_name" content="Gizmosir的技术博客">
-<meta property="og:description" content="前言
-傅里叶变换（Fourier transform）是一种线性的积分变换，常在将信号在时域（或空域）和频域之间变换时使用，在物理学和工程学中有许多应用。因其基本思想首先由法国学者约瑟夫·傅里叶系统地提出，所以以其名字来命名以示纪念[1]。
-
-傅里叶变换是图像处理中非常重要的工具！但是由于很多教材对傅里叶变换讲的要不就不够透彻，要不就复杂化，导致我之前对傅里叶都心存“恐惧”。直到看到[2]的文章，">
+<meta property="og:description" content="$$ \mathcal{F} { x(t) \ast h(t)} = \mathcal{F}{ \int_{-\infty}^\infty x(\tau)h(t - \tau)d\tau} $$
+$$= \int{-\infty}^\infty \left( \int{-\infty}^\infty x(\tau)h(t - \tau)d\tau \right) e^{-j\omega t}dt">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%888.01.48.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8810.12.18.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8810.12.54.png">
@@ -37,13 +33,11 @@
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8B%E5%8D%8812.55.17.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%888.40.53.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%888.41.07.png">
-<meta property="og:updated_time" content="2016-03-09T05:33:42.000Z">
+<meta property="og:updated_time" content="2016-03-09T05:34:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从图像处理的角度看傅里叶变换">
-<meta name="twitter:description" content="前言
-傅里叶变换（Fourier transform）是一种线性的积分变换，常在将信号在时域（或空域）和频域之间变换时使用，在物理学和工程学中有许多应用。因其基本思想首先由法国学者约瑟夫·傅里叶系统地提出，所以以其名字来命名以示纪念[1]。
-
-傅里叶变换是图像处理中非常重要的工具！但是由于很多教材对傅里叶变换讲的要不就不够透彻，要不就复杂化，导致我之前对傅里叶都心存“恐惧”。直到看到[2]的文章，">
+<meta name="twitter:description" content="$$ \mathcal{F} { x(t) \ast h(t)} = \mathcal{F}{ \int_{-\infty}^\infty x(\tau)h(t - \tau)d\tau} $$
+$$= \int{-\infty}^\infty \left( \int{-\infty}^\infty x(\tau)h(t - \tau)d\tau \right) e^{-j\omega t}dt">
 
     
     <link rel="alternative" href="/atom.xml" title="Gizmosir的技术博客" type="application/atom+xml">
@@ -113,7 +107,15 @@
 		
 		</div>
 		
-		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+		<p>$$ \mathcal{F} { x(t) \ast h(t)} = \mathcal{F}{ \int_{-\infty}^\infty x(\tau)h(t - \tau)d\tau} $$</p>
+<p>$$= \int<em>{-\infty}^\infty \left( \int</em>{-\infty}^\infty x(\tau)h(t - \tau)d\tau \right) e^{-j\omega t}dt $$</p>
+<p>$$= \int<em>{-\infty}^\infty x(\tau) \left( \int</em>{-\infty}^\infty h(t - \tau) e^{-j\omega t}dt \right) d\tau $$</p>
+<p>$$= \int<em>{-\infty}^\infty x(\tau) \left( \int</em>{-\infty}^\infty h(u) e^{-j\omega (u+\tau)}du \right) d\tau $$</p>
+<p>$$= \int<em>{-\infty}^\infty x(\tau) \left( \int</em>{-\infty}^\infty h(u) e^{-j\omega u} e^{-j\omega \tau}du \right) d\tau $$</p>
+<p>$$= \int<em>{-\infty}^\infty x(\tau) e^{-j\omega \tau} \left( \int</em>{-\infty}^\infty h(u) e^{-j\omega u} du \right) d\tau $$</p>
+<p>$$= \left(\int<em>{-\infty}^\infty x(\tau) e^{-j\omega \tau} d\tau \right)\left( \int</em>{-\infty}^\infty h(u) e^{-j\omega u} du \right) $$</p>
+<p>$$= X(\omega)H(\omega)$$</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>傅里叶变换（Fourier transform）是一种线性的积分变换，常在将信号在时域（或空域）和频域之间变换时使用，在物理学和工程学中有许多应用。因其基本思想首先由法国学者约瑟夫·傅里叶系统地提出，所以以其名字来命名以示纪念[1]。</p>
 </blockquote>
 <p>傅里叶变换是图像处理中非常重要的工具！但是由于很多教材对傅里叶变换讲的要不就不够透彻，要不就复杂化，导致我之前对傅里叶都心存“恐惧”。直到看到[2]的文章，才发现原来傅里叶变换也就这么回事。</p>
