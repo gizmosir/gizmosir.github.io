@@ -17,7 +17,7 @@
 傅里叶变换是图像处理中非常重要的工具！但是由于很多教材对傅里叶变换讲的要不就不够透彻，要不就复杂化，导致我之前对傅里叶都心存“恐惧”。直到看到[2]的文章，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从图像处理的角度看傅里叶变换">
-<meta property="og:url" content="http://gizmosir.com/2016/03/01/title- 从图像处理的角度看傅里叶变换/index.html">
+<meta property="og:url" content="http://gizmosir.com/2016/03/09/title- 从图像处理的角度看傅里叶变换/index.html">
 <meta property="og:site_name" content="Gizmosir的技术博客">
 <meta property="og:description" content="前言
 傅里叶变换（Fourier transform）是一种线性的积分变换，常在将信号在时域（或空域）和频域之间变换时使用，在物理学和工程学中有许多应用。因其基本思想首先由法国学者约瑟夫·傅里叶系统地提出，所以以其名字来命名以示纪念[1]。
@@ -28,7 +28,6 @@
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8810.12.54.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8810.13.13.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8810.13.34.png">
-<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8A%E5%8D%8811.22.43.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8811.27.21.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8811.27.31.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8811.29.09.png">
@@ -38,7 +37,7 @@
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8B%E5%8D%8812.55.17.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%888.40.53.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%888.41.07.png">
-<meta property="og:updated_time" content="2016-03-09T04:56:57.000Z">
+<meta property="og:updated_time" content="2016-03-09T05:15:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从图像处理的角度看傅里叶变换">
 <meta name="twitter:description" content="前言
@@ -97,11 +96,11 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/01/title- 从图像处理的角度看傅里叶变换/" title="从图像处理的角度看傅里叶变换" itemprop="url">从图像处理的角度看傅里叶变换</a>
+      <a href="/2016/03/09/title- 从图像处理的角度看傅里叶变换/" title="从图像处理的角度看傅里叶变换" itemprop="url">从图像处理的角度看傅里叶变换</a>
   </h1>
   
   <p class="article-time">
-    <time datetime="2016-02-29T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-01</time>
+    <time datetime="2016-03-08T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-09</time>
     
   </p>
 </header>
@@ -150,7 +149,12 @@
 <p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8810.13.34.png" alt=""></p>
 <h3 id="傅里叶变换对"><a href="#傅里叶变换对" class="headerlink" title="傅里叶变换对"></a>傅里叶变换对</h3><p>如果$X(\omega)$是$x(t)$的傅里叶变换后频域信号，那么我们称其$X(\omega)$和$x(t)$傅里叶变换对，且用以下方式表示：<br>$$ x(t) \leftrightarrow X(\omega) $$</p>
 <p>由傅里叶变换的对偶性我们可以知道，傅里叶变换对互换域后仍然成立。举个例子，矩形函数与sinc函数互为傅里叶变换对，那么时域矩形函数能够变换成频域sinc函数，频域矩形函数能反变换成时域sinc函数。</p>
-<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8A%E5%8D%8811.22.43.png" alt=""></p>
+<p>$$ X{\omega } = \mathcal{F}{ x(t)} = \int_{-\infty}^\infty x(t)e^{-j\omega t}dt $$</p>
+<p>$$= \int_{-\frac{1}{2}}^{\frac{1}{2}} e^{-j\omega t}dt$$</p>
+<p>$$= \frac{e^{-j\omega t}}{-j\omega}|_{t=-\frac{1}{2}}^{\frac{1}{2}}$$</p>
+<p>$$= \frac{e^{j\frac{\omega}{2}} - e^{-j\frac{\omega}{2}}}{j\omega}$$</p>
+<p>$$ = \frac{2\sin(\frac{\omega}{2})}{\omega}$$</p>
+<p>$$ = sinc(\frac{\omega}{2\pi}) $$</p>
 <p>矩形函数与sinc函数的图像如下：<br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8811.27.21.png" alt=""> <img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8811.27.31.png" alt=""></p>
 <p>同样的，我们能够根据傅里叶变换与反变换的定义，或者结合待会将要介绍的变换特性得到许许多多的傅里叶变换对，其中有些变化对十分重要，是使用傅里叶变换时常用的变换对，如：</p>
 <p>$$ \mathcal{F}{\delta(t)} = \int_{-\infty}^\infty \delta(t)e^{-j\omega t} = 1$$</p>
@@ -161,20 +165,35 @@
 <ul>
 <li>线性（Linearity）</li>
 </ul>
-<p>$$ \mathcal{F}{ax(t) + by(t) } = \int<em>{-\infty}^\infty[ax(t) + by(t)]e^{-j\omega t}dt \ = a\int</em>{-\infty}^\infty x(t)e^{-j\omega t}dt + b\int_{-\infty}^\infty y(t)e^{-j\omega t}dt \ = a\mathcal{F}{x(t)} + b\mathcal{F}{y(t)}$$</p>
+<p>$$ \mathcal{F}{ax(t) + by(t) } = \int_{-\infty}^\infty[ax(t) + by(t)]e^{-j\omega t}dt $$</p>
+<p>$$= a\int<em>{-\infty}^\infty x(t)e^{-j\omega t}dt + b\int</em>{-\infty}^\infty y(t)e^{-j\omega t}dt $$</p>
+<p>$$= a\mathcal{F}{x(t)} + b\mathcal{F}{y(t)}$$</p>
 <ul>
 <li>频移性（Frequency shift property）</li>
 </ul>
-<p>$$ \mathcal{F}{e^{j\omega<em>0 t} x(t)} = \int</em>{-\infty}^\infty [e^{j\omega<em>0 t}x(t)]e^{-j\omega t}dt \= \int</em>{-\infty}^\infty x(t)e^{-j(\omega - \omega_0) t}dt \= X(\omega - \omega_0)$$</p>
+<p>$$ \mathcal{F}{e^{j\omega<em>0 t} x(t)} = \int</em>{-\infty}^\infty [e^{j\omega_0 t}x(t)]e^{-j\omega t}dt $$</p>
+<p>$$= \int_{-\infty}^\infty x(t)e^{-j(\omega - \omega_0) t}dt $$</p>
+<p>$$= X(\omega - \omega_0)$$</p>
 <p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8A%E5%8D%8811.48.43.png" alt=""></p>
 <ul>
 <li>时移性（Time shift property）</li>
 </ul>
-<p>$$ \mathcal{F}{x(t - t<em>0) } = \int</em>{-\infty}^\infty x(t - t<em>0)e^{-j\omega t}dt \= \int</em>{-\infty}^\infty x(u)e^{-j\omega (u+t_0)}du,u = t - t<em>0 \=\int</em>{-\infty}^\infty x(u)e^{-j\omega u}e^{-j\omega t_0}du \=e^{-j\omega t<em>0}\int</em>{-\infty}^\infty x(u)e^{-j\omega u}du \= e^{-j\omega t_0}X(\omega)$$</p>
+<p>$$ \mathcal{F}{x(t - t<em>0) } = \int</em>{-\infty}^\infty x(t - t_0)e^{-j\omega t}dt $$</p>
+<p>$$= \int_{-\infty}^\infty x(u)e^{-j\omega (u+t_0)}du,u = t - t_0 $$</p>
+<p>$$=\int_{-\infty}^\infty x(u)e^{-j\omega u}e^{-j\omega t_0}du $$</p>
+<p>$$ =e^{-j\omega t<em>0}\int</em>{-\infty}^\infty x(u)e^{-j\omega u}du $$</p>
+<p>$$= e^{-j\omega t_0}X(\omega)$$</p>
 <ul>
 <li><strong>卷积性（Convolution property）</strong></li>
 </ul>
-<p>$$ \mathcal{F}{ x(t) \ast h(t)} = \mathcal{F}{ \int<em>{-\infty}^\infty x(\tau)h(t - \tau)d\tau} \= \int</em>{-\infty}^\infty \left( \int<em>{-\infty}^\infty x(\tau)h(t - \tau)d\tau \right) e^{-j\omega t}dt \= \int</em>{-\infty}^\infty x(\tau) \left( \int<em>{-\infty}^\infty h(t - \tau) e^{-j\omega t}dt \right) d\tau \= \int</em>{-\infty}^\infty x(\tau) \left( \int<em>{-\infty}^\infty h(u) e^{-j\omega (u+\tau)}du \right) d\tau \= \int</em>{-\infty}^\infty x(\tau) \left( \int<em>{-\infty}^\infty h(u) e^{-j\omega u} e^{-j\omega \tau}du \right) d\tau \= \int</em>{-\infty}^\infty x(\tau) e^{-j\omega \tau} \left( \int<em>{-\infty}^\infty h(u) e^{-j\omega u} du \right) d\tau \= \left(\int</em>{-\infty}^\infty x(\tau) e^{-j\omega \tau} d\tau \right)\left( \int_{-\infty}^\infty h(u) e^{-j\omega u} du \right) \= X(\omega)H(\omega)$$</p>
+<p>$$ \mathcal{F}{ x(t) \ast h(t)} = \mathcal{F}{ \int_{-\infty}^\infty x(\tau)h(t - \tau)d\tau} $$</p>
+<p>$$= \int<em>{-\infty}^\infty \left( \int</em>{-\infty}^\infty x(\tau)h(t - \tau)d\tau \right) e^{-j\omega t}dt $$</p>
+<p>$$= \int<em>{-\infty}^\infty x(\tau) \left( \int</em>{-\infty}^\infty h(t - \tau) e^{-j\omega t}dt \right) d\tau $$</p>
+<p>$$= \int<em>{-\infty}^\infty x(\tau) \left( \int</em>{-\infty}^\infty h(u) e^{-j\omega (u+\tau)}du \right) d\tau $$</p>
+<p>$$= \int<em>{-\infty}^\infty x(\tau) \left( \int</em>{-\infty}^\infty h(u) e^{-j\omega u} e^{-j\omega \tau}du \right) d\tau $$</p>
+<p>$$= \int<em>{-\infty}^\infty x(\tau) e^{-j\omega \tau} \left( \int</em>{-\infty}^\infty h(u) e^{-j\omega u} du \right) d\tau $$</p>
+<p>$$= \left(\int<em>{-\infty}^\infty x(\tau) e^{-j\omega \tau} d\tau \right)\left( \int</em>{-\infty}^\infty h(u) e^{-j\omega u} du \right) $$</p>
+<p>$$= X(\omega)H(\omega)$$</p>
 <p>同时根据傅里叶的对偶性，我们也能将时域卷积特性扩展到频域卷积特性：</p>
 <p>$$ x(t)y(t) = \frac{1}{2\pi} X(\omega) \ast Y(\omega) = \frac{1}{2\pi} \int_{-\infty}^\infty X(\eta) Y(\omega - \eta)d\eta$$</p>
 <blockquote>
@@ -216,7 +235,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://gizmosir.com/2016/03/01/title- 从图像处理的角度看傅里叶变换/" data-title="从图像处理的角度看傅里叶变换 | Gizmosir的技术博客" data-tsina="undefined" class="share clearfix">
+	  <div data-url="http://gizmosir.com/2016/03/09/title- 从图像处理的角度看傅里叶变换/" data-title="从图像处理的角度看傅里叶变换 | Gizmosir的技术博客" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -229,19 +248,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/03/02/title- 从模式识别的角度看概率论/" title="从模式识别的角度看概率论">
-  <strong>上一篇：</strong><br/>
-  <span>
-  从模式识别的角度看概率论</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/02/26/title- 字符串匹配-Z算法/"  title="字符串匹配-Z算法">
+<a href="/2016/03/08/title- 字符串匹配-KMP算法/"  title="字符串匹配-KMP算法">
  <strong>下一篇：</strong><br/> 
- <span>字符串匹配-Z算法
+ <span>字符串匹配-KMP算法
 </span>
 </a>
 </div>
