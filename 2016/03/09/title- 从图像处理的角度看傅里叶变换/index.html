@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8B%E5%8D%8812.55.17.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%888.40.53.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%888.41.07.png">
-<meta property="og:updated_time" content="2016-03-09T05:46:15.000Z">
+<meta property="og:updated_time" content="2016-03-09T05:53:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从图像处理的角度看傅里叶变换">
 <meta name="twitter:description" content="前言
@@ -137,7 +137,8 @@
 <li>离散信号的频率实际上均是$\omega_0$的倍数，$\omega_0 = \frac{2\pi}{N}$称为基频率（fundamental frequency）。</li>
 </ul>
 <h3 id="变换与反变换"><a href="#变换与反变换" class="headerlink" title="变换与反变换"></a>变换与反变换</h3><p>时间长观察上图不难发现。每种类型的傅里叶变换都含有两个方程，其中第一个称为傅里叶变换，而第二个则称为傅里叶反变换。也就是我们能够时域信号变换到频域，也能将其频域信号反变换到时域。我们可以表示为：</p>
-<p>$$ X[\omega] = \mathcal{F}{x(t)} \ x(t) = \mathcal{F}^{-1}{X(\omega)}$$</p>
+<p>$$ X[\omega] = \mathcal{F}[x(t)] $$</p>
+<p>$$x(t) = \mathcal{F}^{-1}[{X(\omega)}]$$</p>
 <p>其实际上变换与反变换都只是积分/累加和的求导过程，以FT（时域连续无穷信号变换）举例，其变换与反变换如下：</p>
 <p>$$ X(\omega) = \int_{-\infty}^{\infty} x(t)e^{-j \omega t}dt $$</p>
 <p>$$ x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega)e^{j \omega t}dt$$</p>
@@ -149,7 +150,7 @@
 <p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8810.13.34.png" alt=""></p>
 <h3 id="傅里叶变换对"><a href="#傅里叶变换对" class="headerlink" title="傅里叶变换对"></a>傅里叶变换对</h3><p>如果$X(\omega)$是$x(t)$的傅里叶变换后频域信号，那么我们称其$X(\omega)$和$x(t)$傅里叶变换对，且用以下方式表示：<br>$$ x(t) \leftrightarrow X(\omega) $$</p>
 <p>由傅里叶变换的对偶性我们可以知道，傅里叶变换对互换域后仍然成立。举个例子，矩形函数与sinc函数互为傅里叶变换对，那么时域矩形函数能够变换成频域sinc函数，频域矩形函数能反变换成时域sinc函数。</p>
-<p>$$ X{\omega } = \mathcal{F}{ x(t)} = \int_{-\infty}^\infty x(t)e^{-j\omega t}dt $$</p>
+<p>$$ X(\omega) = \mathcal{F}[ x(t)] = \int_{-\infty}^\infty x(t)e^{-j\omega t}dt $$</p>
 <p>$$= \int_{-\frac{1}{2}}^{\frac{1}{2}} e^{-j\omega t}dt$$</p>
 <p>$$= \frac{e^{-j\omega t}}{-j\omega}|_{t=-\frac{1}{2}}^{\frac{1}{2}}$$</p>
 <p>$$= \frac{e^{j\frac{\omega}{2}} - e^{-j\frac{\omega}{2}}}{j\omega}$$</p>
@@ -157,7 +158,7 @@
 <p>$$ = sinc(\frac{\omega}{2\pi}) $$</p>
 <p>矩形函数与sinc函数的图像如下：<br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8811.27.21.png" alt=""> <img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8811.27.31.png" alt=""></p>
 <p>同样的，我们能够根据傅里叶变换与反变换的定义，或者结合待会将要介绍的变换特性得到许许多多的傅里叶变换对，其中有些变化对十分重要，是使用傅里叶变换时常用的变换对，如：</p>
-<p>$$ \mathcal{F}{\delta(t)} = \int_{-\infty}^\infty \delta(t)e^{-j\omega t} = 1$$</p>
+<p>$$ \mathcal{F}[\delta(t)] = \int_{-\infty}^\infty \delta(t)e^{-j\omega t} = 1$$</p>
 <p>更多常用的傅里叶变换对如下：<br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%8811.29.09.png" alt=""></p>
 <h3 id="变换特性"><a href="#变换特性" class="headerlink" title="变换特性"></a>变换特性</h3><p>如果傅里叶变换仅如上述所描述的，那么无疑是麻烦且不使用的。而这里要介绍的变换特性，则提供了我们能够更容易使用傅里叶变换的方法。</p>
 <p>傅里叶变换特性表（部分）如下：<br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8A%E5%8D%8811.31.20.png" alt=""></p>
@@ -165,20 +166,20 @@
 <ul>
 <li>线性（Linearity）</li>
 </ul>
-<p>$$ \mathcal{F}{ax(t) + by(t) } = \int_{-\infty}^\infty[ax(t) + by(t)]e^{-j\omega t}dt $$</p>
+<p>$$ \mathcal{F}[ax(t) + by(t)]= \int_{-\infty}^\infty[ax(t) + by(t)]e^{-j\omega t}dt $$</p>
 <p>$$= a\int_{-\infty}^\infty x(t)e^{-j\omega t}dt + b\int_{-\infty}^\infty y(t)e^{-j\omega t}dt $$</p>
-<p>$$= a\mathcal{F}{x(t)} + b\mathcal{F}{y(t)}$$</p>
+<p>$$= a\mathcal{F}[x(t)] + b\mathcal{F}[y(t)]$$</p>
 <ul>
 <li>频移性（Frequency shift property）</li>
 </ul>
-<p>$$ \mathcal{F}{e^{j\omega<em>0 t} x(t)} = \int</em>{-\infty}^\infty [e^{j\omega_0 t}x(t)]e^{-j\omega t}dt $$</p>
+<p>$$ \mathcal{F}[e^{j\omega<em>0 t} x(t)] = \int</em>{-\infty}^\infty [e^{j\omega_0 t}x(t)]e^{-j\omega t}dt $$</p>
 <p>$$= \int_{-\infty}^\infty x(t)e^{-j(\omega - \omega_0) t}dt $$</p>
 <p>$$= X(\omega - \omega_0)$$</p>
 <p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8A%E5%8D%8811.48.43.png" alt=""></p>
 <ul>
 <li>时移性（Time shift property）</li>
 </ul>
-<p>$$ \mathcal{F} { x(t - t<em>0) } = \int</em>{-\infty}^\infty x(t - t_0)e^{-j\omega t}dt $$</p>
+<p>$$ \mathcal{F} [ x(t - t<em>0) ] = \int</em>{-\infty}^\infty x(t - t_0)e^{-j\omega t}dt $$</p>
 <p>$$= \int_{-\infty}^\infty x(u)e^{-j\omega (u+t_0)}du,u = t - t_0 $$</p>
 <p>$$=\int_{-\infty}^\infty x(u)e^{-j\omega u}e^{-j\omega t_0}du $$</p>
 <p>$$=e^{-j\omega t<em>{0}} \int</em>{-\infty}^\infty x(u)e^{-j\omega u}du $$</p>
@@ -186,7 +187,7 @@
 <ul>
 <li><strong>卷积性（Convolution property）</strong></li>
 </ul>
-<p>$$ \mathcal{F} { x(t) \ast h(t)} = \mathcal{F}{ \int_{-\infty}^\infty x(\tau)h(t - \tau)d\tau} $$</p>
+<p>$$ \mathcal{F} [ x(t) \ast h(t)] = \mathcal{F}[ \int_{-\infty}^\infty x(\tau)h(t - \tau)d\tau] $$</p>
 <p>$$= \int<em>{-\infty}^\infty \left( \int</em>{-\infty}^\infty x(\tau)h(t - \tau)d\tau \right) e^{-j\omega t}dt $$</p>
 <p>$$= \int<em>{-\infty}^\infty x(\tau) \left( \int</em>{-\infty}^\infty h(t - \tau) e^{-j\omega t}dt \right) d\tau $$</p>
 <p>$$= \int<em>{-\infty}^\infty x(\tau) \left( \int</em>{-\infty}^\infty h(u) e^{-j\omega (u+\tau)}du \right) d\tau $$</p>
