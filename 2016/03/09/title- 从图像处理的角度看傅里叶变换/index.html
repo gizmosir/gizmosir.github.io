@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8B%E5%8D%8812.55.17.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%888.40.53.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%888.41.07.png">
-<meta property="og:updated_time" content="2016-03-09T05:25:42.000Z">
+<meta property="og:updated_time" content="2016-03-09T05:32:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从图像处理的角度看傅里叶变换">
 <meta name="twitter:description" content="前言
@@ -181,12 +181,12 @@
 <p>$$ \mathcal{F}{x(t - t<em>0) } = \int</em>{-\infty}^\infty x(t - t_0)e^{-j\omega t}dt $$</p>
 <p>$$= \int_{-\infty}^\infty x(u)e^{-j\omega (u+t_0)}du,u = t - t_0 $$</p>
 <p>$$=\int_{-\infty}^\infty x(u)e^{-j\omega u}e^{-j\omega t_0}du $$</p>
-<p>$$ =e^{-j\omega t<em>0}\int</em>{-\infty}^\infty x(u)e^{-j\omega u}du $$</p>
+<p>$$ =e^{-j\omega t<em>{0}} \int</em>{-\infty}^\infty x(u)e^{-j\omega u}du $$</p>
 <p>$$= e^{-j\omega t_0}X(\omega)$$</p>
 <ul>
 <li><strong>卷积性（Convolution property）</strong></li>
 </ul>
-<p>$$ \mathcal{F}{ x(t) \ast h(t)} = \mathcal{F}{ \int_{-\infty}^\infty x(\tau)h(t - \tau)d\tau} $$</p>
+<p>$$ \mathcal{F} { x(t) \ast h(t)} = \mathcal{F}{ \int_{-\infty}^\infty x(\tau)h(t - \tau)d\tau} $$</p>
 <p>$$= \int<em>{-\infty}^\infty \left( \int</em>{-\infty}^\infty x(\tau)h(t - \tau)d\tau \right) e^{-j\omega t}dt $$</p>
 <p>$$= \int<em>{-\infty}^\infty x(\tau) \left( \int</em>{-\infty}^\infty h(t - \tau) e^{-j\omega t}dt \right) d\tau $$</p>
 <p>$$= \int<em>{-\infty}^\infty x(\tau) \left( \int</em>{-\infty}^\infty h(u) e^{-j\omega (u+\tau)}du \right) d\tau $$</p>
@@ -530,23 +530,10 @@ ga('send', 'pageview');
 
 <!-- Tiny_search End -->
 
-  <!-- mathjax config similar to math.stackexchange -->
-
+  
+<!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
 
 <script type="text/x-mathjax-config">
@@ -560,5 +547,6 @@ ga('send', 'pageview');
 
 <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+<!-- End: Injected MathJax -->
 </body>
 </html>
