@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8B%E5%8D%8812.55.17.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%888.40.53.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-08%20%E4%B8%8B%E5%8D%888.41.07.png">
-<meta property="og:updated_time" content="2016-03-09T05:15:47.000Z">
+<meta property="og:updated_time" content="2016-03-09T05:19:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从图像处理的角度看傅里叶变换">
 <meta name="twitter:description" content="前言
@@ -203,7 +203,7 @@
 <p>$$ x(u,v) = \sin(\omega_1 u)\sin(\omega_2 v)$$</p>
 <p>$x(u,v)$是图像上点$(u,v)$的值。</p>
 <p>又因为$e^{j\omega_1 u}e^{j\omega_2 v} = e^{j(\omega_1 u+ \omega_2 v)}$，所以二维的傅里叶变换和反变换可以写成：</p>
-<p>$$ X(\omega_1, \omega<em>2) = \int</em>{-\infty}^\infty \int_{-\infty}^\infty x(u,v)e^{-j(\omega_1 u+ \omega_2 v)}dudv $$</p>
+<p>$$ X(\omega_1, \omega<em>2) = \int</em>{-\infty}^\infty  x(u,v)e^{-j(\omega_1 u+ \omega_2 v)}dudv $$</p>
 <p>$$ x(u,v) = \frac{1}{4\pi^2} \int<em>{-\infty}^\infty \int</em>{-\infty}^\infty X(\omega_1,\omega_2)e^{j(\omega_1 u+ \omega_2 v)}d\omega_1d\omega_2 $$</p>
 <p>如果用图像来表示二维傅里叶变换，其效果如下：</p>
 <p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9C%8B%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8B%E5%8D%8812.48.40.png" alt=""></p>
