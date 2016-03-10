@@ -1,0 +1,546 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>从模式识别的角度看概率论(II) | Gizmosir的技术博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Gizmosir">
+    
+
+    
+    <meta name="description" content="前言这是《从模式识别的角度看概率论》的第二篇，如果你没有看过第一篇，可以点击这里。
+连续+单变量问题在之前第一篇中我们通过了解了如何使用贝叶斯定理解决离散单变量的概率问题。如果箱子中的球不在是单个整数而是以下这种多个非整数呢？
+再如果变量不再是个离散值而变成连续值呢？
+举个飞镖比赛的例子，两个人各投十发飞镖。那么我们如果根据这十发飞镖离靶心的距离来判断胜负，那么由于距离是连续不断的值，也就是说变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从模式识别的角度看概率论(II)">
+<meta property="og:url" content="http://gizmosir.com/2016/03/10/title- 从模式识别的角度看概率论(II)/index.html">
+<meta property="og:site_name" content="Gizmosir的技术博客">
+<meta property="og:description" content="前言这是《从模式识别的角度看概率论》的第二篇，如果你没有看过第一篇，可以点击这里。
+连续+单变量问题在之前第一篇中我们通过了解了如何使用贝叶斯定理解决离散单变量的概率问题。如果箱子中的球不在是单个整数而是以下这种多个非整数呢？
+再如果变量不再是个离散值而变成连续值呢？
+举个飞镖比赛的例子，两个人各投十发飞镖。那么我们如果根据这十发飞镖离靶心的距离来判断胜负，那么由于距离是连续不断的值，也就是说变量">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8B%E5%8D%8810.37.13.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8B%E5%8D%8810.49.20.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-untitled.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8A%E5%8D%8811.41.08.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-12.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%8812.59.18.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%8812.59.30.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%881.09.23.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%884.30.28.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%885.01.16.png">
+<meta property="og:updated_time" content="2016-03-10T10:12:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从模式识别的角度看概率论(II)">
+<meta name="twitter:description" content="前言这是《从模式识别的角度看概率论》的第二篇，如果你没有看过第一篇，可以点击这里。
+连续+单变量问题在之前第一篇中我们通过了解了如何使用贝叶斯定理解决离散单变量的概率问题。如果箱子中的球不在是单个整数而是以下这种多个非整数呢？
+再如果变量不再是个离散值而变成连续值呢？
+举个飞镖比赛的例子，两个人各投十发飞镖。那么我们如果根据这十发飞镖离靶心的距离来判断胜负，那么由于距离是连续不断的值，也就是说变量">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Gizmosir的技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Gizmosir的技术博客">Gizmosir的技术博客</a></h1>
+				<h2 class="blog-motto">分享有价值的思想</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:gizmosir.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/10/title- 从模式识别的角度看概率论(II)/" title="从模式识别的角度看概率论(II)" itemprop="url">从模式识别的角度看概率论(II)</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2016-03-09T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#连续-单变量"><span class="toc-number">2.</span> <span class="toc-text">连续+单变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题"><span class="toc-number">2.1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正态分布-Gaussian-distribution"><span class="toc-number">2.2.</span> <span class="toc-text">正态分布(Gaussian distribution)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用实例"><span class="toc-number">2.3.</span> <span class="toc-text">应用实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#离散-多变量"><span class="toc-number">3.</span> <span class="toc-text">离散+多变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例"><span class="toc-number">3.1.</span> <span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考与其他"><span class="toc-number">4.</span> <span class="toc-text">参考与其他</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是<strong>《从模式识别的角度看概率论》</strong>的第二篇，如果你没有看过第一篇，可以点击<a href="http://gizmosir.com/2016/03/02/title-%20从模式识别的角度看概率论/">这里</a>。</p>
+<h2 id="连续-单变量"><a href="#连续-单变量" class="headerlink" title="连续+单变量"></a>连续+单变量</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在之前第一篇中我们通过了解了如何使用贝叶斯定理解决离散单变量的概率问题。如果箱子中的球不在是单个整数而是以下这种多个非整数呢？<br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8B%E5%8D%8810.37.13.png" alt=""></p>
+<p>再如果变量不再是个离散值而变成连续值呢？</p>
+<p>举个飞镖比赛的例子，两个人各投十发飞镖。那么我们如果根据这十发飞镖离靶心的距离来判断胜负，那么由于距离是连续不断的值，也就是说变量的连续的。那么我们应该何如使用连续的数据来进行分类（判断胜负）呢？</p>
+<h3 id="正态分布-Gaussian-distribution"><a href="#正态分布-Gaussian-distribution" class="headerlink" title="正态分布(Gaussian distribution)"></a>正态分布(Gaussian distribution)</h3><p>由于变量是连续值，所以我们需要用函数（曲线）来表示这个变量的变化。而正态分布则是一个能够很好地表征自然科学与行为科学中的定量现象的模型。各种各样的心理学测试分数和物理现象比如光子计数都被发现近似地服从正态分布[1]。其函数式：</p>
+<p>$$ p(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{\frac{-(x-m)^2}{2\sigma^2}} $$</p>
+<p>其中，$m$是正态分布函数的均值，$\sigma^2$是正态分布函数的方差。其图像如下所示：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-09%20%E4%B8%8B%E5%8D%8810.49.20.png" alt=""></p>
+<blockquote>
+<p>我们常说的标准正态分布是$m=0$，$\sigma^2=1$的正态分布。</p>
+</blockquote>
+<p>虽然正态分布的函数式看上去比较复杂，但是重要的值只有两个：均值$m$和标准差$\sigma$。</p>
+<p>均值$m$也称为数学期望，期望值。如果给定正态分布函数，我们可以用以下方法计算均值$m$在连续形式与离散形式时的值：</p>
+<p>$$ m = E[X] = \int^{\infty}_{-\infty}xp(x)dx$$</p>
+<p>$$ m = E[X] = \sum_x xp(x)$$</p>
+<p>$m$值改变的是正态分布的位置，$m$值变大，则正态分布函数往右边移动，如下图所示：<br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-untitled.png" alt=""></p>
+<p>同样的给定正态分布函数，我们也能够计算$\sigma$：</p>
+<p>$$ \sigma = VAR[X] = E[(X-E[X])^2]$$</p>
+<p>而标准差$\sigma$改变的则是正态分布曲线的“宽度”。而由于正态分布曲线积分和为1，所以$\sigma$越小，曲线越窄，同时也越高，如下图所示。<br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8A%E5%8D%8811.41.08.png" alt=""></p>
+<h3 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h3><p>那么我们应该如果使用正态分布函数来解决分类问题呢？</p>
+<p>假设我们现在需要仅根据一个人的身高来判断TA是男生还是女生。首先我们收集大量的男女生的身高信息，而身高信息是能够很好的使用正态分布函数表征的信息。再假设我们通过计算后得到男女身高的正态分布曲线如下：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-12.png" alt=""></p>
+<blockquote>
+<p>例子中的数据没有考据过，不一定就是实际情况，我们这里只是举个例子。</p>
+</blockquote>
+<p>首先来看下能够直接从上图中得到的信息：</p>
+<ol>
+<li>女生身高的均值在160cm；</li>
+<li>男生身高的均值在170cm；</li>
+<li>男生身高的正态分布函数比女生的宽，也就是标准差更大；</li>
+</ol>
+<p>接下来分析下图结合上述信息能够推到出的推论：</p>
+<ol>
+<li>由于女生的正态分布函数更窄，更集中在均值160附近，也就是说如果TA的身高在160附近，那么TA是女生的概率更大；</li>
+<li>虽然男生的正态分布函数更宽，但是其均值在170附近，也就是说如果TA的身高在170附近，那么TA是男生的概率更大；</li>
+<li>同样由于女生的正态分布函数比男生的更窄，也就是说女生的身高聚集在160附近的人数远比男生的多，所以如果TA的身高为165，那么是女生的概率仍然更大；</li>
+<li>实际上我们能够很直观地从上图中发现，当TA的身高在[135, 168]区间，也即是图中红色曲线更高的情况下，TA为女生的可能性更大；反之，在[168, 220]区间，也就是图中蓝色曲线更高的情况下，TA为男生的可能性更大。</li>
+</ol>
+<p>实际上从推论中我们不难发现，这里的正态分布函数跟概率好像有某种微妙的联系。没错，再回想下正态分布函数积分之和为1这点更加确认了。实际上在我们的例子中正态分布函数就是概率密度函数（probability density function）。我们也可以用$P[x|C_i]$（x为身高）表示，即在给定类型的情况下数据的概率。</p>
+<blockquote>
+<p>思考：也许你会问，难道实际应用中数据都会呈现正态分布的特性吗？如果不是，那有类似的能够表征的函数么？那如果不能用函数表征的话，我们可以如何解决这种分类问题？</p>
+</blockquote>
+<h2 id="离散-多变量"><a href="#离散-多变量" class="headerlink" title="离散+多变量"></a>离散+多变量</h2><p>为了说明离散多变量的分类问题，我们改变下之前箱子和球的例子，如下：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%8812.59.18.png" alt=""><br>现在球上没有印号码，取而代之的是大小与重量的不同。箱子<strong>C1</strong>中的球尺寸较大，但是重量较轻；箱子<strong>C2</strong>中的球尺寸较小，但是重量较重。</p>
+<blockquote>
+<p>球的重量与尺寸只有几个固定的值，所以数据是离散的。</p>
+</blockquote>
+<p>那么如果将球的尺寸和重量数据用图像来表示的话，如下：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%8812.59.30.png" alt=""></p>
+<p>如果我们有以下规定：</p>
+<ol>
+<li>用i来表示球的尺寸值（X方向）；</li>
+<li>用j来表示球的重量值（Y方向）；</li>
+<li>用$n_{ij}$来表示$X=i,Y=j$的球的个数；</li>
+<li>用$c_i$来表示所有尺寸等于i的球的个数；</li>
+<li>用$r_j$来表示所有重量等于j的球的个数。</li>
+</ol>
+<p>也就是说我们可以将所有的球的数据用以下网格来表示。</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%881.09.23.png" alt=""></p>
+<p>根据定义：</p>
+<p>$$ c_i = \sum<em>j n</em>{ij}$$</p>
+<p>$$ r_j = \sum<em>i n</em>{ij}$$</p>
+<p>$$ N = \sum_i \sum<em>j n</em>{ij}$$</p>
+<blockquote>
+<p>N是所有箱子中所有球的总数。</p>
+</blockquote>
+<p>那么我们可以推导出：</p>
+<ul>
+<li>球落在每个方格中的概率为：</li>
+</ul>
+<p>$$ P(i,j) = \frac{n_{ij}}{N} $$</p>
+<ul>
+<li>球落在某几个方格中的概率为球在每一个方格出现的概率之和：</li>
+</ul>
+<p>$$P[A] = \sum_{(i,j) \in A} P(i,j)$$</p>
+<ul>
+<li>球落在网格中的概率为1：</li>
+</ul>
+<p>$$ \sum_i \sum_j P(i,j) = 1$$ </p>
+<ul>
+<li>球落在网格的某一列i中的概率为尺寸等于i的球的个数除于所有球的个数：</li>
+</ul>
+<p>$$ P(i) = \frac{c_i}{N} $$</p>
+<p>那么同理可得：</p>
+<p>$$ p(j) = \frac{r_j}{N}$$</p>
+<ul>
+<li>结合上式可以联合推导出：</li>
+</ul>
+<p>$$ P(i) = \frac{c_i}{N} = \frac{\sum<em>j n</em>{ij}}{N} = \sum<em>j \frac{n</em>{ij}}{N} = \sum_j P(i,j)$$</p>
+<p>同理可得：</p>
+<p>$$ P(j) = \sum_i P(i,j)$$</p>
+<p>也就是说，求球落在某一列/行中的概率，等于这一列/行中所有球的个数的累加和，所以这个定理也称为累加和规则。通过网格表示和累加和规则，我们就能够只对数据较有特征的维度上进行比对。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>回到我们的例子中，首先我们收集箱子中的球的数据，并将其放入网格中，如下：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%884.30.28.png" alt=""></p>
+<p>接着，根据累加和规则，我们可以计算$P(i)$和$P(j)$，如果用图像表示，则如下图所示：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%885.01.16.png" alt=""></p>
+<p>从图中$P(i)$和$P(j)$的的分布情况不难发现，数据在X方向(尺寸)具有更高的识别度。</p>
+<h2 id="参考与其他"><a href="#参考与其他" class="headerlink" title="参考与其他"></a>参考与其他</h2><p>[1]: <a href="https://zh.wikipedia.org/wiki/正态分布" target="_blank" rel="external">正态分布-维基</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Machine-learning/">Machine learning</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Bayes-theorem/">Bayes theorem</a><a href="/tags/Probability-theory/">Probability theory</a><a href="/tags/贝叶斯/">贝叶斯</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://gizmosir.com/2016/03/10/title- 从模式识别的角度看概率论(II)/" data-title="从模式识别的角度看概率论(II) | Gizmosir的技术博客" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/03/09/title- 从图像处理的角度看傅里叶变换/"  title="从图像处理的角度看傅里叶变换">
+ <strong>下一篇：</strong><br/> 
+ <span>从图像处理的角度看傅里叶变换
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+		
+		  
+			<li><a href="/categories/Algorithms/" title="Algorithms">Algorithms<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Image-processing/" title="Image processing">Image processing<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Machine-learning/" title="Machine learning">Machine learning<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Video-processing/" title="Video processing">Video processing<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+	Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016
+	
+	<a href="/about" target="_blank" title="Gizmosir">Gizmosir</a>
+	
+
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-28029597-1', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  
+<!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+</body>
+</html>
