@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%881.09.23.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%884.30.28.png">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%885.01.16.png">
-<meta property="og:updated_time" content="2016-03-10T10:12:38.000Z">
+<meta property="og:updated_time" content="2016-03-10T10:21:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从模式识别的角度看概率论(II)">
 <meta name="twitter:description" content="前言这是《从模式识别的角度看概率论》的第二篇，如果你没有看过第一篇，可以点击这里。
@@ -169,9 +169,9 @@
 <p>也就是说我们可以将所有的球的数据用以下网格来表示。</p>
 <p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E4%BB%8E%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-10%20%E4%B8%8B%E5%8D%881.09.23.png" alt=""></p>
 <p>根据定义：</p>
-<p>$$ c_i = \sum<em>j n</em>{ij}$$</p>
-<p>$$ r_j = \sum<em>i n</em>{ij}$$</p>
-<p>$$ N = \sum_i \sum<em>j n</em>{ij}$$</p>
+<p>$$ c_i = \sum_j n_{ij}$$</p>
+<p>$$ r_j = \sum_i n_{ij}$$</p>
+<p>$$ N = \sum_i \sum_j n_{ij}$$</p>
 <blockquote>
 <p>N是所有箱子中所有球的总数。</p>
 </blockquote>
@@ -197,7 +197,7 @@
 <ul>
 <li>结合上式可以联合推导出：</li>
 </ul>
-<p>$$ P(i) = \frac{c_i}{N} = \frac{\sum<em>j n</em>{ij}}{N} = \sum<em>j \frac{n</em>{ij}}{N} = \sum_j P(i,j)$$</p>
+<p>$$ P(i) = \frac{c_i}{N} = \frac{\sum_j n_{ij}}{N} = \sum<em>j \frac{n\</em>{ij}}{N} = \sum_j P(i,j)$$</p>
 <p>同理可得：</p>
 <p>$$ P(j) = \sum_i P(i,j)$$</p>
 <p>也就是说，求球落在某一列/行中的概率，等于这一列/行中所有球的个数的累加和，所以这个定理也称为累加和规则。通过网格表示和累加和规则，我们就能够只对数据较有特征的维度上进行比对。</p>
