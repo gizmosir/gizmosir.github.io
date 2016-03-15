@@ -16,7 +16,7 @@
 基础SVG 可以作为一个独立的文件存在，也可以插入到HTML中。但是相同的是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="矢量图像基础技巧">
-<meta property="og:url" content="http://gizmosir.com/2016/03/01/title- 矢量图像基础技巧/index.html">
+<meta property="og:url" content="http://gizmosir.com/2016/03/15/title- 矢量图像基础技巧/index.html">
 <meta property="og:site_name" content="Gizmosir的技术博客">
 <meta property="og:description" content="前言图像分为两类：位图和矢量图。位图是由一个个独立的像素组成，也就是一般照片的呈现方式，所以我们更为熟悉。而矢量图（Scalable vector graphics,  下用 SVG代替)则是使用数学公式来表示图像，虽然其生成过程较为复杂，但是有个显著的特点就是可以无限放大且不会出现锯齿。
 图1. 左为位图，右为矢量图。
@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-15%20%E4%B8%8B%E5%8D%8812.37.48.png?imageView/2/w/480">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-15%20%E4%B8%8B%E5%8D%8812.42.09.png?imageView/2/w/300">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-15%20%E4%B8%8B%E5%8D%8812.46.29.png">
-<meta property="og:updated_time" content="2016-03-15T04:47:57.000Z">
+<meta property="og:updated_time" content="2016-03-15T04:51:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="矢量图像基础技巧">
 <meta name="twitter:description" content="前言图像分为两类：位图和矢量图。位图是由一个个独立的像素组成，也就是一般照片的呈现方式，所以我们更为熟悉。而矢量图（Scalable vector graphics,  下用 SVG代替)则是使用数学公式来表示图像，虽然其生成过程较为复杂，但是有个显著的特点就是可以无限放大且不会出现锯齿。
@@ -89,11 +89,11 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/01/title- 矢量图像基础技巧/" title="矢量图像基础技巧" itemprop="url">矢量图像基础技巧</a>
+      <a href="/2016/03/15/title- 矢量图像基础技巧/" title="矢量图像基础技巧" itemprop="url">矢量图像基础技巧</a>
   </h1>
   
   <p class="article-time">
-    <time datetime="2016-02-29T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-01</time>
+    <time datetime="2016-03-14T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-15</time>
     
   </p>
 </header>
@@ -110,14 +110,10 @@
 <p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-15%20%E4%B8%8A%E5%8D%8810.45.14.png?imageView/2/w/400" alt=""><br>图1. 左为位图，右为矢量图。</p>
 <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>SVG 可以作为一个独立的文件存在，也可以插入到HTML中。但是相同的是都是运行在浏览器上的，而且不同的浏览器效果不同。所以如果你不希望在别人的浏览器上查看不了你的图像，在生成SVG图像时，多在几个主流的浏览器如Chrome、Firefox上运行看看。</p>
 <h3 id="文本（Text）"><a href="#文本（Text）" class="headerlink" title="文本（Text）"></a>文本（Text）</h3><p>但是其格式都是相同的，如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">svg</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span>          </span><br><span class="line">     <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span></span><br><span class="line">        &gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"10"</span> <span class="attribute">y</span>=<span class="value">"300"</span> <span class="attribute">style</span>=<span class="value">"font-size:60px;fill:red"</span> &gt;</span>                This is SVG text <span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">svg</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span>          </span><br><span class="line">     <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span></span><br><span class="line">        &gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"10"</span> <span class="attribute">y</span>=<span class="value">"300"</span> <span class="attribute">style</span>=<span class="value">"font-size:60px;fill:red"</span> &gt;</span>This is SVG text <span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>值得注意的是，SVG对代码的格式跟次序并不敏感，而且对于文字样式的定义可以放或不放在<code>Style</code>里面，也就是说，下面四个写法是完全等价的：</p>
-<ul>
-<li><figure class="highlight"><figcaption><span>x="10" y="300" style="font-size:60px; fill:red">``` </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```&#60;text style=&#34;font-size:60px; fill:red&#34; x=&#34;10&#34; y=&#34;300&#34; &#62;</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight"><figcaption><span>x="10" y="300" style="font-size:60px; fill:red" >```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```&#60;text x=&#34;10&#34; y=&#34;300&#34; font-size=&#34;60px&#34; fill=&#34;red&#34; &#62;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<figure class="highlight"><figcaption><span>x="10" y="300" style="font-size:60px; fill:red">``` </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;```&#60;text style=&#34;font-size:60px; fill:red&#34; x=&#34;10&#34; y=&#34;300&#34; &#62;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><figcaption><span>x="10" y="300" style="font-size:60px; fill:red" >```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;```&#60;text x=&#34;10&#34; y=&#34;300&#34; font-size=&#34;60px&#34; fill=&#34;red&#34; &#62;</span><br></pre></td></tr></table></figure>
 <p>SVG有其他形如text的“控件”如直线等，其语法包括格式和样式等与文本无异，所以就不详细罗列代码了。部分控件有：</p>
 <ul>
 <li>直线（Line）;</li>
@@ -130,7 +126,7 @@
 <h3 id="路径（Path）"><a href="#路径（Path）" class="headerlink" title="路径（Path）"></a>路径（Path）</h3><p>除了使用SVG自带的以上控件，你也可以使用路径来画直线椭圆等，其格式为：</p>
 <p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-15%20%E4%B8%8A%E5%8D%8811.22.21.png?imageView/2/w/200" alt=""> <img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-15%20%E4%B8%8A%E5%8D%8811.22.34.png?imageView/2/w/220" alt=""></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span><br><span class="line">该例子使用两条路径画出两个梯形，如上图左。</span><br><span class="line">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">path</span> <span class="attribute">d</span>=<span class="value">"M100,25 L200,25 L250,125 L50,125 z"</span> <span class="attribute">style</span>=<span class="value">"fill:pink;stroke:black"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">path</span> <span class="attribute">d</span>=<span class="value">"M50,150 h200 l-50,100 h-100 z"</span> <span class="attribute">style</span>=<span class="value">"fill:yellow;stroke:black"</span>/&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span><br><span class="line">该例子使用三条路径画出上图右。</span><br><span class="line">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">path</span> <span class="attribute">d</span>=<span class="value">"M50,200 Q135.5,210.5 125,125 T200,50 z"</span> <span class="attribute">style</span>=<span class="value">"fill:khaki;stroke:brown"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">path</span> <span class="attribute">d</span>=<span class="value">"M50,200 L135.5,210.5 L125,125</span><br><span class="line">L109.5,34.5 L200,50 z"</span> <span class="attribute">style</span>=<span class="value">"fill:none;stroke:grey"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">path</span> <span class="attribute">d</span>=<span class="value">"M225,225 h-50 a50,50 0 1,0 50,-50 z"</span> <span class="attribute">style</span>=<span class="value">"fill:lightgreen;stroke:darkgreen"</span>/&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span><br><span class="line">该例子使用三条路径画出上图右。</span><br><span class="line">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">path</span> <span class="attribute">d</span>=<span class="value">"M50,200 Q135.5,210.5 125,125 T200,50 z"</span> <span class="attribute">style</span>=<span class="value">"fill:khaki;stroke:brown"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">path</span> <span class="attribute">d</span>=<span class="value">"M50,200 L135.5,210.5 L125,125 L109.5,34.5 L200,50 z"</span> <span class="attribute">style</span>=<span class="value">"fill:none;stroke:grey"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">path</span> <span class="attribute">d</span>=<span class="value">"M225,225 h-50 a50,50 0 1,0 50,-50 z"</span> <span class="attribute">style</span>=<span class="value">"fill:lightgreen;stroke:darkgreen"</span>/&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>使用路径时可以使用的命令有：</p>
 <ul>
 <li>M = 移动至；</li>
@@ -196,7 +192,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://gizmosir.com/2016/03/01/title- 矢量图像基础技巧/" data-title="矢量图像基础技巧 | Gizmosir的技术博客" data-tsina="undefined" class="share clearfix">
+	  <div data-url="http://gizmosir.com/2016/03/15/title- 矢量图像基础技巧/" data-title="矢量图像基础技巧 | Gizmosir的技术博客" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -209,19 +205,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/03/02/title- 从模式识别的角度看概率论/" title="从模式识别的角度看概率论">
-  <strong>上一篇：</strong><br/>
-  <span>
-  从模式识别的角度看概率论</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/02/26/title- 字符串匹配-Z算法/"  title="字符串匹配-Z算法">
+<a href="/2016/03/10/title- 从模式识别的角度看概率论(II)/"  title="从模式识别的角度看概率论(II)">
  <strong>下一篇：</strong><br/> 
- <span>字符串匹配-Z算法
+ <span>从模式识别的角度看概率论(II)
 </span>
 </a>
 </div>
