@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-15%20%E4%B8%8B%E5%8D%8812.37.48.png?imageView/2/w/480">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-15%20%E4%B8%8B%E5%8D%8812.42.09.png?imageView/2/w/300">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-15%20%E4%B8%8B%E5%8D%8812.46.29.png">
-<meta property="og:updated_time" content="2016-03-15T04:51:32.000Z">
+<meta property="og:updated_time" content="2016-03-15T05:40:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="矢量图像基础技巧">
 <meta name="twitter:description" content="前言图像分为两类：位图和矢量图。位图是由一个个独立的像素组成，也就是一般照片的呈现方式，所以我们更为熟悉。而矢量图（Scalable vector graphics,  下用 SVG代替)则是使用数学公式来表示图像，虽然其生成过程较为复杂，但是有个显著的特点就是可以无限放大且不会出现锯齿。
@@ -112,9 +112,14 @@
 <h3 id="文本（Text）"><a href="#文本（Text）" class="headerlink" title="文本（Text）"></a>文本（Text）</h3><p>但是其格式都是相同的，如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">svg</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span>          </span><br><span class="line">     <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span></span><br><span class="line">        &gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"10"</span> <span class="attribute">y</span>=<span class="value">"300"</span> <span class="attribute">style</span>=<span class="value">"font-size:60px;fill:red"</span> &gt;</span>This is SVG text <span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>值得注意的是，SVG对代码的格式跟次序并不敏感，而且对于文字样式的定义可以放或不放在<code>Style</code>里面，也就是说，下面四个写法是完全等价的：</p>
-<figure class="highlight"><figcaption><span>x="10" y="300" style="font-size:60px; fill:red">``` </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;```&#60;text style=&#34;font-size:60px; fill:red&#34; x=&#34;10&#34; y=&#34;300&#34; &#62;</span><br></pre></td></tr></table></figure>
-<figure class="highlight"><figcaption><span>x="10" y="300" style="font-size:60px; fill:red" >```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;```&#60;text x=&#34;10&#34; y=&#34;300&#34; font-size=&#34;60px&#34; fill=&#34;red&#34; &#62;</span><br></pre></td></tr></table></figure>
-<p>SVG有其他形如text的“控件”如直线等，其语法包括格式和样式等与文本无异，所以就不详细罗列代码了。部分控件有：</p>
+<pre><code>&lt;text x=&quot;10&quot; y=&quot;300&quot; style=&quot;font-size:60px; fill:red&quot;&gt;
+
+&lt;text style=&quot;font-size:60px; fill:red&quot; x=&quot;10&quot; y=&quot;300&quot; &gt;
+
+&lt;text x=&quot;10&quot; y=&quot;300&quot; style=&quot;font-size:60px; fill:red&quot; &gt;
+
+&lt;text x=&quot;10&quot; y=&quot;300&quot; font-size=&quot;60px&quot; fill=&quot;red&quot; &gt;
+</code></pre><p>SVG有其他形如text的“控件”如直线等，其语法包括格式和样式等与文本无异，所以就不详细罗列代码了。部分控件有：</p>
 <ul>
 <li>直线（Line）;</li>
 <li>矩形（Rectangle）;</li>
