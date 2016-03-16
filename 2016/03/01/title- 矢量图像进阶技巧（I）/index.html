@@ -1,0 +1,528 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>矢量图像进阶技巧（I） | Gizmosir的技术博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Gizmosir">
+    
+
+    
+    <meta name="description" content="前言这是矢量图的第二篇，如果你没有看过第一篇，可以点击这里。
+在第一篇中我们介绍了基础的SVG使用方法，在这一篇中我们将来着重介绍SVG的大杀器——滤镜。
+图层（Layers）
+相信大家或多或少也都接触过Photoshop，对图层这个概念也不陌生。图层实际上就是独立的图形，通过覆盖的方式组合成一张图像，如上图所示。
+而图层的概念在SVG中也是存在的，其用法与Photoshop的相似，只是覆盖的顺序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="矢量图像进阶技巧（I）">
+<meta property="og:url" content="http://gizmosir.com/2016/03/01/title- 矢量图像进阶技巧（I）/index.html">
+<meta property="og:site_name" content="Gizmosir的技术博客">
+<meta property="og:description" content="前言这是矢量图的第二篇，如果你没有看过第一篇，可以点击这里。
+在第一篇中我们介绍了基础的SVG使用方法，在这一篇中我们将来着重介绍SVG的大杀器——滤镜。
+图层（Layers）
+相信大家或多或少也都接触过Photoshop，对图层这个概念也不陌生。图层实际上就是独立的图形，通过覆盖的方式组合成一张图像，如上图所示。
+而图层的概念在SVG中也是存在的，其用法与Photoshop的相似，只是覆盖的顺序">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8810.13.41.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8810.42.19.png?imageView/2/w/500">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8810.51.57.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8811.12.05.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8811.28.00.png?imageView/2/w/300">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8811.32.31.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8811.41.16.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%8812.05.44.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%8812.17.19.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%882.40.37.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%882.53.28.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%882.58.11.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.04.48.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.11.39.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.16.40.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.17.06.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.26.08.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.26.28.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.34.38.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.41.06.png">
+<meta property="og:updated_time" content="2016-03-16T07:52:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="矢量图像进阶技巧（I）">
+<meta name="twitter:description" content="前言这是矢量图的第二篇，如果你没有看过第一篇，可以点击这里。
+在第一篇中我们介绍了基础的SVG使用方法，在这一篇中我们将来着重介绍SVG的大杀器——滤镜。
+图层（Layers）
+相信大家或多或少也都接触过Photoshop，对图层这个概念也不陌生。图层实际上就是独立的图形，通过覆盖的方式组合成一张图像，如上图所示。
+而图层的概念在SVG中也是存在的，其用法与Photoshop的相似，只是覆盖的顺序">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Gizmosir的技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Gizmosir的技术博客">Gizmosir的技术博客</a></h1>
+				<h2 class="blog-motto">分享有价值的思想</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:gizmosir.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/01/title- 矢量图像进阶技巧（I）/" title="矢量图像进阶技巧（I）" itemprop="url">矢量图像进阶技巧（I）</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2016-02-29T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图层（Layers）"><span class="toc-number">2.</span> <span class="toc-text">图层（Layers）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#滤镜（Filters）"><span class="toc-number">3.</span> <span class="toc-text">滤镜（Filters）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图像（feImage）"><span class="toc-number">3.1.</span> <span class="toc-text">图像（feImage）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并（feMerge）"><span class="toc-number">3.2.</span> <span class="toc-text">合并（feMerge）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复合（feComposite）"><span class="toc-number">3.3.</span> <span class="toc-text">复合（feComposite）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#平铺（feTile）"><span class="toc-number">3.4.</span> <span class="toc-text">平铺（feTile）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩形"><span class="toc-number">3.5.</span> <span class="toc-text">矩形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#色彩调节（feComponentTransfer）"><span class="toc-number">3.6.</span> <span class="toc-text">色彩调节（feComponentTransfer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高斯模糊（feGaussianBlur）"><span class="toc-number">3.7.</span> <span class="toc-text">高斯模糊（feGaussianBlur）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#偏移（Offset）"><span class="toc-number">3.8.</span> <span class="toc-text">偏移（Offset）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#转换（Transform）"><span class="toc-number">3.9.</span> <span class="toc-text">转换（Transform）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考与其他"><span class="toc-number">4.</span> <span class="toc-text">参考与其他</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是矢量图的第二篇，如果你没有看过第一篇，可以点击<a href="http://gizmosir.com/2016/03/15/title-%20矢量图像基础技巧/">这里</a>。</p>
+<p>在第一篇中我们介绍了基础的SVG使用方法，在这一篇中我们将来着重介绍SVG的大杀器——滤镜。</p>
+<h2 id="图层（Layers）"><a href="#图层（Layers）" class="headerlink" title="图层（Layers）"></a>图层（Layers）</h2><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8810.13.41.png" alt=""></p>
+<p>相信大家或多或少也都接触过Photoshop，对图层这个概念也不陌生。图层实际上就是独立的图形，通过覆盖的方式组合成一张图像，如上图所示。</p>
+<p>而图层的概念在SVG中也是存在的，其用法与Photoshop的相似，只是覆盖的顺序是后添加的图层（以下称为后图层）将覆盖在前面添加的图层（以下称为前图层）之上。</p>
+<p>实际上你可以将不同的图层理解成不同的滤镜效果，将所有的滤镜效果叠加之后生成了最终显示的图像。</p>
+<h2 id="滤镜（Filters）"><a href="#滤镜（Filters）" class="headerlink" title="滤镜（Filters）"></a>滤镜（Filters）</h2><p>就如同我在第一篇中说的一样，几乎所有出色的SVG图像都离不开滤镜。通过将不同的滤镜组件（primitives）叠加在一起生成复合滤镜的方法更是重中之重，那么首先我们来看下都有哪些基本的滤镜组件：</p>
+<ul>
+<li>feImage</li>
+<li>feMerge</li>
+<li>feBlend</li>
+<li>feComposite</li>
+<li>feTile</li>
+<li>feFlood</li>
+<li>feComponentTransfer</li>
+<li>feGaussianBlur</li>
+<li>feOffset</li>
+<li>feMorphology</li>
+<li>feColorMatrix</li>
+<li>feConvolveMatrix</li>
+<li>feTurbulence</li>
+<li>feDisplacementMap</li>
+<li>feDiffuseLighting</li>
+<li>feSpecularLighting</li>
+<li>feDistantLight</li>
+<li>fePointLight</li>
+<li>feSpotLight</li>
+</ul>
+<p>一下子你肯定会觉得这么多滤镜名字已经不同的功能，怎么记得住<br>？那么下面我们结合图例来从逐个解释下每个滤镜组件，好让你对每个组件有个更好的了解，相信看完你一定都大致记住了。</p>
+<h3 id="图像（feImage）"><a href="#图像（feImage）" class="headerlink" title="图像（feImage）"></a>图像（feImage）</h3><p>虽然图像不符合SVG可以无限放大且不产生锯齿的特性，但是有时我们仍然需要使用图像来生成SVG图像，比如名片。这个时候我们就可以使用<code>feImage</code>。</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!--该例子读取一张图片，并将其作为滤镜填充到矩形中。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">    &lt;!<span class="attribute">--</span>使用<span class="attribute">feImage</span>时一定要添加下面两句来提示外链图片的位置<span class="attribute">--</span>&gt;</span></span><br><span class="line">    xmlns="http://www.w3.org/2000/svg"        </span><br><span class="line">    xmlns:xlink="http://www.w3.org/1999/xlink" &gt;</span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"feImage_demo"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">feImage</span> <span class="attribute">xlink:href</span>=<span class="value">"smile.jpg"</span> /&gt;</span> </span><br><span class="line">        <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">y</span>=<span class="value">"0"</span> <span class="attribute">x</span>=<span class="value">"0"</span> <span class="attribute">height</span>=<span class="value">"500"</span> <span class="attribute">width</span>=<span class="value">"500"</span> <span class="attribute">style</span>=<span class="value">"filter:url(#feImage_demo)"</span> /&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8810.42.19.png?imageView/2/w/500" alt=""></p>
+<p>当然<code>feImage</code>除了导入外链图像，也能导入使用代码生成的SVG图像，如下例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--该例子首先生成一个“太阳”圆，并将其作为滤镜填充到矩形中。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">    <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span>     </span><br><span class="line">    <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span> &gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="title">circle</span> <span class="attribute">id</span>=<span class="value">"pretty_circle"</span> <span class="attribute">cx</span>=<span class="value">"300"</span> <span class="attribute">cy</span>=<span class="value">"300"</span> <span class="attribute">r</span>=<span class="value">"200"</span> <span class="attribute">style</span>=<span class="value">"stroke-width:80; stroke:yellow; fill:red"</span> /&gt;</span></span><br><span class="line">    </span><br><span class="line">        <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"feImage_demo"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">feImage</span> <span class="attribute">xlink:href</span>=<span class="value">"#pretty_circle"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">y</span>=<span class="value">"0"</span> <span class="attribute">x</span>=<span class="value">"0"</span> <span class="attribute">height</span>=<span class="value">"500"</span> <span class="attribute">width</span>=<span class="value">"500"</span> <span class="attribute">style</span>=<span class="value">"filter:url(#feImage_demo)"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8810.51.57.png" alt=""></p>
+<h3 id="合并（feMerge）"><a href="#合并（feMerge）" class="headerlink" title="合并（feMerge）"></a>合并（feMerge）</h3><p>如果我们想要将上下图层叠加，总共有三个指令可以使用，分别是<code>feMerge</code>，<code>feBlend</code>和<code>feComposite</code>。首先我们来看下比较简单的<code>feMerge</code>。其作用是简单地将图层合并成一张，后图层直接覆盖在前图层之上。所以如果要保证能够通过后图层看到前图层的东西，则必须保证对应位置的透明度（alpha）为0.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--本例子中首先读取三张图片，并将其合并成一个滤镜，最后将滤镜应用到一个矩形上。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">    <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span> </span><br><span class="line">    <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span> &gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"layers"</span> </span><br><span class="line">        <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span> <span class="comment">&lt;!--声明了滤镜的插值方法--&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="title">feImage</span> <span class="attribute">xlink:href</span>=<span class="value">"liquid_image.jpg"</span> <span class="attribute">result</span>=<span class="value">"background"</span>/&gt;</span> </span><br><span class="line">            <span class="tag">&lt;<span class="title">feImage</span> <span class="attribute">xlink:href</span>=<span class="value">"small_fish.png"</span> <span class="attribute">result</span>=<span class="value">"layer1"</span> <span class="attribute">width</span>=<span class="value">"500"</span> <span class="attribute">x</span>=<span class="value">"500"</span> <span class="attribute">y</span>=<span class="value">"-180"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">feImage</span> <span class="attribute">xlink:href</span>=<span class="value">"big_fish.png"</span> <span class="attribute">result</span>=<span class="value">"layer2"</span> <span class="attribute">width</span>=<span class="value">"800"</span> <span class="attribute">x</span>=<span class="value">"80"</span> <span class="attribute">y</span>=<span class="value">"30"</span>/&gt;</span> </span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="title">feMerge</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">feMergeNode</span> <span class="attribute">in</span>=<span class="value">"background"</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">feMergeNode</span> <span class="attribute">in</span>=<span class="value">"layer1"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">feMergeNode</span> <span class="attribute">in</span>=<span class="value">"layer2"</span>/&gt;</span> </span><br><span class="line">            <span class="tag">&lt;/<span class="title">feMerge</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;/<span class="title">filter</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">y</span>=<span class="value">"0"</span> <span class="attribute">x</span>=<span class="value">"0"</span> <span class="attribute">height</span>=<span class="value">"960"</span> <span class="attribute">width</span>=<span class="value">"1280"</span> <span class="attribute">style</span>=<span class="value">"filter:url(#layers)"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8811.12.05.png" alt=""></p>
+<p>###混合（feBlend）<br>而另外一个将图层叠加的方法是混合（feBlend）。<code>feBlend</code>相对于<code>feMerge</code>，能够根据不同的属性实现稍微复杂一点的效果。属性（ normal | multiply | screen | darken | lighten ）与其对应的效果如下：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8811.28.00.png?imageView/2/w/300" alt=""></p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--本例子中首先读取两张图片，然后用相乘的方式将两张图片混合并生产滤镜，最后将滤镜应用到矩形上。--&gt;</span><br><span class="line">&lt;svg</span><br><span class="line">    xmlns=<span class="string">"http://www.w3.org/2000/svg"</span> </span><br><span class="line">    xmlns:xlink=<span class="string">"http://www.w3.org/1999/xlink"</span> &gt;</span><br><span class="line">    </span><br><span class="line">    &lt;defs&gt;</span><br><span class="line">        &lt;filter id=<span class="string">"demo_of_feBlend"</span> </span><br><span class="line">        color-interpolation-filters=<span class="string">"sRGB"</span>&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;feImage xlink:href=<span class="string">"rainbow.png"</span> <span class="literal">result</span>=<span class="string">"background_image"</span>/&gt; </span><br><span class="line">            &lt;feImage xlink:href=<span class="string">"pony.png"</span> <span class="literal">result</span>=<span class="string">"foreground_image"</span> width=<span class="string">"500"</span> x=<span class="string">"100"</span>/&gt;</span><br><span class="line"></span><br><span class="line">            &lt;feBlend mode=<span class="string">"multiply"</span></span><br><span class="line"><span class="keyword">in</span>=<span class="string">"foreground_image"</span> in2=<span class="string">"background_image"</span> /&gt; </span><br><span class="line">        </span><br><span class="line">        &lt;/filter&gt;</span><br><span class="line">    &lt;/defs&gt;</span><br><span class="line"></span><br><span class="line">    &lt;rect x=<span class="string">"0"</span> y=<span class="string">"0"</span> width=<span class="string">"100%"</span> height=<span class="string">"100%"</span> filter=<span class="string">"url(#demo_of_feBlend)"</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8811.32.31.png" alt=""></p>
+<h3 id="复合（feComposite）"><a href="#复合（feComposite）" class="headerlink" title="复合（feComposite）"></a>复合（feComposite）</h3><p>最后一个可以将图层添加到一起的命令是复合（feComposite），是应用效果是能够根据属性不同来显示不同图层的不同部分，属性( over | in | out | atop | xor | arithmetic )和其对应效果如下：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8A%E5%8D%8811.41.16.png" alt=""></p>
+<blockquote>
+<p>由于复合使用的例子需要的滤镜组件我们还没介绍到，所以例子稍后再给。</p>
+</blockquote>
+<h3 id="平铺（feTile）"><a href="#平铺（feTile）" class="headerlink" title="平铺（feTile）"></a>平铺（feTile）</h3><p>之前在第一篇的时候我们介绍过使用模式的方式来生成连续不断的图片，实际上更加普遍的做法是使用平铺（feTile）。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--本例子中首先读取图片，并平铺生成滤镜，最后将滤镜应用到矩形上。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">    <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span> </span><br><span class="line">    <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span> &gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"carpet"</span> </span><br><span class="line">        <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="tag">&lt;<span class="title">feImage</span> <span class="attribute">xlink:href</span>=<span class="value">"carpet.jpg"</span> <span class="attribute">width</span>=<span class="value">"294"</span> <span class="attribute">height</span>=<span class="value">"374"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">feTile</span> /&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">x</span>=<span class="value">"0"</span> <span class="attribute">y</span>=<span class="value">"0"</span> <span class="attribute">width</span>=<span class="value">"100%"</span> <span class="attribute">height</span>=<span class="value">"100%"</span> <span class="attribute">filter</span>=<span class="value">"url(#carpet)"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%8812.05.44.png" alt=""></p>
+<h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3><p>如果平铺的图形十分简单且有规律的话，我们也能够通过自定义形状并使用<code>feTile</code>来进行平铺。</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--本例子中首先生成四个矩形，接着将矩阵合并并平铺生成滤镜，最后将滤镜应用到矩形上。--&gt;</span><br><span class="line">&lt;svg</span><br><span class="line">    xmlns=<span class="string">"http://www.w3.org/2000/svg"</span> </span><br><span class="line">    xmlns:xlink=<span class="string">"http://www.w3.org/1999/xlink"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;defs&gt;</span><br><span class="line">        &lt;filter id=<span class="string">"chessboard"</span></span><br><span class="line">        color-interpolation-filters=<span class="string">"sRGB"</span>&gt;</span><br><span class="line"></span><br><span class="line">            &lt;feFlood x=<span class="string">"0"</span> y=<span class="string">"0"</span> width=<span class="string">"100"</span></span><br><span class="line">height=<span class="string">"100"</span> flood-color=<span class="string">"black"</span> <span class="literal">result</span>=<span class="string">"stage1"</span>/&gt;</span><br><span class="line">            &lt;feFlood x=<span class="string">"0"</span> y=<span class="string">"100"</span> width=<span class="string">"100"</span></span><br><span class="line">height=<span class="string">"100"</span> flood-color=<span class="string">"white"</span> <span class="literal">result</span>=<span class="string">"stage2"</span>/&gt;</span><br><span class="line">            &lt;feFlood x=<span class="string">"100"</span> y=<span class="string">"100"</span> width=<span class="string">"100"</span></span><br><span class="line">height=<span class="string">"100"</span> flood-color=<span class="string">"black"</span> <span class="literal">result</span>=<span class="string">"stage3"</span>/&gt;</span><br><span class="line">            &lt;feFlood x=<span class="string">"100"</span> y=<span class="string">"0"</span> width=<span class="string">"100"</span></span><br><span class="line">height=<span class="string">"100"</span> flood-color=<span class="string">"white"</span> <span class="literal">result</span>=<span class="string">"stage4"</span>/&gt;</span><br><span class="line"></span><br><span class="line">            &lt;feMerge&gt;</span><br><span class="line">                &lt;feMergeNode <span class="keyword">in</span>=<span class="string">"stage1"</span>/&gt;</span><br><span class="line">                &lt;feMergeNode <span class="keyword">in</span>=<span class="string">"stage2"</span>/&gt; &lt;feMergeNode <span class="keyword">in</span>=<span class="string">"stage3"</span>/&gt; </span><br><span class="line">                &lt;feMergeNode <span class="keyword">in</span>=<span class="string">"stage4"</span>/&gt;</span><br><span class="line">            &lt;/feMerge&gt;</span><br><span class="line">        </span><br><span class="line">            &lt;feTile /&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;/filter&gt;</span><br><span class="line">    &lt;/defs&gt;</span><br><span class="line"></span><br><span class="line">    &lt;rect x=<span class="string">"0"</span> y=<span class="string">"0"</span> width=<span class="string">"100%"</span> height=<span class="string">"100%"</span> filter=<span class="string">"url(#chessboard)"</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%8812.17.19.png" alt=""></p>
+<h3 id="色彩调节（feComponentTransfer）"><a href="#色彩调节（feComponentTransfer）" class="headerlink" title="色彩调节（feComponentTransfer）"></a>色彩调节（feComponentTransfer）</h3><p>有时候我们需要对图形/图像的颜色进行调整，那么我们可以使用<code>feComponentTransfer</code>来调整。<code>feComponentTransfer</code>可以调整（ feFuncR | feFuncG | feFuncB | feFuncA ）四路通道值，其调整曲线有（ Identity | Linear | Discrete | Table | Gramma ）五种。</p>
+<p>如果图形/图像整体偏暗，我们可以通过同时提高R、G、B值，能使得图像更加明亮些。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--本例子中首先读取图片，使用feComponentTransfer提高R、G、B通道的值并生成滤镜，最后将滤镜应用到图片上，并将修改后的图像与原图像进行对比--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">   <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span></span><br><span class="line">   <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"brighter"</span></span><br><span class="line">       <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feComponentTransfer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">feFuncR</span> <span class="attribute">type</span>=<span class="value">"linear"</span> <span class="attribute">slope</span>=<span class="value">"1.4"</span> <span class="attribute">intercept</span>=<span class="value">"0"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">feFuncG</span> <span class="attribute">type</span>=<span class="value">"linear"</span> <span class="attribute">slope</span>=<span class="value">"1.4"</span> <span class="attribute">intercept</span>=<span class="value">"0"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">feFuncB</span> <span class="attribute">type</span>=<span class="value">"linear"</span> <span class="attribute">slope</span>=<span class="value">"1.4"</span> <span class="attribute">intercept</span>=<span class="value">"0"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">feComponentTransfer</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"10"</span> <span class="attribute">y</span>=<span class="value">"145"</span>&gt;</span>Before:<span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">image</span> <span class="attribute">x</span>=<span class="value">"70"</span> <span class="attribute">y</span>=<span class="value">"0"</span> <span class="attribute">width</span>=<span class="value">"500"</span> <span class="attribute">height</span>=<span class="value">"751"</span></span><br><span class="line">     <span class="attribute">xlink:href</span>=<span class="value">"Thailand.jpg"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"610"</span> <span class="attribute">y</span>=<span class="value">"145"</span>&gt;</span>After:<span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">image</span> <span class="attribute">x</span>=<span class="value">"670"</span> <span class="attribute">y</span>=<span class="value">"0"</span> </span><br><span class="line">     <span class="attribute">width</span>=<span class="value">"500"</span></span><br><span class="line">     <span class="attribute">height</span>=<span class="value">"751"</span></span><br><span class="line">     <span class="attribute">xlink:href</span>=<span class="value">"before.jpg"</span></span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"filter:url(#brighter)"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%882.40.37.png" alt=""></p>
+<p>有些古老的照片可能褪色，也就是说白色不白了，黑色不黑了，那么我也可以通过色彩调节来改善图片效果。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--本例子中首先读取图片，使用Linear曲线调整R、G、B通道的值并生成滤镜，最后将滤镜应用到图片上，并将修改后的图像与原图像进行对比--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">   <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span></span><br><span class="line">   <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"incContrast"</span></span><br><span class="line">       <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feComponentTransfer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">feFuncR</span> <span class="attribute">type</span>=<span class="value">"linear"</span> <span class="attribute">slope</span>=<span class="value">"1.5"</span> <span class="attribute">intercept</span>=<span class="value">"-0.3"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">feFuncG</span> <span class="attribute">type</span>=<span class="value">"linear"</span> <span class="attribute">slope</span>=<span class="value">"1.5"</span> <span class="attribute">intercept</span>=<span class="value">"-0.3"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">feFuncB</span> <span class="attribute">type</span>=<span class="value">"linear"</span> <span class="attribute">slope</span>=<span class="value">"1.5"</span> <span class="attribute">intercept</span>=<span class="value">"-0.3"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">feComponentTransfer</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"10"</span> <span class="attribute">y</span>=<span class="value">"145"</span>&gt;</span>Before:<span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">image</span> <span class="attribute">x</span>=<span class="value">"70"</span> <span class="attribute">y</span>=<span class="value">"20"</span> </span><br><span class="line">    <span class="attribute">width</span>=<span class="value">"465"</span></span><br><span class="line">    <span class="attribute">height</span>=<span class="value">"592"</span></span><br><span class="line">    <span class="attribute">xlink:href</span>=<span class="value">"old_photo_man.png"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"550"</span> <span class="attribute">y</span>=<span class="value">"145"</span>&gt;</span>After:<span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">image</span> <span class="attribute">x</span>=<span class="value">"600"</span> <span class="attribute">y</span>=<span class="value">"20"</span> </span><br><span class="line">     <span class="attribute">width</span>=<span class="value">"465"</span></span><br><span class="line">     <span class="attribute">height</span>=<span class="value">"592"</span></span><br><span class="line">     <span class="attribute">xlink:href</span>=<span class="value">"old_photo_man.png"</span></span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"filter:url(#incContrast)"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%882.53.28.png" alt=""></p>
+<p>最后，我们也能够将色彩值的表示范围进行压缩，甚至“二值化”从而使图形/图像变得不真实。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--本例子中首先读取图片，使用Discrete曲线调整R、G、B通道的值并生成滤镜，最后将滤镜应用到图片上，并将修改后的图像与原图像进行对比--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">   <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span></span><br><span class="line">   <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"posterization"</span></span><br><span class="line">       <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feComponentTransfer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">feFuncR</span> <span class="attribute">type</span>=<span class="value">"discrete"</span> <span class="attribute">tableValues</span>=<span class="value">"0 1"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">feFuncG</span> <span class="attribute">type</span>=<span class="value">"discrete"</span> <span class="attribute">tableValues</span>=<span class="value">"0 1"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">feFuncB</span> <span class="attribute">type</span>=<span class="value">"discrete"</span> <span class="attribute">tableValues</span>=<span class="value">"0 1"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">feComponentTransfer</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"10"</span> <span class="attribute">y</span>=<span class="value">"145"</span>&gt;</span>Before:<span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">image</span> <span class="attribute">x</span>=<span class="value">"70"</span> <span class="attribute">y</span>=<span class="value">"-80"</span> </span><br><span class="line">     <span class="attribute">width</span>=<span class="value">"600"</span></span><br><span class="line">     <span class="attribute">height</span>=<span class="value">"600"</span></span><br><span class="line">     <span class="attribute">xlink:href</span>=<span class="value">"pretty_car.jpg"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"10"</span> <span class="attribute">y</span>=<span class="value">"550"</span>&gt;</span>After:<span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">image</span> <span class="attribute">x</span>=<span class="value">"70"</span> <span class="attribute">y</span>=<span class="value">"350"</span> </span><br><span class="line">     <span class="attribute">width</span>=<span class="value">"600"</span></span><br><span class="line">     <span class="attribute">height</span>=<span class="value">"600"</span></span><br><span class="line">     <span class="attribute">xlink:href</span>=<span class="value">"pretty_car.jpg"</span></span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"filter:url(#posterization)"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%882.58.11.png" alt=""></p>
+<h3 id="高斯模糊（feGaussianBlur）"><a href="#高斯模糊（feGaussianBlur）" class="headerlink" title="高斯模糊（feGaussianBlur）"></a>高斯模糊（feGaussianBlur）</h3><p>高斯模糊（<code>feGaussianBlur</code>）滤镜使用2维高斯函数对图形/图像进行模糊，从而产生一些很棒的效果。</p>
+<p>将小协方差的高斯滤镜应用到人物照片上，会产生模糊的效果，从而淡化原本很明显的一些缺点。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--本例子首先生成一个协方差为1.5的高斯滤镜，然后将滤镜应用在读取的图片上。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">   <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span></span><br><span class="line">   <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"both_axes_blur"</span></span><br><span class="line">       <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">&lt;!--高斯滤镜的输入是图片，直接声明SourceGraphic就可以。--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">feGaussianBlur</span></span><br><span class="line">         <span class="attribute">in</span>=<span class="value">"SourceGraphic"</span></span><br><span class="line">         <span class="attribute">stdDeviation</span>=<span class="value">"1.5 1.5"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">image</span> <span class="attribute">x</span>=<span class="value">"550"</span> <span class="attribute">y</span>=<span class="value">"20"</span> </span><br><span class="line">     <span class="attribute">width</span>=<span class="value">"400"</span></span><br><span class="line">     <span class="attribute">height</span>=<span class="value">"400"</span></span><br><span class="line">     <span class="attribute">xlink:href</span>=<span class="value">"spotty_face.png"</span></span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"filter:url(#both_axes_blur)"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.04.48.png" alt=""></p>
+<p>将只作用在某个方向上的高斯滤镜应用到图片上时，会产生模糊的效果，从而使得图片呈现在作用方向上运动很快的感觉。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--本例子首先生成一个X轴方向上的高斯滤镜，然后将滤镜应用在读取的图片上。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">   <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span></span><br><span class="line">   <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span> </span><br><span class="line">   <span class="attribute">style</span>=<span class="value">"background-color: black"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"xblur"</span></span><br><span class="line">       <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="title">feGaussianBlur</span></span><br><span class="line">         	<span class="attribute">in</span>=<span class="value">"SourceGraphic"</span></span><br><span class="line">         	<span class="attribute">stdDeviation</span>=<span class="value">"10 0.0001"</span> /&gt;</span><span class="comment">&lt;!--需要注意的是SVG并不支持0赋值，所以只能尽可能的小。--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">image</span> <span class="attribute">x</span>=<span class="value">"640"</span> <span class="attribute">y</span>=<span class="value">"0"</span> </span><br><span class="line">     <span class="attribute">width</span>=<span class="value">"468"</span></span><br><span class="line">     <span class="attribute">height</span>=<span class="value">"351"</span></span><br><span class="line">     <span class="attribute">xlink:href</span>=<span class="value">"superman.jpg"</span></span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"filter:url(#xblur)"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.11.39.png" alt=""></p>
+<p>另外，高斯滤镜还常被用来产生阴影效果。结合着<code>feBlend</code>能够产生一些很棒的文字效果，如：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.16.40.png" alt=""></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--首先生成一个协方差较大的高斯滤镜，并对文字进行模糊，最后叠加上文字并产生最后的效果。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">   <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span></span><br><span class="line">   <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span></span><br><span class="line">   <span class="attribute">style</span>=<span class="value">"background-color: black"</span> &gt;</span> </span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"glowing"</span></span><br><span class="line">       		<span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      		<span class="tag">&lt;<span class="title">feGaussianBlur</span> <span class="attribute">in</span>=<span class="value">"SourceGraphic"</span> <span class="attribute">result</span>=<span class="value">"glow"</span></span><br><span class="line">         	  <span class="attribute">stdDeviation</span>=<span class="value">"15"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        	<span class="tag">&lt;<span class="title">feBlend</span> <span class="attribute">mode</span>=<span class="value">"normal"</span> <span class="attribute">in</span>=<span class="value">"glow"</span> <span class="attribute">in2</span>=<span class="value">"SourceGraphic"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    	<span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">text</span> <span class="attribute">y</span>=<span class="value">"200"</span> <span class="attribute">x</span>=<span class="value">"100"</span> <span class="attribute">font-size</span>=<span class="value">"145"</span> </span><br><span class="line">     <span class="attribute">height</span>=<span class="value">"300"</span></span><br><span class="line">     <span class="attribute">width</span>=<span class="value">"300"</span></span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"fill:red;filter:url(#glowing)"</span>&gt;</span> Halloween <span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.17.06.png" alt=""></p>
+<h3 id="偏移（Offset）"><a href="#偏移（Offset）" class="headerlink" title="偏移（Offset）"></a>偏移（Offset）</h3><p>另外一个常用于产生阴影的命令是<code>feOffset</code>。其作用就是将图形/图像往X轴/Y轴方向进行移动。所以结合着<code>feGaussianBlur</code>和<code>feBlend</code>也能够产生一些不错的文本阴影效果：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.26.08.png" alt=""></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--本例子中首先生成高斯滤镜，并作用于文本，接着将文本移动一定距离，最后与文本合并并产生最后的效果。需要注意的是由于我们的文本是有颜色的，但是阴影不需要有颜色，所以我们只取文本的alpha值来做高斯模糊。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">   <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span></span><br><span class="line">   <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"shadow"</span> <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	      	<span class="tag">&lt;<span class="title">feGaussianBlur</span> <span class="attribute">in</span>=<span class="value">"SourceAlpha"</span> <span class="attribute">stdDeviation</span>=<span class="value">"10"</span> <span class="attribute">result</span>=<span class="value">"blur"</span>/&gt;</span></span><br><span class="line">      		<span class="tag">&lt;<span class="title">feOffset</span> <span class="attribute">in</span>=<span class="value">"blur"</span> <span class="attribute">dx</span>=<span class="value">"20"</span> <span class="attribute">dy</span>=<span class="value">"20"</span> <span class="attribute">result</span>=<span class="value">"offsetBlur"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">      		<span class="tag">&lt;<span class="title">feBlend</span> <span class="attribute">mode</span>=<span class="value">"normal"</span> <span class="attribute">in</span>=<span class="value">"SourceGraphic"</span> <span class="attribute">in2</span>=<span class="value">"offsetBlur"</span> /&gt;</span> </span><br><span class="line"></span><br><span class="line">   	<span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"0"</span> <span class="attribute">y</span>=<span class="value">"200"</span> <span class="attribute">font-size</span>=<span class="value">"200pt"</span> <span class="attribute">font-family</span>=<span class="value">"Arial"</span> <span class="attribute">style</span>=<span class="value">"filter:url(#shadow)"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="title">tspan</span> <span class="attribute">x</span>=<span class="value">"20"</span>&gt;</span>It's<span class="tag">&lt;/<span class="title">tspan</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="title">tspan</span> <span class="attribute">x</span>=<span class="value">"0"</span> <span class="attribute">dy</span>=<span class="value">"230"</span> <span class="attribute">fill</span>=<span class="value">"red"</span>&gt;</span>Hot<span class="tag">&lt;/<span class="title">tspan</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.26.28.png" alt=""></p>
+<h3 id="转换（Transform）"><a href="#转换（Transform）" class="headerlink" title="转换（Transform）"></a>转换（Transform）</h3><p>虽然转换并不属于滤镜组件，但是结合着转换能够生成一种超级棒而且也很实用的镜面效果，所以我忍不住还是想要在这里介绍一下。有好几种能够用于SVG转换的命令（ Translate | Rotate | Scale ）。</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.34.38.png" alt=""></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--本例子中首先生成高斯滤镜，并且定义了线性渐变，接着对文本进行翻转并将滤镜和渐变同时应用与翻转文本上。之所以使用高斯滤镜的原因是加上一点模糊会使得翻转文字看上去更加真实。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">   <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span></span><br><span class="line">   <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span> </span><br><span class="line">   <span class="attribute">style</span>=<span class="value">"background-color: black"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">linearGradient</span> <span class="attribute">id</span>=<span class="value">"vertical_gradient"</span>  <span class="attribute">x1</span>=<span class="value">"0%"</span> <span class="attribute">y1</span>=<span class="value">"0%"</span> <span class="attribute">x2</span>=<span class="value">"0%"</span> <span class="attribute">y2</span>=<span class="value">"100%"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">"0.2"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:black</span>"/&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">"1"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:grey</span>"/&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="title">linearGradient</span>&gt;</span> </span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"reflection_blur"</span></span><br><span class="line">       <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      		<span class="tag">&lt;<span class="title">feGaussianBlur</span> <span class="attribute">in</span>=<span class="value">"SourceGraphic"</span> </span><br><span class="line">         	  <span class="attribute">stdDeviation</span>=<span class="value">"1"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">text</span> <span class="attribute">y</span>=<span class="value">"200"</span> <span class="attribute">x</span>=<span class="value">"100"</span> <span class="attribute">font-size</span>=<span class="value">"145"</span> <span class="attribute">font-family</span>=<span class="value">"verdana"</span></span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"fill:lightgrey"</span>&gt;</span> Reflection <span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">text</span> <span class="attribute">y</span>=<span class="value">"200"</span> <span class="attribute">x</span>=<span class="value">"100"</span> <span class="attribute">font-size</span>=<span class="value">"145"</span> <span class="attribute">font-family</span>=<span class="value">"verdana"</span></span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"fill:url(#vertical_gradient);filter:url(#reflection_blur)"</span> </span><br><span class="line">	<span class="attribute">transform</span>=<span class="value">"translate(0,405) scale(1,-1)"</span> &gt;</span>  Reflection  <span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%883.41.06.png" alt=""></p>
+<h2 id="参考与其他"><a href="#参考与其他" class="headerlink" title="参考与其他"></a>参考与其他</h2><ul>
+<li><a href="http://www.w3.org/TR/SVG11/filters.html#feBlendModeAttribute" target="_blank" rel="external">SVG 1.1 (2nd Edition)</a></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Computer-graphics/">Computer graphics</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/SVG/">SVG</a><a href="/tags/矢量图/">矢量图</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://gizmosir.com/2016/03/01/title- 矢量图像进阶技巧（I）/" data-title="矢量图像进阶技巧（I） | Gizmosir的技术博客" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/03/02/title- 从模式识别的角度看概率论/" title="从模式识别的角度看概率论">
+  <strong>上一篇：</strong><br/>
+  <span>
+  从模式识别的角度看概率论</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/02/26/title- 字符串匹配-Z算法/"  title="字符串匹配-Z算法">
+ <strong>下一篇：</strong><br/> 
+ <span>字符串匹配-Z算法
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+		
+		  
+			<li><a href="/categories/Algorithms/" title="Algorithms">Algorithms<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Computer-graphics/" title="Computer graphics">Computer graphics<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Image-processing/" title="Image processing">Image processing<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Machine-learning/" title="Machine learning">Machine learning<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Video-processing/" title="Video processing">Video processing<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+	Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016
+	
+	<a href="/about" target="_blank" title="Gizmosir">Gizmosir</a>
+	
+
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-28029597-1', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  
+<!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+</body>
+</html>
