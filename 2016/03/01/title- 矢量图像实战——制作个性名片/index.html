@@ -1,0 +1,533 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>矢量图像实战——制作个性名片 | Gizmosir的技术博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Gizmosir">
+    
+
+    
+    <meta name="description" content="前言这是矢量图像的第四篇，如果你没有看过之前的文章，可以点击：
+
+矢量图像基础技巧
+矢量图像进阶技巧（I）
+矢量图像进阶技巧（II）
+
+在这一篇中我们将来通过学习制作个性名片的方式来实战练习之前介绍过的SVG知识。首先来欣赏一些很棒的SVG个性名片。
+
+
+
+
+要求实际上个性名片可以天马行空的随意运用之前介绍过的任意一种滤镜或少数几种。但是为了能够更好地综合运用SVG知识，这里对我们最后的名片效果有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="矢量图像实战——制作个性名片">
+<meta property="og:url" content="http://gizmosir.com/2016/03/01/title- 矢量图像实战——制作个性名片/index.html">
+<meta property="og:site_name" content="Gizmosir的技术博客">
+<meta property="og:description" content="前言这是矢量图像的第四篇，如果你没有看过之前的文章，可以点击：
+
+矢量图像基础技巧
+矢量图像进阶技巧（I）
+矢量图像进阶技巧（II）
+
+在这一篇中我们将来通过学习制作个性名片的方式来实战练习之前介绍过的SVG知识。首先来欣赏一些很棒的SVG个性名片。
+
+
+
+
+要求实际上个性名片可以天马行空的随意运用之前介绍过的任意一种滤镜或少数几种。但是为了能够更好地综合运用SVG知识，这里对我们最后的名片效果有">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8A%E5%8D%8810.30.54.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8A%E5%8D%8810.31.52.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8A%E5%8D%8810.32.01.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8A%E5%8D%8810.31.24.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%881.06.41.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-19%20%E4%B8%8B%E5%8D%8812.12.46.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-19%20%E4%B8%8A%E5%8D%8811.29.47.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%882.58.03.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%883.55.20.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%884.21.44.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%885.36.13.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%885.51.53.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%886.44.54.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%889.24.37.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%889.41.05.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-18%20%E4%B8%8B%E5%8D%8810.26.40.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-18%20%E4%B8%8B%E5%8D%8811.01.59.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-al.png">
+<meta property="og:updated_time" content="2016-03-19T04:31:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="矢量图像实战——制作个性名片">
+<meta name="twitter:description" content="前言这是矢量图像的第四篇，如果你没有看过之前的文章，可以点击：
+
+矢量图像基础技巧
+矢量图像进阶技巧（I）
+矢量图像进阶技巧（II）
+
+在这一篇中我们将来通过学习制作个性名片的方式来实战练习之前介绍过的SVG知识。首先来欣赏一些很棒的SVG个性名片。
+
+
+
+
+要求实际上个性名片可以天马行空的随意运用之前介绍过的任意一种滤镜或少数几种。但是为了能够更好地综合运用SVG知识，这里对我们最后的名片效果有">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Gizmosir的技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Gizmosir的技术博客">Gizmosir的技术博客</a></h1>
+				<h2 class="blog-motto">分享有价值的思想</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:gizmosir.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/01/title- 矢量图像实战——制作个性名片/" title="矢量图像实战——制作个性名片" itemprop="url">矢量图像实战——制作个性名片</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2016-02-29T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要求"><span class="toc-number">2.</span> <span class="toc-text">要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程"><span class="toc-number">3.</span> <span class="toc-text">流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景及阴影"><span class="toc-number">3.1.</span> <span class="toc-text">背景及阴影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logo"><span class="toc-number">3.2.</span> <span class="toc-text">logo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文本信息"><span class="toc-number">3.3.</span> <span class="toc-text">文本信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人头像"><span class="toc-number">3.4.</span> <span class="toc-text">个人头像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#头像效果处理"><span class="toc-number">3.5.</span> <span class="toc-text">头像效果处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人链接（Optional）"><span class="toc-number">3.6.</span> <span class="toc-text">个人链接（Optional）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录：源代码"><span class="toc-number">5.</span> <span class="toc-text">附录：源代码</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是矢量图像的第四篇，如果你没有看过之前的文章，可以点击：</p>
+<ul>
+<li><a href="http://gizmosir.com/2016/03/15/title-%20矢量图像基础技巧/">矢量图像基础技巧</a></li>
+<li><a href="http://gizmosir.com/2016/03/16/title-%20矢量图像进阶技巧（I）/">矢量图像进阶技巧（I）</a></li>
+<li><a href="http://gizmosir.com/2016/03/17/title-%20矢量图像进阶技巧（II）/">矢量图像进阶技巧（II）</a></li>
+</ul>
+<p>在这一篇中我们将来通过学习制作个性名片的方式来实战练习之前介绍过的SVG知识。首先来欣赏一些很棒的SVG个性名片。</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8A%E5%8D%8810.30.54.png?imageView/2/w/400" alt=""></p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8A%E5%8D%8810.31.52.png?imageView/2/w/400" alt=""></p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8A%E5%8D%8810.32.01.png?imageView/2/w/400" alt=""></p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8A%E5%8D%8810.31.24.png" alt=""></p>
+<h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><p>实际上个性名片可以天马行空的随意运用之前介绍过的任意一种滤镜或少数几种。但是为了能够更好地综合运用SVG知识，这里对我们最后的名片效果有几个要求：</p>
+<ol>
+<li>名片尺寸满足长宽比为1.667，比如1000 * 600；</li>
+<li>个人照头像（我们举例中的名片均有头像），并使用卷积矩阵滤镜对头像图片进行一定处理；</li>
+<li>文本信息包含但不仅限于姓名和邮件；</li>
+<li>名片有阴影效果；</li>
+<li>使用一个或多个渐变滤镜；</li>
+<li>添加网页链接；</li>
+</ol>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><h3 id="背景及阴影"><a href="#背景及阴影" class="headerlink" title="背景及阴影"></a>背景及阴影</h3><p>首先我们来做比较简单的部分：名片背景以及阴影。首先生成一个1000*600的黑色矩形:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--这里我使用黑色填充是因为名片的基色调为黑色。--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">x</span>=<span class="value">"0"</span> <span class="attribute">y</span>=<span class="value">"0"</span> </span><br><span class="line">     <span class="attribute">width</span>=<span class="value">"1000"</span> <span class="attribute">height</span>=<span class="value">"600"</span></span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"fill:black"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>接着用<code>feGaussianBlur</code>滤镜来生成名片的阴影：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--首先生成一个高斯模糊滤镜，并模糊黑色的矩形输入，将其偏</span><br><span class="line">移到后下角，接着调整其颜色使阴影变成灰色。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">   <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span></span><br><span class="line">   <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"shadow"</span></span><br><span class="line">      <span class="attribute">color-interpolation-filters</span> = "<span class="attribute">sRGB</span>"&gt;</span></span><br><span class="line">      </span><br><span class="line">      <span class="tag">&lt;<span class="title">feGaussianBlur</span> <span class="attribute">in</span> = "<span class="attribute">SourceGraphic</span>" <span class="attribute">stdDeviation</span> = "<span class="attribute">10</span>"/&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feOffset</span>  <span class="attribute">dx</span> = "<span class="attribute">20</span>" <span class="attribute">dy</span> = "<span class="attribute">20</span>" /&gt;</span> <span class="comment">&lt;!-- result = "blur" in = "blur" --&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feColorMatrix</span> <span class="attribute">type</span>=<span class="value">"matrix"</span> <span class="attribute">result</span> = "<span class="attribute">offsetBlur</span>"</span><br><span class="line">              <span class="attribute">values</span>=<span class="value">"0 0 0 0 0.5 </span><br><span class="line">                   0 0 0 0 0.5 </span><br><span class="line">                   0 0 0 0 0.5 </span><br><span class="line">                   0 0 0 1 0"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">x</span>=<span class="value">"100"</span> <span class="attribute">y</span>=<span class="value">"100"</span> </span><br><span class="line">     <span class="attribute">width</span>=<span class="value">"1000"</span> <span class="attribute">height</span>=<span class="value">"600"</span> </span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"filter:url(#shadow); "</span> <span class="attribute">transform</span> = "<span class="attribute">translate</span>(<span class="attribute">500</span>, <span class="attribute">200</span>) <span class="attribute">scale</span>(<span class="attribute">0.8</span>, <span class="attribute">0.8</span>) <span class="attribute">skewX</span>(<span class="attribute">-20</span>)"/&gt;</span> </span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">x</span>=<span class="value">"100"</span> <span class="attribute">y</span>=<span class="value">"100"</span> </span><br><span class="line">     <span class="attribute">width</span>=<span class="value">"1000"</span> <span class="attribute">height</span>=<span class="value">"600"</span> </span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"fill:black;"</span>/&gt;</span>   </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%881.06.41.png" alt=""></p>
+<h3 id="logo"><a href="#logo" class="headerlink" title="logo"></a>logo</h3><p>名片当然最好能够加上所在公司的logo，可是一般的方法又直接降低了我们名片的逼格。一个很好的方法就是用<code>feConvolveMatrix</code>滤镜来提取logo的边缘，然后使用高斯滤镜模糊一点，最后设置合适的透明度并添加到背景矩形上。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="attribute">filter</span> id=<span class="string">"logo"</span></span><br><span class="line">  <span class="attribute">color</span>-interpolation-filters=<span class="string">"sRGB"</span>&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;feImage xlink:href=<span class="string">"http://7xjz11.com1.z0.glb.clouddn.com/logo.png?imageView/2/w/200/h/147"</span> <span class="attribute">width</span>=<span class="string">"200"</span> <span class="attribute">height</span>=<span class="string">"147"</span> /&gt; </span><br><span class="line"></span><br><span class="line">  &lt;feConvolveMatrix</span><br><span class="line">     kernelMatrix=<span class="string">"1 1 1 1 -8 1 1 1 1"</span></span><br><span class="line">     <span class="attribute">order</span>=<span class="string">"3 3"</span> </span><br><span class="line">     divisor=<span class="string">"1"</span></span><br><span class="line">     bias=<span class="string">"0"</span> </span><br><span class="line">     preserveAlpha=<span class="string">"true"</span>/&gt;</span><br><span class="line"></span><br><span class="line">  &lt;feGaussianBlur stdDeviation=<span class="string">"3"</span>/&gt;</span><br><span class="line">  &lt;feColorMatrix type=<span class="string">"luminanceToAlpha"</span>/&gt;</span><br><span class="line">  &lt;feTile x=<span class="string">"100"</span> y=<span class="string">"100"</span> <span class="attribute">width</span>=<span class="string">"1000"</span> <span class="attribute">height</span>=<span class="string">"600"</span>/&gt;   </span><br><span class="line">    </span><br><span class="line">&lt;/<span class="attribute">filter</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-19%20%E4%B8%8B%E5%8D%8812.12.46.png" alt=""></p>
+<h3 id="文本信息"><a href="#文本信息" class="headerlink" title="文本信息"></a>文本信息</h3><p>接下来我们来添加文本信息到名片上。为了延续我们名片高大上的格调，我们使用渐变字体并且给名字加上阴影。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"text"</span></span><br><span class="line">    <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">feGaussianBlur</span> <span class="attribute">in</span>=<span class="value">"SourceAlpha"</span> <span class="attribute">stdDeviation</span>=<span class="value">"2"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">feOffset</span> <span class="attribute">dx</span>=<span class="value">"5"</span> <span class="attribute">dy</span>=<span class="value">"5"</span> <span class="attribute">result</span>=<span class="value">"text_2"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">feBlend</span> <span class="attribute">mode</span>=<span class="value">"normal"</span> <span class="attribute">in</span>=<span class="value">"SourceGraphic"</span> <span class="attribute">in2</span>=<span class="value">"text_2"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">    <span class="tag">&lt;<span class="title">g</span> <span class="attribute">fill</span>=<span class="value">"url(#lineargradient2)"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">text</span> <span class="attribute">id</span>=<span class="value">"nameText"</span> <span class="attribute">x</span>=<span class="value">"540"</span> <span class="attribute">y</span>=<span class="value">"260"</span> <span class="attribute">style</span>=<span class="value">"font-size:60;font-family:verdana;font-weight:bold;filter:url(#text)"</span>&gt;</span>Zheng Jiongbin<span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"600"</span> <span class="attribute">y</span>=<span class="value">"380"</span> <span class="attribute">style</span>=<span class="value">"font-size:32;font-family:arial;font-style:italic;"</span>  &gt;</span>  </span><br><span class="line">          <span class="tag">&lt;<span class="title">tspan</span> <span class="attribute">x</span>=<span class="value">"600"</span> &gt;</span>Nephovision Co.,Ltd<span class="tag">&lt;/<span class="title">tspan</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">tspan</span> <span class="attribute">x</span>=<span class="value">"600"</span> <span class="attribute">dy</span>=<span class="value">"60"</span>&gt;</span>iOS/Algorithm Engineer<span class="tag">&lt;/<span class="title">tspan</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">tspan</span> <span class="attribute">x</span>=<span class="value">"600"</span> <span class="attribute">dy</span>=<span class="value">"40"</span>&gt;</span>Gizmosir@Nephovision.com<span class="tag">&lt;/<span class="title">tspan</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">text</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="title">g</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-19%20%E4%B8%8A%E5%8D%8811.29.47.png" alt=""></p>
+<h3 id="个人头像"><a href="#个人头像" class="headerlink" title="个人头像"></a>个人头像</h3><p>首先把个人头像从照片上“扣”下来。主要有三种不同的做法，第一种是用裁剪路径。</p>
+<p>如果你不想手动一个一个算裁剪路径点的话，这里推荐使用一款叫<a href="https://svg-edit.github.io/svgedit/releases/svg-edit-2.8.1/svg-editor.html" target="_blank" rel="external">SVGEdit</a>的能够轻松在网页上编辑SVG的工具。只需将你的图片插入到网页上，然后点点点就能轻松生成裁剪路径，然后再把路径粘贴到你的代码中。</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%882.58.03.png?imageView/2/w/400" alt=""></p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--首先定义我在网页上生成的剪裁路径，接着读取图片，并声明一个色彩矩阵用于将头像外的背景透明化，然后将色彩矩阵与头像复合并应用到一个黑色矩形上。--&gt;</span><br><span class="line">&lt;svg</span><br><span class="line">   xmlns=<span class="string">"http://www.w3.org/2000/svg"</span></span><br><span class="line">   xmlns:xlink=<span class="string">"http://www.w3.org/1999/xlink"</span> </span><br><span class="line">   width=<span class="string">"800"</span></span><br><span class="line">   height=<span class="string">"800"</span> &gt;</span><br><span class="line"></span><br><span class="line">  &lt;defs&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;path fill=<span class="string">"white"</span> id=<span class="string">"path_area"</span> d=<span class="string">"m332,176l-118.66667,85.33333l20,92l-18.66667,6.66667l20,89.33333l20,1.33333l22.66667,69.33333l56,44l49.33333,2.66667l66.66667,-56l16,-56l21.33333,-5.33333l20,-73.33333l-13.33333,-16l17.33333,-82.66667l-52,-77.33333l-126.66667,-24z"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;filter id=<span class="string">"photo_with_background"</span></span><br><span class="line">       color-interpolation-filters=<span class="string">"sRGB"</span>&gt;</span><br><span class="line"></span><br><span class="line">      &lt;feImage x=<span class="string">"-2%"</span> y=<span class="string">"7%"</span> width=<span class="string">"70%"</span> height=<span class="string">"70%"</span> xlink:href=<span class="string">"me.jpg"</span> <span class="literal">result</span>=<span class="string">"photo"</span>/&gt;</span><br><span class="line">      &lt;feImage xlink:href=<span class="string">"#path_area"</span> <span class="literal">result</span>=<span class="string">"gradient"</span>/&gt;</span><br><span class="line"></span><br><span class="line">      &lt;feColorMatrix <span class="keyword">type</span>=<span class="string">"luminanceToAlpha"</span> <span class="keyword">in</span>=<span class="string">"gradient"</span> <span class="literal">result</span>=<span class="string">"alpha"</span>/&gt;</span><br><span class="line">      &lt;feComposite <span class="keyword">in</span>=<span class="string">"photo"</span> in2=<span class="string">"alpha"</span> operator=<span class="string">"in"</span> <span class="literal">result</span>=<span class="string">"face_circle"</span>/&gt;</span><br><span class="line"></span><br><span class="line">      &lt;feFlood x=<span class="string">"0"</span> y=<span class="string">"0"</span> width=<span class="string">"800"</span> height=<span class="string">"800"</span> flood-color=<span class="string">"black"</span> <span class="literal">result</span>=<span class="string">"black_area"</span>/&gt;</span><br><span class="line"></span><br><span class="line">      &lt;feMerge&gt;</span><br><span class="line">        &lt;feMergeNode <span class="keyword">in</span>=<span class="string">"black_area"</span>/&gt;</span><br><span class="line">        &lt;feMergeNode <span class="keyword">in</span>=<span class="string">"face_circle"</span>/&gt;</span><br><span class="line">      &lt;/feMerge&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/filter&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/defs&gt;</span><br><span class="line"></span><br><span class="line">&lt;rect x=<span class="string">"0"</span> y=<span class="string">"0"</span> width=<span class="string">"1000"</span> height=<span class="string">"600"</span> </span><br><span class="line">  style=<span class="string">"filter:url(#photo_with_background)"</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%883.55.20.png?imageView/2/w/400" alt=""></p>
+<p>第二种是使用径向渐变滤镜。</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--首先定义了一个矩形的径向渐变，接着将其作为图像进行色彩矩阵将渐变圈外的背景变透明，然后再跟头像进行复合并生成最后的效果。--&gt;</span><br><span class="line">&lt;svg</span><br><span class="line">   xmlns=<span class="string">"http://www.w3.org/2000/svg"</span></span><br><span class="line">   xmlns:xlink=<span class="string">"http://www.w3.org/1999/xlink"</span></span><br><span class="line">   width=<span class="string">"800"</span></span><br><span class="line">   height=<span class="string">"800"</span> &gt;</span><br><span class="line"></span><br><span class="line">  &lt;defs&gt;</span><br><span class="line"></span><br><span class="line">    &lt;radialGradient id=<span class="string">"face_gradient"</span>&gt;</span><br><span class="line">  &lt;stop offset=<span class="string">"0"</span> style= <span class="string">"stop-color:white"</span>/&gt; </span><br><span class="line">  &lt;stop offset=<span class="string">".55"</span> style= <span class="string">"stop-color:white"</span>/&gt; </span><br><span class="line">  &lt;stop offset=<span class="string">".60"</span> style= <span class="string">"stop-color:grey"</span>/&gt;</span><br><span class="line">  &lt;stop offset=<span class="string">".63"</span> style= <span class="string">"stop-color:black"</span>/&gt;</span><br><span class="line">    &lt;/radialGradient&gt; </span><br><span class="line"></span><br><span class="line">    &lt;rect width=<span class="string">"800"</span> height=<span class="string">"800"</span> fill=<span class="string">"url(#face_gradient)"</span> id=<span class="string">"gradient_area"</span> transform=<span class="string">"translate(-40, -120) scale(1.4, 1.6)"</span>/&gt; </span><br><span class="line"></span><br><span class="line">    &lt;filter id=<span class="string">"photo_with_background"</span></span><br><span class="line">       color-interpolation-filters=<span class="string">"sRGB"</span>&gt;</span><br><span class="line"></span><br><span class="line">      &lt;feFlood x=<span class="string">"0"</span> y=<span class="string">"0"</span> width=<span class="string">"800"</span> height=<span class="string">"800"</span> flood-color=<span class="string">"black"</span> <span class="literal">result</span>=<span class="string">"black_area"</span>/&gt;</span><br><span class="line"></span><br><span class="line">      &lt;feImage x=<span class="string">"1.0%"</span> y=<span class="string">"0%"</span> width=<span class="string">"80%"</span> height=<span class="string">"80%"</span> xlink:href=<span class="string">"me.jpg"</span> <span class="literal">result</span>=<span class="string">"photo"</span>/&gt;</span><br><span class="line">      &lt;feImage xlink:href=<span class="string">"#gradient_area"</span> <span class="literal">result</span>=<span class="string">"gradient"</span>/&gt;</span><br><span class="line"></span><br><span class="line">      &lt;feColorMatrix <span class="keyword">type</span>=<span class="string">"luminanceToAlpha"</span> <span class="keyword">in</span>=<span class="string">"gradient"</span> <span class="literal">result</span>=<span class="string">"alpha"</span>/&gt;</span><br><span class="line">      &lt;feComposite <span class="keyword">in</span>=<span class="string">"photo"</span> in2=<span class="string">"alpha"</span> operator=<span class="string">"in"</span> <span class="literal">result</span>=<span class="string">"face_circle"</span>/&gt;</span><br><span class="line"></span><br><span class="line">      &lt;feMerge&gt;</span><br><span class="line">        &lt;feMergeNode <span class="keyword">in</span>=<span class="string">"black_area"</span>/&gt;</span><br><span class="line">        &lt;feMergeNode <span class="keyword">in</span>=<span class="string">"face_circle"</span>/&gt;</span><br><span class="line">      &lt;/feMerge&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/filter&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/defs&gt;</span><br><span class="line"></span><br><span class="line">&lt;rect x=<span class="string">"0"</span> y=<span class="string">"0"</span> width=<span class="string">"800"</span> height=<span class="string">"800"</span> </span><br><span class="line">  filter=<span class="string">"url(#photo_with_background)"</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%884.21.44.png?imageView/2/w/400" alt=""></p>
+<p>不难发现这种方法比第一种效果好很多，但是由于我这里使用的头像背景是白色，名片是黑色，直接使用这种方法效果可能也不是特别好。</p>
+<h3 id="头像效果处理"><a href="#头像效果处理" class="headerlink" title="头像效果处理"></a>头像效果处理</h3><p>接下来对头像进行一定的处理，首先来试试看模糊效果的卷积矩阵滤镜。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;feConvolveMatrix</span><br><span class="line">         <span class="literal">result</span>=<span class="string">"face"</span></span><br><span class="line">         kernelMatrix=<span class="string">".11 .11 .11 .11 .11 .11 .11 .11 .11"</span></span><br><span class="line">         order=<span class="string">"3 3"</span> </span><br><span class="line">         divisor=<span class="string">"1"</span></span><br><span class="line">         bias=<span class="string">"0"</span> </span><br><span class="line">         preserveAlpha=<span class="string">"true"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果不太好，由于模糊了看上去就跟丢了神一样。边缘效果肯定是不可行的，毕竟还是要看到头像的嘛，那来试下锐化好了。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;feConvolveMatrix</span><br><span class="line">         <span class="literal">result</span>=<span class="string">"face"</span></span><br><span class="line">         kernelMatrix=<span class="string">"-1 -1 -1 -1 9 -1 -1 -1 -1"</span></span><br><span class="line">         order=<span class="string">"3 3"</span> </span><br><span class="line">         divisor=<span class="string">"1"</span></span><br><span class="line">         bias=<span class="string">"0"</span> </span><br><span class="line">         preserveAlpha=<span class="string">"true"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%885.36.13.png?imageView/2/w/400" alt=""></p>
+<p>不错不错，看上去很精神！有点名片应该有点样子。接下来用色彩矩阵滤镜调整颜色，降低饱和度让头像看上去“冷峻”一点。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;feColorMatrix <span class="keyword">type</span>=<span class="string">"saturate"</span> values=<span class="string">"0.4"</span> <span class="literal">result</span>=<span class="string">"face"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%885.51.53.png?imageView/2/w/400" alt=""></p>
+<p>接下来用渐变滤镜来给脸部添加一些阴影。</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;linearGradient id=<span class="string">"face_gradient1"</span>&gt;</span><br><span class="line">  &lt;stop offset= <span class="string">"0.4"</span> style= <span class="string">"stop-color:white"</span>/&gt; </span><br><span class="line">  &lt;stop offset=<span class="string">"0.9"</span> style= <span class="string">"stop-color:black"</span>/&gt;</span><br><span class="line">&lt;/linearGradient&gt;</span><br><span class="line"></span><br><span class="line">&lt;rect width=<span class="string">"350"</span> height=<span class="string">"450"</span> fill=<span class="string">"url(#face_gradient1)"</span> id=<span class="string">"gradient_area1"</span> opacity=<span class="string">"0.95"</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;feImage xlink:href=<span class="string">"#gradient_area1"</span> <span class="literal">result</span>=<span class="string">"gradient1"</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;feBlend mode=<span class="string">"multiply"</span> <span class="keyword">in</span>=<span class="string">"face"</span> in2=<span class="string">"gradient1"</span> <span class="literal">result</span>=<span class="string">"faceOut"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%886.44.54.png?imageView/2/w/400" alt=""></p>
+<p>不错有点好莱坞大片即视感。</p>
+<p>接下来给我头像添加光照。首先尝试<code>SpecularLighting</code>+<code>PointLight</code>的组合。</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;feSpecularLighting <span class="literal">result</span>=<span class="string">"specular_light"</span> <span class="keyword">in</span>=<span class="string">"faceMid"</span> specularExponent=<span class="string">"200"</span> lighting-color=<span class="string">"lightgrey"</span>&gt;</span><br><span class="line">      &lt;fePointLight x=<span class="string">"250"</span> y=<span class="string">"200"</span> z=<span class="string">"200"</span>/&gt;</span><br><span class="line">&lt;/feSpecularLighting&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%889.24.37.png?imageView/2/w/400" alt=""></p>
+<p>效果不是特别好，原因可能是<code>PhotoLigh</code>光源太集中。再尝试下<code>DiffuseLighting</code>+<code>SpotLight</code>的组合。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;feDiffuseLighting <span class="literal">result</span>=<span class="string">"diffuse_light"</span> <span class="keyword">in</span>=<span class="string">"SourceGraphic"</span></span><br><span class="line">  diffuseConstant=<span class="string">"100"</span> lighting-color=<span class="string">"white"</span> specularExponent=<span class="string">"100"</span> &gt;</span><br><span class="line"></span><br><span class="line">  &lt;feSpotLight x = <span class="string">"-100"</span> y = <span class="string">"-100"</span> z = <span class="string">"400"</span> pointsAtX = <span class="string">"250"</span> pointsAtY = <span class="string">"250"</span> pointsAtZ = <span class="string">"0"</span> limitingConeAngle = <span class="string">"7"</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/feDiffuseLighting&gt;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-17%20%E4%B8%8B%E5%8D%889.41.05.png?imageView/2/w/400" alt=""></p>
+<p>发现效果更差！主要原因是<code>spotlight</code>需要调整六个参数来改变灯光的效果，非常考验经验与耐心。所以我们还是试下<code>DiffuseLighting</code>+<code>Distanctlight</code>的组合吧。</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;feDiffuseLighting <span class="literal">result</span>=<span class="string">"diffuse_light"</span> <span class="keyword">in</span>=<span class="string">"faceMid"</span></span><br><span class="line">      diffuseConstant=<span class="string">"100"</span> lighting-color=<span class="string">"lightgrey"</span> specularExponent=<span class="string">"100"</span>&gt;</span><br><span class="line"></span><br><span class="line">          &lt;feDistantLight azimuth = <span class="string">"45"</span> elevation = <span class="string">"135"</span>/&gt;</span><br><span class="line"></span><br><span class="line">      &lt;/feDiffuseLighting&gt;</span><br></pre></td></tr></table></figure>
+<p>效果同样不是特别好，看来<code>Lighting</code>不是个特别好的滤镜效果。那我们来试下渐变滤镜好了。</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;feImage xlink:href=<span class="string">"#face_gradient2"</span> /&gt;</span><br><span class="line">      &lt;feColorMatrix <span class="keyword">type</span>=<span class="string">"luminanceToAlpha"</span> <span class="literal">result</span>=<span class="string">"face_4"</span>/&gt;</span><br><span class="line">      &lt;feFlood width=<span class="string">"300"</span> height=<span class="string">"300"</span> flood-color=<span class="string">"white"</span> <span class="literal">result</span>=<span class="string">"face_5"</span>/&gt;</span><br><span class="line">      &lt;feComposite <span class="keyword">in</span>=<span class="string">"face_5"</span> in2=<span class="string">"face_4"</span> <span class="literal">result</span>=<span class="string">"face_6"</span> operator=<span class="string">"in"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-18%20%E4%B8%8B%E5%8D%8810.26.40.png?imageView/2/w/400" alt=""></p>
+<p>好像稍微好点，最后来尝试下比较复杂的方法：首先生成一个渐变滤镜，然后转换成透明度，再基于透明度来修改原图像的色彩值，最后在还原透明度。</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;feImage xlink:href=<span class="string">"#face_gradient2"</span> /&gt;</span><br><span class="line">&lt;feColorMatrix type=<span class="string">"luminanceToAlpha"</span> <span class="constant">result</span>=<span class="string">"face_4"</span>/&gt;</span><br><span class="line">&lt;feComposite <span class="keyword">in</span>=<span class="string">"face_1"</span> in2=<span class="string">"face_4"</span> <span class="constant">result</span>=<span class="string">"face_6"</span> operator=<span class="string">"in"</span> /&gt; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;feColorMatrix type=<span class="string">"matrix"</span> <span class="keyword">in</span>=<span class="string">"face_7"</span> <span class="constant">result</span>=<span class="string">"face_17"</span></span><br><span class="line">     values=<span class="string">"1 0 0 1 0 </span><br><span class="line">             0 1 0 1 0 </span><br><span class="line">             0 0 1 1 0 </span><br><span class="line">             0 0 0 1 0 "</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;feMerge <span class="constant">result</span>=<span class="string">"face_27"</span>&gt;</span><br><span class="line">  &lt;feMergeNode <span class="keyword">in</span>=<span class="string">"face_3"</span>/&gt;</span><br><span class="line">  &lt;feMergeNode <span class="keyword">in</span>=<span class="string">"face_17"</span>/&gt;</span><br><span class="line">&lt;/feMerge&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-18%20%E4%B8%8B%E5%8D%8811.01.59.png" alt=""></p>
+<p>效果看上去是不是很棒？恩恩，因为不是添加的光源，而是基于图像本身进行的亮度调整，所以看上去更加真实，那就决定使用这种方法吧。</p>
+<h3 id="个人链接（Optional）"><a href="#个人链接（Optional）" class="headerlink" title="个人链接（Optional）"></a>个人链接（Optional）</h3><p>本来名片设计到这里就全部完成了，但是由于我们是使用SVG生成的名片。也就是说大多数情况下别人都会在网页上打开你的名片，那么为何不尝试在名片上添加个链接让对你感兴趣的人可以进一步了解你呢？</p>
+<p>这里为了增加别人点击链接的欲望，我往在链接的文本上添加了一个动画。</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;linearGradient id=<span class="string">"lineargradient3"</span>&gt;</span><br><span class="line">  &lt;<span class="built_in">stop</span> <span class="built_in">offset</span>= <span class="string">"0"</span> style= <span class="string">"stop-color:black"</span>/&gt; </span><br><span class="line">  &lt;<span class="built_in">stop</span> <span class="built_in">offset</span>=<span class="string">".5"</span> style= <span class="string">"stop-color:white"</span>/&gt;</span><br><span class="line">  &lt;<span class="built_in">stop</span> <span class="built_in">offset</span>=<span class="string">"1.0"</span> style= <span class="string">"stop-color:black"</span>/&gt;</span><br><span class="line">&lt;/linearGradient&gt; </span><br><span class="line"></span><br><span class="line">&lt;<span class="built_in">filter</span> id=<span class="string">"link"</span></span><br><span class="line">  color-interpolation-filters=<span class="string">"sRGB"</span>&gt;</span><br><span class="line"></span><br><span class="line">  &lt;feImage xlink:href=<span class="string">"#link_gradient"</span> <span class="built_in">result</span>=<span class="string">"link_1"</span>/&gt;</span><br><span class="line">  &lt;feComposite <span class="operator">in</span>=<span class="string">"SourceGraphic"</span> in2=<span class="string">"link_1"</span>  operator=<span class="string">"in"</span>/&gt; </span><br><span class="line"></span><br><span class="line">&lt;/<span class="built_in">filter</span>&gt;  </span><br><span class="line"></span><br><span class="line">&lt;<span class="operator">a</span> xlink:href=<span class="string">"http://gizmosir.com"</span> &gt; </span><br><span class="line">        &lt;<span class="keyword">text</span> x=<span class="string">"800"</span> y=<span class="string">"650"</span> style=<span class="string">"font-size:40;font-family:courier;font-style:oblique;font-weight:bold;filter:url(#link)"</span>&gt;Visit More&lt;/<span class="keyword">text</span>&gt;</span><br><span class="line">&lt;/<span class="operator">a</span>&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在几乎把所有的滤镜都尝试了也应用之后，我们的名片终于生成了，其最终效果如下。<br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-al.png" alt=""></p>
+<p>或者你可以点击<a href="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-SVG-a1.svg" target="_blank" rel="external">这里</a>。</p>
+<blockquote>
+<p>另外需要注意的是，SVG在不同的浏览器以及不同的版本上效果大相径庭。我是就要Chrome 49.0.2623.87版本生成的这张名片，所以建议你复制链接到chrome浏览器上查看。</p>
+</blockquote>
+<h2 id="附录：源代码"><a href="#附录：源代码" class="headerlink" title="附录：源代码"></a>附录：源代码</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">svg</span></span><br><span class="line">   <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span></span><br><span class="line">   <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--Gradient definition--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">radialGradient</span> <span class="attribute">id</span>=<span class="value">"radialGradient1"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">"0"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:white</span>"/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">".55"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:white</span>"/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">".60"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:grey</span>"/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">".63"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:black</span>"/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">radialGradient</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">radialGradient</span> <span class="attribute">id</span>=<span class="value">"radialGradient2"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">"0"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:</span>#<span class="attribute">999999</span>"/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">".1"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:</span>#<span class="attribute">888888</span>"/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">".3"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:</span>#<span class="attribute">666666</span>"/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">".5"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:</span>#<span class="attribute">444444</span>"/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">".7"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:</span>#<span class="attribute">222222</span>"/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">".9"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:</span>#<span class="attribute">111111</span>"/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">"1"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:black</span>"/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">radialGradient</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">linearGradient</span> <span class="attribute">id</span>=<span class="value">"lineargradient1"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>= "<span class="attribute">0.4</span>" <span class="attribute">style</span>= "<span class="attribute">stop-color:white</span>"/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">"0.9"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:black</span>"/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">linearGradient</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">linearGradient</span> <span class="attribute">id</span>=<span class="value">"lineargradient2"</span> <span class="attribute">x1</span>=<span class="value">"100%"</span> <span class="attribute">y1</span>=<span class="value">"0%"</span> <span class="attribute">x2</span>=<span class="value">"100%"</span> <span class="attribute">y2</span>=<span class="value">"100%"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>= "<span class="attribute">0.4</span>" <span class="attribute">style</span>= "<span class="attribute">stop-color:</span>#<span class="attribute">cccccc</span>"/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">"0.8"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:gray</span>"/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">linearGradient</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">linearGradient</span> <span class="attribute">id</span>=<span class="value">"lineargradient3"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>= "<span class="attribute">0</span>" <span class="attribute">style</span>= "<span class="attribute">stop-color:black</span>"/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">".5"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:white</span>"/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">stop</span> <span class="attribute">offset</span>=<span class="value">"1.0"</span> <span class="attribute">style</span>= "<span class="attribute">stop-color:black</span>"/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">linearGradient</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--Rectangle definition--&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">id</span>=<span class="value">"face_area"</span> <span class="attribute">width</span>=<span class="value">"350"</span> <span class="attribute">height</span>=<span class="value">"450"</span> <span class="attribute">fill</span>=<span class="value">"url(#radialGradient1)"</span>  </span><br><span class="line">          <span class="attribute">transform</span>=<span class="value">"translate(-40, -120) scale(1.4, 1.6)"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">id</span>=<span class="value">"link_gradient"</span> <span class="attribute">width</span>=<span class="value">"400"</span> <span class="attribute">height</span>=<span class="value">"400"</span> <span class="attribute">fill</span>=<span class="value">"url(#lineargradient3)"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">&lt;!--Text animation definition--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">animate</span> <span class="attribute">attributeName</span>=<span class="value">"x"</span> </span><br><span class="line">      <span class="attribute">begin</span>=<span class="value">"0s"</span> <span class="attribute">dur</span>=<span class="value">"2s"</span> </span><br><span class="line">      <span class="attribute">values</span>=<span class="value">"-400;0"</span> <span class="attribute">repeatCount</span>=<span class="value">"indefinite"</span>/&gt;</span> </span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">rect</span>&gt;</span>       </span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">id</span>=<span class="value">"face_gradient"</span> <span class="attribute">width</span>=<span class="value">"400"</span> <span class="attribute">height</span>=<span class="value">"500"</span> <span class="attribute">fill</span>=<span class="value">"url(#lineargradient1)"</span> <span class="attribute">opacity</span>=<span class="value">"0.95"</span>/&gt;</span></span><br><span class="line">      </span><br><span class="line">    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">id</span>=<span class="value">"face_gradient2"</span> <span class="attribute">width</span>=<span class="value">"350"</span> <span class="attribute">height</span>=<span class="value">"350"</span> <span class="attribute">fill</span>=<span class="value">"url(#radialGradient2)"</span> <span class="attribute">opacity</span>=<span class="value">"0.5"</span> <span class="attribute">transform</span>=<span class="value">"translate(-30, -40) scale(1.1, 1.1)"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">      </span><br><span class="line">    <span class="comment">&lt;!--Shadow filter definition--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"shadow"</span></span><br><span class="line">      <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feGaussianBlur</span> <span class="attribute">in</span>=<span class="value">"SourceGraphic"</span> <span class="attribute">stdDeviation</span>=<span class="value">"10"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feOffset</span>  <span class="attribute">dx</span>=<span class="value">"20"</span> <span class="attribute">dy</span>=<span class="value">"20"</span> /&gt;</span> </span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feColorMatrix</span> <span class="attribute">type</span>=<span class="value">"matrix"</span> </span><br><span class="line">           <span class="attribute">values</span>=<span class="value">"0 0 0 0 0.5 </span><br><span class="line">                   0 0 0 0 0.5 </span><br><span class="line">                   0 0 0 0 0.5 </span><br><span class="line">                   0 0 0 1 0"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--Company logo filter definition--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"logo"</span></span><br><span class="line">      <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">      <span class="tag">&lt;<span class="title">feImage</span> <span class="attribute">xlink:href</span>=<span class="value">"http://7xjz11.com1.z0.glb.clouddn.com/logo.png?imageView/2/w/200/h/147"</span> <span class="attribute">width</span>=<span class="value">"200"</span> <span class="attribute">height</span>=<span class="value">"147"</span> /&gt;</span> </span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feConvolveMatrix</span></span><br><span class="line">         <span class="attribute">kernelMatrix</span>=<span class="value">"1 1 1 1 -8 1 1 1 1"</span></span><br><span class="line">         <span class="attribute">order</span>=<span class="value">"3 3"</span> </span><br><span class="line">         <span class="attribute">divisor</span>=<span class="value">"1"</span></span><br><span class="line">         <span class="attribute">bias</span>=<span class="value">"0"</span> </span><br><span class="line">         <span class="attribute">preserveAlpha</span>=<span class="value">"true"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feGaussianBlur</span> <span class="attribute">stdDeviation</span>=<span class="value">"3"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">feColorMatrix</span> <span class="attribute">type</span>=<span class="value">"luminanceToAlpha"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">feTile</span> <span class="attribute">x</span>=<span class="value">"100"</span> <span class="attribute">y</span>=<span class="value">"100"</span> <span class="attribute">width</span>=<span class="value">"1000"</span> <span class="attribute">height</span>=<span class="value">"600"</span>/&gt;</span>   </span><br><span class="line">        </span><br><span class="line">    <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--Text filter definition--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"text"</span></span><br><span class="line">      <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feGaussianBlur</span> <span class="attribute">in</span>=<span class="value">"SourceAlpha"</span> <span class="attribute">stdDeviation</span>=<span class="value">"2"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feOffset</span> <span class="attribute">dx</span>=<span class="value">"5"</span> <span class="attribute">dy</span>=<span class="value">"5"</span> <span class="attribute">result</span>=<span class="value">"text_2"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feBlend</span> <span class="attribute">mode</span>=<span class="value">"normal"</span> <span class="attribute">in</span>=<span class="value">"SourceGraphic"</span> <span class="attribute">in2</span>=<span class="value">"text_2"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--Link animition definition--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"link"</span></span><br><span class="line">      <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feImage</span> <span class="attribute">xlink:href</span>=<span class="value">"#link_gradient"</span> <span class="attribute">result</span>=<span class="value">"link_1"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">feComposite</span> <span class="attribute">in</span>=<span class="value">"SourceGraphic"</span> <span class="attribute">in2</span>=<span class="value">"link_1"</span>  <span class="attribute">operator</span>=<span class="value">"in"</span>/&gt;</span> </span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">filter</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--Face filter definition--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"face"</span></span><br><span class="line">      <span class="attribute">color-interpolation-filters</span>=<span class="value">"sRGB"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feImage</span> <span class="attribute">xlink:href</span>=<span class="value">"http://7xjz11.com1.z0.glb.clouddn.com/me1.jpg"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">&lt;!--Sharpen and desaturate the face to make it look smarter--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">feConvolveMatrix</span></span><br><span class="line">         <span class="attribute">kernelMatrix</span>=<span class="value">"-1 -1 -1 -1 9 -1 -1 -1 -1 "</span></span><br><span class="line">         <span class="attribute">order</span>=<span class="value">"3 3"</span> </span><br><span class="line">         <span class="attribute">divisor</span>=<span class="value">"1"</span></span><br><span class="line">         <span class="attribute">bias</span>=<span class="value">"0"</span> </span><br><span class="line">         <span class="attribute">preserveAlpha</span>=<span class="value">"true"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">feColorMatrix</span> <span class="attribute">type</span>=<span class="value">"saturate"</span> <span class="attribute">values</span>=<span class="value">"0.4"</span> <span class="attribute">result</span>=<span class="value">"face_1"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">&lt;!--Using a linear gradient to increase face layered--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">feImage</span> <span class="attribute">xlink:href</span>=<span class="value">"#face_gradient"</span> <span class="attribute">result</span>=<span class="value">"face_2"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">feBlend</span> <span class="attribute">mode</span>=<span class="value">"multiply"</span> <span class="attribute">in</span>=<span class="value">"face_1"</span> <span class="attribute">in2</span>=<span class="value">"face_2"</span> <span class="attribute">result</span>=<span class="value">"face_3"</span> /&gt;</span> </span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feImage</span> <span class="attribute">xlink:href</span>=<span class="value">"#face_gradient2"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">feColorMatrix</span> <span class="attribute">type</span>=<span class="value">"luminanceToAlpha"</span> <span class="attribute">result</span>=<span class="value">"face_4"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">feComposite</span> <span class="attribute">in</span>=<span class="value">"face_1"</span> <span class="attribute">in2</span>=<span class="value">"face_4"</span> <span class="attribute">result</span>=<span class="value">"face_6"</span> <span class="attribute">operator</span>=<span class="value">"in"</span> /&gt;</span> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feColorMatrix</span> <span class="attribute">type</span>=<span class="value">"matrix"</span> <span class="attribute">in</span>=<span class="value">"face_7"</span> <span class="attribute">result</span>=<span class="value">"face_17"</span></span><br><span class="line">           <span class="attribute">values</span>=<span class="value">"1 0 0 1 0 </span><br><span class="line">                   0 1 0 1 0 </span><br><span class="line">                   0 0 1 1 0 </span><br><span class="line">                   0 0 0 1 0 "</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="title">feMerge</span> <span class="attribute">result</span>=<span class="value">"face_27"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">feMergeNode</span> <span class="attribute">in</span>=<span class="value">"face_3"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">feMergeNode</span> <span class="attribute">in</span>=<span class="value">"face_17"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">feMerge</span>&gt;</span>             </span><br><span class="line"></span><br><span class="line">      <span class="comment">&lt;!--Using an ellipse gradient to extract the face out--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">feImage</span> <span class="attribute">xlink:href</span>=<span class="value">"#face_area"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">feColorMatrix</span> <span class="attribute">type</span>=<span class="value">"luminanceToAlpha"</span> <span class="attribute">result</span>=<span class="value">"face_8"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">feComposite</span> <span class="attribute">in</span>=<span class="value">"face_27"</span> <span class="attribute">in2</span>=<span class="value">"face_8"</span> <span class="attribute">operator</span>=<span class="value">"in"</span>/&gt;</span></span><br><span class="line">      </span><br><span class="line">    <span class="tag">&lt;/<span class="title">filter</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">x</span>=<span class="value">"100"</span> <span class="attribute">y</span>=<span class="value">"100"</span> </span><br><span class="line">     <span class="attribute">width</span>=<span class="value">"1000"</span> <span class="attribute">height</span>=<span class="value">"600"</span> </span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"filter:url(#shadow); "</span> <span class="attribute">transform</span>=<span class="value">"translate(500, 200) scale(0.8, 0.8) skewX(-20)"</span>/&gt;</span> </span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">x</span>=<span class="value">"100"</span> <span class="attribute">y</span>=<span class="value">"100"</span> </span><br><span class="line">     <span class="attribute">width</span>=<span class="value">"1000"</span> <span class="attribute">height</span>=<span class="value">"600"</span> </span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"fill:#222222;"</span>/&gt;</span> <span class="comment">&lt;!--Not pure black will look more actual--&gt;</span></span><br><span class="line">        </span><br><span class="line">  <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">x</span>=<span class="value">"100"</span> <span class="attribute">y</span>=<span class="value">"100"</span> </span><br><span class="line">     <span class="attribute">width</span>=<span class="value">"1000"</span> <span class="attribute">height</span>=<span class="value">"600"</span> </span><br><span class="line">     <span class="attribute">style</span>=<span class="value">"filter:url(#logo);"</span>/&gt;</span>   </span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">x</span>=<span class="value">"127"</span> <span class="attribute">y</span>=<span class="value">"177"</span> <span class="attribute">width</span>=<span class="value">"350"</span> <span class="attribute">height</span>=<span class="value">"450"</span> </span><br><span class="line">  <span class="attribute">style</span>=<span class="value">"filter:url(#face);"</span> <span class="attribute">transform</span>=<span class="value">"translate(80, 100) scale(0.8, 0.8)"</span>/&gt;</span> </span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">g</span> <span class="attribute">fill</span>=<span class="value">"url(#lineargradient2)"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">text</span> <span class="attribute">id</span>=<span class="value">"nameText"</span> <span class="attribute">x</span>=<span class="value">"540"</span> <span class="attribute">y</span>=<span class="value">"260"</span> <span class="attribute">style</span>=<span class="value">"font-size:60;font-family:verdana;font-weight:bold;filter:url(#text)"</span>&gt;</span>Zheng Jiongbin<span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"600"</span> <span class="attribute">y</span>=<span class="value">"380"</span> <span class="attribute">style</span>=<span class="value">"font-size:32;font-family:arial;font-style:italic;"</span>  &gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="title">tspan</span> <span class="attribute">x</span>=<span class="value">"600"</span> &gt;</span>Nephovision Co.,Ltd<span class="tag">&lt;/<span class="title">tspan</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">tspan</span> <span class="attribute">x</span>=<span class="value">"600"</span> <span class="attribute">dy</span>=<span class="value">"60"</span>&gt;</span>iOS/Algorithm Engineer<span class="tag">&lt;/<span class="title">tspan</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">tspan</span> <span class="attribute">x</span>=<span class="value">"600"</span> <span class="attribute">dy</span>=<span class="value">"40"</span>&gt;</span>Gizmosir@Nephovision.com<span class="tag">&lt;/<span class="title">tspan</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">text</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="title">a</span> <span class="attribute">xlink:href</span>=<span class="value">"http://gizmosir.com"</span> &gt;</span> </span><br><span class="line">            <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"800"</span> <span class="attribute">y</span>=<span class="value">"650"</span> <span class="attribute">style</span>=<span class="value">"font-size:40;font-family:courier;font-style:oblique;font-weight:bold;filter:url(#link)"</span>&gt;</span>Visit More<span class="tag">&lt;/<span class="title">text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">g</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Computer-graphics/">Computer graphics</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/SVG/">SVG</a><a href="/tags/矢量图/">矢量图</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://gizmosir.com/2016/03/01/title- 矢量图像实战——制作个性名片/" data-title="矢量图像实战——制作个性名片 | Gizmosir的技术博客" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/03/02/title- 从模式识别的角度看概率论/" title="从模式识别的角度看概率论">
+  <strong>上一篇：</strong><br/>
+  <span>
+  从模式识别的角度看概率论</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/02/26/title- 字符串匹配-Z算法/"  title="字符串匹配-Z算法">
+ <strong>下一篇：</strong><br/> 
+ <span>字符串匹配-Z算法
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+		
+		  
+			<li><a href="/categories/Algorithms/" title="Algorithms">Algorithms<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Computer-graphics/" title="Computer graphics">Computer graphics<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Image-processing/" title="Image processing">Image processing<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Machine-learning/" title="Machine learning">Machine learning<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Video-processing/" title="Video processing">Video processing<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+	Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016
+	
+	<a href="/about" target="_blank" title="Gizmosir">Gizmosir</a>
+	
+
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-28029597-1', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  
+<!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+</body>
+</html>
