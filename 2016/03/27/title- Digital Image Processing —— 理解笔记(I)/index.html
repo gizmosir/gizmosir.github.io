@@ -1,0 +1,493 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Digital Image Processing —— 理解笔记(I) | Gizmosir的技术博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Gizmosir">
+    
+
+    
+    <meta name="description" content="前言Digital Image Processing (by Rafael C. Gonzalez)一书可谓图像处理领域最经典的必读书目之一，也是很多大学的首选参考书目。作为架构体系的第一本书来说再合适不过了。更多关于这本书的信息可以点击这里。
+概要首先来看下目录：
+基于我自己对书的内容理解，我将该书分为以下五个部分：
+
+图像基础（Image fundamentals）；
+图像压缩（Image C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Digital Image Processing —— 理解笔记(I)">
+<meta property="og:url" content="http://gizmosir.com/2016/03/27/title- Digital Image Processing —— 理解笔记(I)/index.html">
+<meta property="og:site_name" content="Gizmosir的技术博客">
+<meta property="og:description" content="前言Digital Image Processing (by Rafael C. Gonzalez)一书可谓图像处理领域最经典的必读书目之一，也是很多大学的首选参考书目。作为架构体系的第一本书来说再合适不过了。更多关于这本书的信息可以点击这里。
+概要首先来看下目录：
+基于我自己对书的内容理解，我将该书分为以下五个部分：
+
+图像基础（Image fundamentals）；
+图像压缩（Image C">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8A%E5%8D%8811.58.40.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8B%E5%8D%885.02.17.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8B%E5%8D%885.20.07.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8B%E5%8D%885.01.09.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8B%E5%8D%887.41.02.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8B%E5%8D%887.45.50.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%886.56.49.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-25%20%E4%B8%8B%E5%8D%887.36.15.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-27%20%E4%B8%8B%E5%8D%888.08.17.png">
+<meta property="og:updated_time" content="2016-03-27T12:32:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Digital Image Processing —— 理解笔记(I)">
+<meta name="twitter:description" content="前言Digital Image Processing (by Rafael C. Gonzalez)一书可谓图像处理领域最经典的必读书目之一，也是很多大学的首选参考书目。作为架构体系的第一本书来说再合适不过了。更多关于这本书的信息可以点击这里。
+概要首先来看下目录：
+基于我自己对书的内容理解，我将该书分为以下五个部分：
+
+图像基础（Image fundamentals）；
+图像压缩（Image C">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Gizmosir的技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Gizmosir的技术博客">Gizmosir的技术博客</a></h1>
+				<h2 class="blog-motto">分享有价值的思想</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:gizmosir.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/27/title- Digital Image Processing —— 理解笔记(I)/" title="Digital Image Processing —— 理解笔记(I)" itemprop="url">Digital Image Processing —— 理解笔记(I)</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2016-03-26T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概要"><span class="toc-number">2.</span> <span class="toc-text">概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像基础（Fundamentals）"><span class="toc-number">3.</span> <span class="toc-text">图像基础（Fundamentals）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#人眼模型"><span class="toc-number">3.1.</span> <span class="toc-text">人眼模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图像采集和获取（Image-Sensing-Acquisition）"><span class="toc-number">3.2.</span> <span class="toc-text">图像采集和获取（Image Sensing/Acquisition）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#采样与量化（Sampling-Quantization）"><span class="toc-number">3.3.</span> <span class="toc-text">采样与量化（Sampling/Quantization）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#色彩空间（Color-space）"><span class="toc-number">3.4.</span> <span class="toc-text">色彩空间（Color space）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RGB色彩空间"><span class="toc-number">3.4.1.</span> <span class="toc-text">RGB色彩空间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HSV色彩空间"><span class="toc-number">3.4.2.</span> <span class="toc-text">HSV色彩空间</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考及其他"><span class="toc-number">4.</span> <span class="toc-text">参考及其他</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><em>Digital Image Processing</em> (by <a href="http://www.imageprocessingplace.com/root_files_V3/about_the_authors/gonzalez.htm" target="_blank" rel="external">Rafael C. Gonzalez</a>)一书可谓图像处理领域最经典的必读书目之一，也是很多大学的首选参考书目。作为架构体系的第一本书来说再合适不过了。更多关于这本书的信息可以点击<a href="http://www.imageprocessingplace.com/DIP-3E/dip3e_main_page.htm" target="_blank" rel="external">这里</a>。</p>
+<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>首先来看下目录：<br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8A%E5%8D%8811.58.40.png?imageView/2/w/400" alt=""></p>
+<p>基于我自己对书的内容理解，我将该书分为以下五个部分：</p>
+<ol>
+<li>图像基础（Image fundamentals）；</li>
+<li>图像压缩（Image Compression）；</li>
+<li>图像增强（Image enhancement）与图像复原（Image restoration）；</li>
+<li>图像分割（Image Sementation）；</li>
+<li>图像理解（Image Understanding）。</li>
+</ol>
+<p>可以看到我打乱了书的组织结构，是因为我按自己的理解对上述内容进行了难度排序，将较为简单的放在前面，把较为难的或者理解内容更多的部分放在后面。那么自然而然的，<em>Digital Image Processing</em>的理解笔记也会分成五篇。</p>
+<p>我想有读者一定会发现，这五个部分几乎就覆盖了所有图像处理的研究领域。没错，的确是这样子的。但由于<em>Digital Image Processing</em>是一本比较基础的书，所以介绍的知识正好是能够搭建知识体系的基础。</p>
+<h2 id="图像基础（Fundamentals）"><a href="#图像基础（Fundamentals）" class="headerlink" title="图像基础（Fundamentals）"></a>图像基础（Fundamentals）</h2><h3 id="人眼模型"><a href="#人眼模型" class="headerlink" title="人眼模型"></a>人眼模型</h3><p>首先来看下实际上图像的定义：</p>
+<blockquote>
+<p>图像是人对视觉感知的物质再现。图像可以由光学设备获取，如照相机、镜子、望远镜及显微镜等；也可以人为创作，如手工绘画。图像可以记录、保存在纸质媒介、胶片等等对光信号敏感的介质上。随着数字采集技术和信号处理理论的发展，越来越多的图像以数字形式存储。因而，有些情况下“图像”一词实际上是指数字图像。[1]</p>
+</blockquote>
+<p>而从这本书的名字可以看出，往后我提到图像都特指数字图像。实际上图像可以看做再现人对物体的感知图像。所以首先来看看人眼的感知模型：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8B%E5%8D%885.02.17.png?imageView/2/w/400" alt=""></p>
+<p>回忆下初中生物知识，人眼类似于凸透镜的结构。从上图中可以发现物体经过“透镜”（晶状体）聚焦后投影到视网膜上，像距通常在20毫米左右，而物距则为人到物体的距离。</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8B%E5%8D%885.20.07.png?imageView/2/w/400" alt=""></p>
+<p>人眼视网膜上有两种细胞，一种是对颜色比较敏感视锥细胞（Cones），主要集中在视网膜的中间部位；另一种是对亮度比较敏感的视杆细胞（Rods），主要分布在视网膜的四周，如上图所示。所以人眼的中间部分对颜色（细节）变换较为敏感，而人眼的四周对亮度变换更为敏感，所以下回星星太暗看不到可以试试看用眼的“余光”。</p>
+<h3 id="图像采集和获取（Image-Sensing-Acquisition）"><a href="#图像采集和获取（Image-Sensing-Acquisition）" class="headerlink" title="图像采集和获取（Image Sensing/Acquisition）"></a>图像采集和获取（Image Sensing/Acquisition）</h3><p>从人眼模型一节中可以知道，要重现图像则需要能够模拟两个最重要的器官——“晶状体”和“视网膜”。一般摄像机使用透镜（Lens）来模拟用于聚焦物像的晶状体；使用传感器（Sensor）来模拟用于物像投影面视网膜。</p>
+<blockquote>
+<p>通常使用摄像头模型（Camera Model）来准确反映图像与实际物体之间的关联。但是其内容多而且比较复杂，也许以后会专门做与之相关的理解笔记。</p>
+</blockquote>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8B%E5%8D%885.01.09.png?imageView/2/w/400" alt=""></p>
+<p>传感器采集图像的示意图如上，实际上通常说的传感器是传感器矩阵（Array sensor），它包含很多能够感知光强度的传感单元（Single imageing sensor），也就是常说的像素。人眼通过采集物体的主动发射光或者反射光的能量“感知”物体。相似的，传感单元通过将照射到每个像素尺寸上的能量转化为电压的方式来“感知”物体。</p>
+<p>摄像机生成的图像（简称图像）一般为2维的，所以通常使用$f(x,y)来表示某个坐标(x,y)点上的亮度（Intensity）。值得注意的是：</p>
+<p>$$ f(x,y） = i(x,y) r(x,y)$$</p>
+<p>上式中$i(x,y)$为照度，$r(x,y)$为反射程度。该式称为表面光照模型，其意义表示物体的每个点上的亮度由照射到该点的灯光照度以及该点的表面反射度共同决定。</p>
+<h3 id="采样与量化（Sampling-Quantization）"><a href="#采样与量化（Sampling-Quantization）" class="headerlink" title="采样与量化（Sampling/Quantization）"></a>采样与量化（Sampling/Quantization）</h3><p>在上一节中提到可以使用$f(x,y)$来表示每个像素的能量强度或者图像亮度。不难理解对于物体表面来说坐标$(x,y)$肯定是连续的，其反射能量也是连续变换的，像下图(a)所示。</p>
+<p>然而由于我们使用传感单元矩阵来采集图像强度，也就是说每个传感单元采集到的强度都是相同的，也就是说我们在物体的空间坐标连续分布变成了数字图像的离散分布，这个过程就叫采样。</p>
+<p>同样的，为了使用数字图像来表示连续的物体光强变换，我们需要将图像的值连续分布变成了数字图像的离散分布，这个过程叫量化。</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8B%E5%8D%887.41.02.png?imageView/2/w/400" alt=""></p>
+<p>上图清晰地表示了采样以及量化的过程。物体图像本身是连续的，如上排两个图所示，然后对连续的值进行采样，也就是减少坐标的个数，然后将值转换成固定的数量值，也就是减少了值的个数。</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8B%E5%8D%887.45.50.png?imageView/2/w/400" alt=""></p>
+<p>上图清晰地表示了原物体图像与采样与量化后的数字图像的差别。</p>
+<p>可以留言到的，上图中的网格数量越多，能够表达光强的值越多，图像会越高清，也就是越接近原物体图像。由于显示器的限制，所以我通常只使用8位来表示，而网格数量即常说的传感器分别率。800万，1200万的意思就是一片传感器上有800/1200万传感但愿。这也是为什么传感器厂商都致力于将像素数量提高到尽可能高的原因。</p>
+<h3 id="色彩空间（Color-space）"><a href="#色彩空间（Color-space）" class="headerlink" title="色彩空间（Color space）"></a>色彩空间（Color space）</h3><h4 id="RGB色彩空间"><a href="#RGB色彩空间" class="headerlink" title="RGB色彩空间"></a>RGB色彩空间</h4><p>到目次为止，介绍的都是光强。而正如之前提到的，物体图像是由光强信息和颜色信息组合而成的。表示颜色的方法有很多种，首先介绍最常见的RGB色彩空间。</p>
+<p>RGB色彩空间使用3个8位的数值来分布表示红色、绿色、蓝色的颜色强弱程度。并约定所有三个值均为0时为黑色，三个值均为255为白色。</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-16%20%E4%B8%8B%E5%8D%886.56.49.png?imageView/2/w/400" alt=""></p>
+<p>上图被称为色彩立方体。立方体中的每个点都能够使用不同的RGB三个值组合得到。值得几点注意：</p>
+<ol>
+<li>R、G、B是三个“轴”，之前的顺序无所谓，但之间一定互相垂直；</li>
+<li>位于立体方的最对角的颜色称为互补色，如上图中的K（黑色）和W（白色），B（蓝色）和Y（黄色）；</li>
+<li>K到W有一天线（图中黑色），该线上的所有点RGB值都相等，也就是说该线上的所有点都是只会有灰度值而“没有颜色”。</li>
+</ol>
+<h4 id="HSV色彩空间"><a href="#HSV色彩空间" class="headerlink" title="HSV色彩空间"></a>HSV色彩空间</h4><p>另外一个常用的的色彩空间是HSV色彩空间（或者HSI），其也包含三个通道值，分布是色相（Hue）、饱和度（Saturation）、明度（Value/Intensity）。其效果如下图所示：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-25%20%E4%B8%8B%E5%8D%887.36.15.png?imageView/2/w/400" alt=""></p>
+<p>值得注意的是：</p>
+<ol>
+<li>不同于RGB值均为$[0, 255]$，色相的值的范围是$[0,360)$，而饱和度和明度的值的范围均为$[0,1]$；</li>
+<li>R、G、B分布位于色相的0˚、120˚和240˚的位置；</li>
+<li>饱和度越高，颜色越鲜艳；</li>
+<li>明度越高，光强越高。</li>
+</ol>
+<p>不同于RGB使用三个通道来表示颜色，并且使用三个通道的均值来表示光强信息。HSV使用色相和饱和度来表示颜色信息，使用明度来表示光强信息。这么做有个好处就是能够有效的将这两个信息分开并分别进行处理。</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-27%20%E4%B8%8B%E5%8D%888.08.17.png" alt=""></p>
+<p>如上图所示，我们不能仅根据RGB色彩空间中其中一路来对图像进行轮廓提取等图像处理但是却能够在HSV中的V通道完成。另外由于人眼对于光强变换比颜色变换更为灵敏，也就是说我们可以使用更少的值来表示颜色以达到压缩图像大小的目的。使用RGB色彩空间很难做到压缩空间的同时保留光强信息，而HSV色彩空间却可以。</p>
+<h2 id="参考及其他"><a href="#参考及其他" class="headerlink" title="参考及其他"></a>参考及其他</h2><p>[1]: Rafael C. Gonzalez, Digital Image Processing, 3rd. </p>
+<p>[2]: <a href="https://zh.wikipedia.org/wiki/图像" target="_blank" rel="external">图像-维基</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Image-processing/">Image processing</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Denoising/">Denoising</a><a href="/tags/Filter/">Filter</a><a href="/tags/Image-restoration/">Image restoration</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://gizmosir.com/2016/03/27/title- Digital Image Processing —— 理解笔记(I)/" data-title="Digital Image Processing —— 理解笔记(I) | Gizmosir的技术博客" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/03/23/title- 博客“满月”总结/"  title="博客“满月”总结">
+ <strong>下一篇：</strong><br/> 
+ <span>博客“满月”总结
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+		
+		  
+			<li><a href="/categories/Algorithms/" title="Algorithms">Algorithms<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Computer-graphics/" title="Computer graphics">Computer graphics<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Image-processing/" title="Image processing">Image processing<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Machine-learning/" title="Machine learning">Machine learning<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Video-processing/" title="Video processing">Video processing<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/其他/" title="其他">其他<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+	Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016
+	
+	<a href="/about" target="_blank" title="Gizmosir">Gizmosir</a>
+	
+
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-28029597-1', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  
+<!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+</body>
+</html>
