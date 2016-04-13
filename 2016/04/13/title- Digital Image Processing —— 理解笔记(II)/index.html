@@ -1,0 +1,598 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Digital Image Processing —— 理解笔记(II) | Gizmosir的技术博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Gizmosir">
+    
+
+    
+    <meta name="description" content="前言这是Digital Image Processing理解笔记的第二篇，你可以点击
+Digital Image Processing —— 理解笔记(I)/)
+来查看之前的理解笔记。
+概要这篇我们将来了解图像压缩（Image Compression）。相信各位读者对图像压缩肯定不陌生，其技术渗透到我们生活中的点点滴滴，比如举起相机/手机拍照；浏览朋友圈/网页；看视频/直播等等。可是为什么需要进行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Digital Image Processing —— 理解笔记(II)">
+<meta property="og:url" content="http://gizmosir.com/2016/04/13/title- Digital Image Processing —— 理解笔记(II)/index.html">
+<meta property="og:site_name" content="Gizmosir的技术博客">
+<meta property="og:description" content="前言这是Digital Image Processing理解笔记的第二篇，你可以点击
+Digital Image Processing —— 理解笔记(I)/)
+来查看之前的理解笔记。
+概要这篇我们将来了解图像压缩（Image Compression）。相信各位读者对图像压缩肯定不陌生，其技术渗透到我们生活中的点点滴滴，比如举起相机/手机拍照；浏览朋友圈/网页；看视频/直播等等。可是为什么需要进行">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8A%E5%8D%8811.11.37.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-12%20%E4%B8%8B%E5%8D%8812.08.40.png">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8A%E5%8D%8811.20.24.png?imageView/2/w/500">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.27.16.png?imageView/2/w/300">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.27.47.png?imageView/2/w/480">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.41.35.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.41.04.png?imageView/2/w/500">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-13%20%E4%B8%8A%E5%8D%8811.18.27.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-13%20%E4%B8%8A%E5%8D%8811.20.39.png?imageView/2/w/280">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-13%20%E4%B8%8A%E5%8D%8811.42.30.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%883.09.35.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%883.11.26.png?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-12%20%E4%B8%8A%E5%8D%8811.55.14.png?imageView/2/w/600">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-5920383646_1a1dbaf420.jpg?imageView/2/w/400">
+<meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%883.04.56.png?imageView/2/w/600">
+<meta property="og:updated_time" content="2016-04-13T04:31:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Digital Image Processing —— 理解笔记(II)">
+<meta name="twitter:description" content="前言这是Digital Image Processing理解笔记的第二篇，你可以点击
+Digital Image Processing —— 理解笔记(I)/)
+来查看之前的理解笔记。
+概要这篇我们将来了解图像压缩（Image Compression）。相信各位读者对图像压缩肯定不陌生，其技术渗透到我们生活中的点点滴滴，比如举起相机/手机拍照；浏览朋友圈/网页；看视频/直播等等。可是为什么需要进行">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Gizmosir的技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Gizmosir的技术博客">Gizmosir的技术博客</a></h1>
+				<h2 class="blog-motto">分享有价值的思想</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:gizmosir.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/04/13/title- Digital Image Processing —— 理解笔记(II)/" title="Digital Image Processing —— 理解笔记(II)" itemprop="url">Digital Image Processing —— 理解笔记(II)</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2016-04-12T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概要"><span class="toc-number">2.</span> <span class="toc-text">概要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图像压缩技术"><span class="toc-number">2.1.</span> <span class="toc-text">图像压缩技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型"><span class="toc-number">2.2.</span> <span class="toc-text">模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#熵编码（Entropy-coding）"><span class="toc-number">3.</span> <span class="toc-text">熵编码（Entropy coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#举个例子"><span class="toc-number">3.0.1.</span> <span class="toc-text">举个例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#霍夫曼编码（Huffman-coding）"><span class="toc-number">3.1.</span> <span class="toc-text">霍夫曼编码（Huffman coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#举个例子-1"><span class="toc-number">3.1.1.</span> <span class="toc-text">举个例子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分析"><span class="toc-number">3.1.2.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算术编码（Arithmetic-coding）"><span class="toc-number">3.2.</span> <span class="toc-text">算术编码（Arithmetic coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#举个例子-2"><span class="toc-number">3.2.1.</span> <span class="toc-text">举个例子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分析-1"><span class="toc-number">3.2.2.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游程编码（Run-length-coding）"><span class="toc-number">3.3.</span> <span class="toc-text">游程编码（Run-length coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#举个例子-3"><span class="toc-number">3.3.1.</span> <span class="toc-text">举个例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变换编码（Transform-coding）"><span class="toc-number">4.</span> <span class="toc-text">变换编码（Transform coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#离散余弦变换（DCT-Discrete-Consine-Transform）"><span class="toc-number">4.1.</span> <span class="toc-text">离散余弦变换（DCT-Discrete Consine Transform）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#举个例子-4"><span class="toc-number">4.1.1.</span> <span class="toc-text">举个例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预测编码（Predictive-coding）"><span class="toc-number">5.</span> <span class="toc-text">预测编码（Predictive coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#举个例子-5"><span class="toc-number">5.0.1.</span> <span class="toc-text">举个例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JPEG-JPEG-LS"><span class="toc-number">6.</span> <span class="toc-text">JPEG/JPEG-LS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JPEG"><span class="toc-number">6.1.</span> <span class="toc-text">JPEG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JPEG-LS"><span class="toc-number">6.2.</span> <span class="toc-text">JPEG-LS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考与其他"><span class="toc-number">7.</span> <span class="toc-text">参考与其他</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是Digital Image Processing理解笔记的第二篇，你可以点击</p>
+<p><a href="http://gizmosir.com/2016/03/27/title-%20Digital%20Image%20Processing%20——%20理解笔记(I">Digital Image Processing —— 理解笔记(I)</a>/)</p>
+<p>来查看之前的理解笔记。</p>
+<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>这篇我们将来了解图像压缩（Image Compression）。相信各位读者对图像压缩肯定不陌生，其技术渗透到我们生活中的点点滴滴，比如举起相机/手机拍照；浏览朋友圈/网页；看视频/直播等等。可是为什么需要进行图像压缩呢？</p>
+<p>举个例子，一部1080P（即每张图像的像素尺寸为1920*1080），30FPS（即每秒30帧）的高清的电影，不经过压缩前其每秒的数据大小为：</p>
+<p>$$ (1920 <em> 1080) \frac{pixels}{frame} </em> 3 \frac{bytes}{pixel} * 30 \frac{frame}{sec} = 186,624,000 (\frac{Bytes}{sec})$$</p>
+<p>如果这部电影的时常为2小时的话，则总数据大小为：</p>
+<p>$$ 186,624,000 \frac{Bytes}{sec} <em> 3600 \frac{sec}{hour} </em> 2 hours \approx 1.34T = 1372G $$</p>
+<p>也就是说，光是存储一部高清电影就需要1.34T的空间，多么可怕！所以图像压缩的意义就不明而喻了。</p>
+<p>也许你立马会想到，一部2个小时的电影实际数据量在1T左右，而网络上流传的高清电影大多在2G~10G左右，是什么导致能够将数据压缩百倍以上呢？</p>
+<h3 id="图像压缩技术"><a href="#图像压缩技术" class="headerlink" title="图像压缩技术"></a>图像压缩技术</h3><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8A%E5%8D%8811.11.37.png?imageView/2/w/400" alt=""><br>图1. 图像冗余数据示意图：左图中实际上只有4种不同的灰度值；中图中像素灰度值只在垂直方向发生变化；右图实际上有很难察觉的灰度值变化。</p>
+<p>实际上图像/视频是存在大量冗余（Redundancy）的，主要分为以下三个部分：</p>
+<ol>
+<li>编码冗余（Coding redundancy）；</li>
+<li>空间/时间冗余（Spatial/Temporal redundancy）；</li>
+<li>不重要信息（Irrelevant information）。</li>
+</ol>
+<p>对应的，图像压缩也分为以下三种不同类型的技术：</p>
+<ol>
+<li>熵编码（Entropy coding）；</li>
+<li>预测编码（Predictive coding）；</li>
+<li>量化（Quantization）。</li>
+</ol>
+<blockquote>
+<p>这里并不是提倡大家上网下载盗版电影，我只是举个例子，还请大家尊重和支持版权。</p>
+</blockquote>
+<h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-12%20%E4%B8%8B%E5%8D%8812.08.40.png" alt=""></p>
+<p>以上是经典的图像压缩示意图，<code>Mapper</code>将原RGB图像转换成YUV图像，<code>Quantizer</code>实现数据的进一步压缩，这两者我们在<a href="http://gizmosir.com/2016/03/27/title-%20Digital%20Image%20Processing%20——%20理解笔记(I">第一篇</a>/)<br>中已经介绍了。那么新的知识就只有<code>Symbol coder</code>，也就是上述所说的熵编码。</p>
+<h2 id="熵编码（Entropy-coding）"><a href="#熵编码（Entropy-coding）" class="headerlink" title="熵编码（Entropy coding）"></a>熵编码（Entropy coding）</h2><p>首先来看下什么是熵。</p>
+<blockquote>
+<p>在信息论中，熵是接收的每条消息中包含的信息的平均量，又被称为信息熵、信源熵、平均自信息量[1]。</p>
+</blockquote>
+<p>简单来说熵是每个字符所携带的信息量多少，熵越大信息量越大，反之亦然。再由<a href="https://zh.wikipedia.org/wiki/有噪信道编码定理" target="_blank" rel="external">香农定理</a>（Shannon‘ Theorom）可以知道：</p>
+<p>$$ I(E) = \log\frac{1}{P(E)} = - \log P(E)$$</p>
+<p>$$ H = - \sum_{j=1}^{J} P(a_j)logP(a_j)$$</p>
+<p>$I(E)$是每个字符所带的信息量，所以熵为所有字符所带信息量与其出现的频率的乘积之和。简单来说就是一个字符出现的次数越多（出现的可能性越大），那么其所携带信息越小，当出现概率为1时，信息为0。当$P(E) = \frac{1}{2}$时，$I = 1$，也就是我们常用的2进制字符。</p>
+<h4 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h4><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8A%E5%8D%8811.20.24.png?imageView/2/w/500" alt=""><br>图2. 灰度值分布（图1左图）。</p>
+<p>图1左图的实际灰度值如上图所示，可以发现只有四个灰度值${87, 128, 186, 255}$。那么其熵值为：</p>
+<p>$$ H = - \sum_{j=1}^{J} P(a_j)logP(a_j)$$</p>
+<p>$$ = - ( 0.25 \log_2(0.25) + 0.47 \log_2(0.47) + 0.25\log_2(0.25) + 0.03\log_2(0.03))$$</p>
+<p>$$ = 1.66$$</p>
+<h3 id="霍夫曼编码（Huffman-coding）"><a href="#霍夫曼编码（Huffman-coding）" class="headerlink" title="霍夫曼编码（Huffman coding）"></a>霍夫曼编码（Huffman coding）</h3><blockquote>
+<p>霍夫曼编码（Huffman Coding），又译为哈夫曼编码、赫夫曼编码，是一种用于无损数据压缩的熵编码（权编码）算法。1952年，大卫·霍夫曼在麻省理工攻读博士时所发明的[2].</p>
+</blockquote>
+<p>在所有编码方法中，由于其实现简单，且为独立编码最优化效率的原因，霍夫曼编码也许是最被广为使用的一个。</p>
+<p>其编码过程也十分简单，分为两个部分：</p>
+<ol>
+<li>将字符按出现的概率降序排序；合并概率最小的两个“子字符”生成“父字符”；重复前面2个步骤直至合并剩两个字符；</li>
+<li>依次分配“0”或“1”给组成该“父字符”的两个“子字符”直至所有没有更小的字符。</li>
+</ol>
+<h4 id="举个例子-1"><a href="#举个例子-1" class="headerlink" title="举个例子"></a>举个例子</h4><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.27.16.png?imageView/2/w/300" alt=""></p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.27.47.png?imageView/2/w/480" alt=""></p>
+<p>假设我们的字符空间为${a_1, a_2, a_3, a_4, a_5, a_6}$，其出现概率分别为：${0.1, 0.4, 0.06, 0.1, 0.04, 0.3}$。</p>
+<p>其编码步骤如下：</p>
+<ol>
+<li>首先将其按出现概率降序排序；</li>
+<li>合并概率最小的两个字符，也就是$a_5$和$a_3$；</li>
+<li>重新排序并合并最小的字符，依次类推直至只剩最后两个字符；</li>
+<li>从后往前依次分配“0”和“1”；</li>
+<li>字符编码值为分支上“0”和“1”的连接值，如$a_5$为0-&gt;1-&gt;0-&gt;1-&gt;1,所以其值为$01011$。</li>
+</ol>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>正如之前所说的，霍夫曼编码是字符独立编码最优化算法，除此之外其还有以下两个特点：</p>
+<ol>
+<li>每个字符独立进行编码且唯一对应一个编码值，所以解码器仅需通过查表方法即可获得原字符；</li>
+<li>每个字符仅根据其自身编码或解码，不依赖也不会被之前的编码结果所影响；</li>
+</ol>
+<p>其缺点有：</p>
+<ol>
+<li>不高效；当输入为连续不断的码流时，对每个字符单独编码显然不是个高效的做法，即便能够通过组合两个或以上字符来达到更为高效的编码效率，但同时也大大增加了编码复杂度；</li>
+<li>需要查表解码；正如步骤中所展示，霍夫曼解码需要进行查表，且由于编码器合并的顺序可能不同导致查表值需要由编码器提供，所以增加了开销。</li>
+</ol>
+<h3 id="算术编码（Arithmetic-coding）"><a href="#算术编码（Arithmetic-coding）" class="headerlink" title="算术编码（Arithmetic coding）"></a>算术编码（Arithmetic coding）</h3><p>与霍夫曼编码不同，算术编码是将一连串字符编码成一个“数”的编码方法。</p>
+<p>其编码过程主要分为两个步骤：</p>
+<ol>
+<li>将字符自然降序排序；</li>
+<li>将概率空间收缩至每一个新输入的需要编码的字符，并分配给所有字符；</li>
+<li>在结束输入后，在最后的概率空间中选择一个分子数来表示所有输入的字符编码。</li>
+</ol>
+<h4 id="举个例子-2"><a href="#举个例子-2" class="headerlink" title="举个例子"></a>举个例子</h4><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.41.35.png?imageView/2/w/400" alt=""></p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.41.04.png?imageView/2/w/500" alt=""></p>
+<p>假设我们的字符空间为${a_1,  a_2, a_3, a_4}$，其出现概率分别为：${0.2, 0.2, 0.4, 0.2}$。</p>
+<p>假设我们需要编码的字符串为：${a_1,  a_2, a_3, a_3, a_4}$，那么步骤如下：</p>
+<ol>
+<li>将字符自然降序排序，也就是${a_4, a_3, a_2, a_1}$；</li>
+<li>将概率空间收缩至第一个输入字符的概率，也就是$[0, 0.2]$，并按比例将其重新分布给所有字符；</li>
+<li>将概率空间再次收缩至第二个输入字符的概率，也就是$[0。08, 0.04]$并按比例将其重新分布给所有字符；</li>
+<li>依次类推直至概率空间收缩至最后一个编码字符$a_4$，其最终概率空间为：[0.0688, 0.06752]，在这个范围内找到一个数比如0.068来表示所有编码结果。</li>
+</ol>
+<blockquote>
+<p>最后分子数的选择通常选该范围内能够用最少二进制比特表示的分子数，以确保其编码效率最优。</p>
+</blockquote>
+<h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4><table>
+<thead>
+<tr>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效率最优</td>
+<td>编码复杂</td>
+</tr>
+</tbody>
+</table>
+<h3 id="游程编码（Run-length-coding）"><a href="#游程编码（Run-length-coding）" class="headerlink" title="游程编码（Run-length coding）"></a>游程编码（Run-length coding）</h3><blockquote>
+<p>游程编码（RLE，run-length encoding），又称行程长度编码或变动长度编码法，是一种与资料性质无关的无损数据压缩技术。是一种“使用变动长度的码来取代连续重复出现的原始资料”的压缩技术[3]。</p>
+</blockquote>
+<p>游程编码是十分简单重要的编码方式，通过数据对的方式来表示某个灰度值连续出现的次数，如$[127,10]$，表示10个灰度值为127的像素。</p>
+<h4 id="举个例子-3"><a href="#举个例子-3" class="headerlink" title="举个例子"></a>举个例子</h4><pre><code>IIIIIIIIIIDDDDAAAAAEEE -&gt; (I,10),(D,4),(A,5),(E,3)
+</code></pre><!--### 其他
+还有许许多多别的编码方式如格伦布编码（Golomb coding），LZW编码等。这里只是举出最常用的两种编码方式，更多-->
+<h2 id="变换编码（Transform-coding）"><a href="#变换编码（Transform-coding）" class="headerlink" title="变换编码（Transform coding）"></a>变换编码（Transform coding）</h2><p>除了熵编码之外，还常使用变换编码或预测编码来对数据进行进一步的压缩，首先来介绍变换编码中最常用的变换——离散余弦变换。</p>
+<h3 id="离散余弦变换（DCT-Discrete-Consine-Transform）"><a href="#离散余弦变换（DCT-Discrete-Consine-Transform）" class="headerlink" title="离散余弦变换（DCT-Discrete Consine Transform）"></a>离散余弦变换（DCT-Discrete Consine Transform）</h3><blockquote>
+<p>离散余弦变换（Discrete Cosine Transform）是与傅里叶变换相关的一种变换，类似于离散傅里叶变换，但是只使用实数。离散余弦变换相当于一个长度大概是它两倍的离散傅里叶变换，这个离散傅里叶变换是对一个实偶函数进行的[4]。</p>
+</blockquote>
+<p>在<em><a href="http://gizmosir.com/2016/03/09/title-%20从图像处理的角度看傅里叶变换/#变换特性">从图像处理的角度看傅里叶变换</a></em>一文中我们大致了解了2D-DFT的应用。而在这里我们使用的是DCT，也就是只保留正弦部分的DFT。</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-13%20%E4%B8%8A%E5%8D%8811.18.27.png?imageView/2/w/400" alt=""></p>
+<p>其原因是DFT要求图像灰度值有图中上信号的重复特性，而DCT则要求图下的重复特性。很显然自然图像中，其灰度值分布情况更接近下图，也就是说相邻像素的灰度值相关性更大。</p>
+<p>其转换编码的步骤如下：</p>
+<ol>
+<li>将图像划分为$P \times P$的block（通常为8 x 8或16 x 16）；</li>
+<li>对每个block单独进行DCT变换；</li>
+<li>对变换后矩阵进行量化从而压缩数据或只保留N%重要数据。</li>
+</ol>
+<p><strong>实际上DCT变换是将原图分解成若干个其他图像，并使用“其他图像”在原图中的权重矩阵来表示原图。</strong></p>
+<h4 id="举个例子-4"><a href="#举个例子-4" class="headerlink" title="举个例子"></a>举个例子</h4><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-13%20%E4%B8%8A%E5%8D%8811.20.39.png?imageView/2/w/280" alt=""></p>
+<p>4x4block的DCT矩阵如上。在经过DCT变换后，我们就得到一个4x4的数据矩阵，表示以上图像组成原图的权重。值得注意的是，图像的低频信息将聚集在矩阵的左上角，而中高频信息则往后下角扩散。</p>
+<p>因为人眼对图像中的低频信息也就是权重矩阵的左上角的信息更为敏感，所以我们能够通过只保留部分左上角信息的方法来高效压缩图像。</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-13%20%E4%B8%8A%E5%8D%8811.42.30.png?imageView/2/w/400" alt=""></p>
+<p>实际上变换编码常使用的blocksize为8x8或16x16，主要原因如下：</p>
+<ol>
+<li>DCT变换尺寸越小速度越快，且指数增长，也就是说4个4x4比1个8x8要快，所以在变换速度上来讲，尺寸越小越好；</li>
+<li>DCT尺寸越小，越容易设计；</li>
+<li>DCT尺寸越大，包含的冗余信息就越多，也就是压缩效率越高；</li>
+</ol>
+<p>综合以上三点且通过大量的实验后发现，blocksize为8x8或16x16最优。</p>
+<h2 id="预测编码（Predictive-coding）"><a href="#预测编码（Predictive-coding）" class="headerlink" title="预测编码（Predictive coding）"></a>预测编码（Predictive coding）</h2><p>另外一个常用于进一步压缩数据的编码方式为预测编码。正如之前所说的，由于图像相邻像素直接的相关性极大，所以我们可以通过已编码像素的灰度值来“预测”正在编码的像素的灰度值，再用误差来表示本像素的灰度值。</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%883.09.35.png?imageView/2/w/400" alt=""></p>
+<p>其效果如上图所示，由于原图中相邻像素的灰度值相近，所以在使用预测编码后编码值，也就是预测误差值十分集中地分布在0附近。左下角的图像为预测误差示意图，可以发现只有在边界的地方由于像素灰度值突变，其误差较大。</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%883.11.26.png?imageView/2/w/400" alt=""></p>
+<p>除了基于相邻像素的预测编码外，还能够对相邻帧的同一位置像素进行预测编码。上图所示为视频中某一帧图像基于前一帧图像的预测编码，由于视频的拍摄物较为稳定，所以误差集中分布在0附近。同样的左下角的图像为预测误差示意图，可以发现边界中不再有明显的误差，其误差是存在两帧图像的相对位移较多的地方，也就是原图的右上角部分。</p>
+<h4 id="举个例子-5"><a href="#举个例子-5" class="headerlink" title="举个例子"></a>举个例子</h4><p>假设我们需要编码的一连串像素灰度值为： </p>
+<p>${123, 118, 117, 123, 125, 126, 122, 120}$</p>
+<p>假设我们仅使用前一为像素来预测该像素，那么预测编码的结果为：</p>
+<p>${123, -5, -1, 6, 2, -4, -2}$。</p>
+<p>由于第一个像素没有可以用于预测的像素，所以保留其灰度值。接着，$ 118 = 123 + (-5)$，所以我们输出-5，再接着，$117 = 118 + (-1)$，所以我们输出-1，依次类推。</p>
+<h2 id="JPEG-JPEG-LS"><a href="#JPEG-JPEG-LS" class="headerlink" title="JPEG/JPEG-LS"></a>JPEG/JPEG-LS</h2><p>最后通过介绍最常用的图像编码格式来总结下图像压缩技术在实际应用中的位置。</p>
+<h3 id="JPEG"><a href="#JPEG" class="headerlink" title="JPEG"></a>JPEG</h3><p>JPEG是一种广泛适用于图片的有损压缩技术，其使用的是变换编码模型，流程示意图如下：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-12%20%E4%B8%8A%E5%8D%8811.55.14.png?imageView/2/w/600" alt=""></p>
+<p>其压缩过程分为：</p>
+<ol>
+<li>将图像分解成8x8或16x16的block；</li>
+<li>对每个block单独进行DCT变换编码；</li>
+<li>将编码后的权重矩阵进行量化压缩；</li>
+<li>对量化后的权重矩阵进行游程编码和其他熵编码；</li>
+<li>输出压缩图像。</li>
+</ol>
+<p>其解压过程只是压缩过程的反过程，但是值得注意的是量化压缩必然造成误差且该过程无法还原，所以不存在在解压过程中。</p>
+<p>另外有一点值得注意的是在量化压缩后，对权重矩阵进行游程编码时，其扫描方法是ZigZag扫描方法，其示意图如下：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-5920383646_1a1dbaf420.jpg?imageView/2/w/400" alt=""></p>
+<p>正如之前所说的，由于我们在进行DCT变换编码后，低频信息集中在左上角，而又由于人眼对低频信息更加敏感，所以我们保留更多的低频信息，也就是量化后的数据较大，而中高频数据则较小甚至等于0。所以通过以上ZigZag扫描方法，我们能够将游程编码的效率最优化。</p>
+<h3 id="JPEG-LS"><a href="#JPEG-LS" class="headerlink" title="JPEG-LS"></a>JPEG-LS</h3><p>不同于JPEG，JPEG-LS（Lossless）是一种无损的图片压缩技术，其使用的是预测编码模型，流程事宜图如下：</p>
+<p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%883.04.56.png?imageView/2/w/600" alt=""></p>
+<p>由于其无损压缩的要求，很多压缩技术如量化等不适用，所以相对的，其压缩比率较小，通常为3：1 ~ 5：1。</p>
+<h2 id="参考与其他"><a href="#参考与其他" class="headerlink" title="参考与其他"></a>参考与其他</h2><p>[1]: 熵（信息论）-维基：<a href="https://zh.wikipedia.org/wiki/熵_(信息论)；" target="_blank" rel="external">https://zh.wikipedia.org/wiki/熵_(信息论)；</a><br>[2]: 霍夫曼编码-维基：<a href="https://zh.wikipedia.org/wiki/霍夫曼编码；" target="_blank" rel="external">https://zh.wikipedia.org/wiki/霍夫曼编码；</a><br>[3]: 游程编码-维基：<a href="https://zh.wikipedia.org/wiki/游程编码" target="_blank" rel="external">https://zh.wikipedia.org/wiki/游程编码</a><br>[4]: 离散余弦变换-维基：<a href="https://zh.wikipedia.org/wiki/离散余弦变换" target="_blank" rel="external">https://zh.wikipedia.org/wiki/离散余弦变换</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Image-processing/">Image processing</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Denoising/">Denoising</a><a href="/tags/Filter/">Filter</a><a href="/tags/Image-restoration/">Image restoration</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://gizmosir.com/2016/04/13/title- Digital Image Processing —— 理解笔记(II)/" data-title="Digital Image Processing —— 理解笔记(II) | Gizmosir的技术博客" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/03/27/title- Digital Image Processing —— 理解笔记(I)/"  title="Digital Image Processing —— 理解笔记(I)">
+ <strong>下一篇：</strong><br/> 
+ <span>Digital Image Processing —— 理解笔记(I)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+		
+		  
+			<li><a href="/categories/Algorithms/" title="Algorithms">Algorithms<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Computer-graphics/" title="Computer graphics">Computer graphics<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Image-processing/" title="Image processing">Image processing<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Machine-learning/" title="Machine learning">Machine learning<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Video-processing/" title="Video processing">Video processing<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/其他/" title="其他">其他<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+	Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016
+	
+	<a href="/about" target="_blank" title="Gizmosir">Gizmosir</a>
+	
+
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-28029597-1', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  
+<!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+</body>
+</html>
