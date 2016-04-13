@@ -38,7 +38,7 @@ Digital Image Processing —— 理解笔记(I)/)
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-12%20%E4%B8%8A%E5%8D%8811.55.14.png?imageView/2/w/600">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-5920383646_1a1dbaf420.jpg?imageView/2/w/400">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%883.04.56.png?imageView/2/w/600">
-<meta property="og:updated_time" content="2016-04-13T04:31:02.000Z">
+<meta property="og:updated_time" content="2016-04-13T04:37:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Digital Image Processing —— 理解笔记(II)">
 <meta name="twitter:description" content="前言这是Digital Image Processing理解笔记的第二篇，你可以点击
@@ -110,7 +110,7 @@ Digital Image Processing —— 理解笔记(I)/)
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概要"><span class="toc-number">2.</span> <span class="toc-text">概要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图像压缩技术"><span class="toc-number">2.1.</span> <span class="toc-text">图像压缩技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型"><span class="toc-number">2.2.</span> <span class="toc-text">模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#熵编码（Entropy-coding）"><span class="toc-number">3.</span> <span class="toc-text">熵编码（Entropy coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#举个例子"><span class="toc-number">3.0.1.</span> <span class="toc-text">举个例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#霍夫曼编码（Huffman-coding）"><span class="toc-number">3.1.</span> <span class="toc-text">霍夫曼编码（Huffman coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#举个例子-1"><span class="toc-number">3.1.1.</span> <span class="toc-text">举个例子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分析"><span class="toc-number">3.1.2.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算术编码（Arithmetic-coding）"><span class="toc-number">3.2.</span> <span class="toc-text">算术编码（Arithmetic coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#举个例子-2"><span class="toc-number">3.2.1.</span> <span class="toc-text">举个例子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分析-1"><span class="toc-number">3.2.2.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游程编码（Run-length-coding）"><span class="toc-number">3.3.</span> <span class="toc-text">游程编码（Run-length coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#举个例子-3"><span class="toc-number">3.3.1.</span> <span class="toc-text">举个例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变换编码（Transform-coding）"><span class="toc-number">4.</span> <span class="toc-text">变换编码（Transform coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#离散余弦变换（DCT-Discrete-Consine-Transform）"><span class="toc-number">4.1.</span> <span class="toc-text">离散余弦变换（DCT-Discrete Consine Transform）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#举个例子-4"><span class="toc-number">4.1.1.</span> <span class="toc-text">举个例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预测编码（Predictive-coding）"><span class="toc-number">5.</span> <span class="toc-text">预测编码（Predictive coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#举个例子-5"><span class="toc-number">5.0.1.</span> <span class="toc-text">举个例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JPEG-JPEG-LS"><span class="toc-number">6.</span> <span class="toc-text">JPEG/JPEG-LS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JPEG"><span class="toc-number">6.1.</span> <span class="toc-text">JPEG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JPEG-LS"><span class="toc-number">6.2.</span> <span class="toc-text">JPEG-LS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考与其他"><span class="toc-number">7.</span> <span class="toc-text">参考与其他</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概要"><span class="toc-number">2.</span> <span class="toc-text">概要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图像压缩技术"><span class="toc-number">2.1.</span> <span class="toc-text">图像压缩技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型"><span class="toc-number">2.2.</span> <span class="toc-text">模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#熵编码（Entropy-coding）"><span class="toc-number">3.</span> <span class="toc-text">熵编码（Entropy coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#霍夫曼编码（Huffman-coding）"><span class="toc-number">3.1.</span> <span class="toc-text">霍夫曼编码（Huffman coding）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算术编码（Arithmetic-coding）"><span class="toc-number">3.2.</span> <span class="toc-text">算术编码（Arithmetic coding）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游程编码（Run-length-coding）"><span class="toc-number">3.3.</span> <span class="toc-text">游程编码（Run-length coding）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变换编码（Transform-coding）"><span class="toc-number">4.</span> <span class="toc-text">变换编码（Transform coding）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#离散余弦变换（DCT-Discrete-Consine-Transform）"><span class="toc-number">4.1.</span> <span class="toc-text">离散余弦变换（DCT-Discrete Consine Transform）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预测编码（Predictive-coding）"><span class="toc-number">5.</span> <span class="toc-text">预测编码（Predictive coding）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JPEG-JPEG-LS"><span class="toc-number">6.</span> <span class="toc-text">JPEG/JPEG-LS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JPEG"><span class="toc-number">6.1.</span> <span class="toc-text">JPEG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JPEG-LS"><span class="toc-number">6.2.</span> <span class="toc-text">JPEG-LS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考与其他"><span class="toc-number">7.</span> <span class="toc-text">参考与其他</span></a></li></ol>
 		
 		</div>
 		
@@ -119,7 +119,7 @@ Digital Image Processing —— 理解笔记(I)/)
 <p>来查看之前的理解笔记。</p>
 <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>这篇我们将来了解图像压缩（Image Compression）。相信各位读者对图像压缩肯定不陌生，其技术渗透到我们生活中的点点滴滴，比如举起相机/手机拍照；浏览朋友圈/网页；看视频/直播等等。可是为什么需要进行图像压缩呢？</p>
 <p>举个例子，一部1080P（即每张图像的像素尺寸为1920*1080），30FPS（即每秒30帧）的高清的电影，不经过压缩前其每秒的数据大小为：</p>
-<p>$$ (1920 <em> 1080) \frac{pixels}{frame} </em> 3 \frac{bytes}{pixel} * 30 \frac{frame}{sec} = 186,624,000 (\frac{Bytes}{sec})$$</p>
+<p>$$ (1920 <em> 1080) \frac{pixels}{frame} </em> 3 \frac{bytes}{pixel} * 30 \frac{frame}{sec} = 186,624,000 \frac{Bytes}{sec} $$</p>
 <p>如果这部电影的时常为2小时的话，则总数据大小为：</p>
 <p>$$ 186,624,000 \frac{Bytes}{sec} <em> 3600 \frac{sec}{hour} </em> 2 hours \approx 1.34T = 1372G $$</p>
 <p>也就是说，光是存储一部高清电影就需要1.34T的空间，多么可怕！所以图像压缩的意义就不明而喻了。</p>
@@ -150,7 +150,7 @@ Digital Image Processing —— 理解笔记(I)/)
 <p>$$ I(E) = \log\frac{1}{P(E)} = - \log P(E)$$</p>
 <p>$$ H = - \sum_{j=1}^{J} P(a_j)logP(a_j)$$</p>
 <p>$I(E)$是每个字符所带的信息量，所以熵为所有字符所带信息量与其出现的频率的乘积之和。简单来说就是一个字符出现的次数越多（出现的可能性越大），那么其所携带信息越小，当出现概率为1时，信息为0。当$P(E) = \frac{1}{2}$时，$I = 1$，也就是我们常用的2进制字符。</p>
-<h4 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h4><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8A%E5%8D%8811.20.24.png?imageView/2/w/500" alt=""><br>图2. 灰度值分布（图1左图）。</p>
+<p><strong>举个例子</strong><br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8A%E5%8D%8811.20.24.png?imageView/2/w/500" alt=""><br>图2. 灰度值分布（图1左图）。</p>
 <p>图1左图的实际灰度值如上图所示，可以发现只有四个灰度值${87, 128, 186, 255}$。那么其熵值为：</p>
 <p>$$ H = - \sum_{j=1}^{J} P(a_j)logP(a_j)$$</p>
 <p>$$ = - ( 0.25 \log_2(0.25) + 0.47 \log_2(0.47) + 0.25\log_2(0.25) + 0.03\log_2(0.03))$$</p>
@@ -164,7 +164,7 @@ Digital Image Processing —— 理解笔记(I)/)
 <li>将字符按出现的概率降序排序；合并概率最小的两个“子字符”生成“父字符”；重复前面2个步骤直至合并剩两个字符；</li>
 <li>依次分配“0”或“1”给组成该“父字符”的两个“子字符”直至所有没有更小的字符。</li>
 </ol>
-<h4 id="举个例子-1"><a href="#举个例子-1" class="headerlink" title="举个例子"></a>举个例子</h4><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.27.16.png?imageView/2/w/300" alt=""></p>
+<p><strong>举个例子</strong><br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.27.16.png?imageView/2/w/300" alt=""></p>
 <p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.27.47.png?imageView/2/w/480" alt=""></p>
 <p>假设我们的字符空间为${a_1, a_2, a_3, a_4, a_5, a_6}$，其出现概率分别为：${0.1, 0.4, 0.06, 0.1, 0.04, 0.3}$。</p>
 <p>其编码步骤如下：</p>
@@ -175,7 +175,7 @@ Digital Image Processing —— 理解笔记(I)/)
 <li>从后往前依次分配“0”和“1”；</li>
 <li>字符编码值为分支上“0”和“1”的连接值，如$a_5$为0-&gt;1-&gt;0-&gt;1-&gt;1,所以其值为$01011$。</li>
 </ol>
-<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>正如之前所说的，霍夫曼编码是字符独立编码最优化算法，除此之外其还有以下两个特点：</p>
+<p><strong>分析</strong><br>正如之前所说的，霍夫曼编码是字符独立编码最优化算法，除此之外其还有以下两个特点：</p>
 <ol>
 <li>每个字符独立进行编码且唯一对应一个编码值，所以解码器仅需通过查表方法即可获得原字符；</li>
 <li>每个字符仅根据其自身编码或解码，不依赖也不会被之前的编码结果所影响；</li>
@@ -192,7 +192,7 @@ Digital Image Processing —— 理解笔记(I)/)
 <li>将概率空间收缩至每一个新输入的需要编码的字符，并分配给所有字符；</li>
 <li>在结束输入后，在最后的概率空间中选择一个分子数来表示所有输入的字符编码。</li>
 </ol>
-<h4 id="举个例子-2"><a href="#举个例子-2" class="headerlink" title="举个例子"></a>举个例子</h4><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.41.35.png?imageView/2/w/400" alt=""></p>
+<p><strong>举个例子</strong><br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.41.35.png?imageView/2/w/400" alt=""></p>
 <p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%882.41.04.png?imageView/2/w/500" alt=""></p>
 <p>假设我们的字符空间为${a_1,  a_2, a_3, a_4}$，其出现概率分别为：${0.2, 0.2, 0.4, 0.2}$。</p>
 <p>假设我们需要编码的字符串为：${a_1,  a_2, a_3, a_3, a_4}$，那么步骤如下：</p>
@@ -205,25 +205,13 @@ Digital Image Processing —— 理解笔记(I)/)
 <blockquote>
 <p>最后分子数的选择通常选该范围内能够用最少二进制比特表示的分子数，以确保其编码效率最优。</p>
 </blockquote>
-<h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4><table>
-<thead>
-<tr>
-<th>优点</th>
-<th>缺点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>效率最优</td>
-<td>编码复杂</td>
-</tr>
-</tbody>
-</table>
+<p><strong>分析</strong><br>|优点|缺点|<br>|—-|<br>|效率最优|编码复杂|</p>
 <h3 id="游程编码（Run-length-coding）"><a href="#游程编码（Run-length-coding）" class="headerlink" title="游程编码（Run-length coding）"></a>游程编码（Run-length coding）</h3><blockquote>
 <p>游程编码（RLE，run-length encoding），又称行程长度编码或变动长度编码法，是一种与资料性质无关的无损数据压缩技术。是一种“使用变动长度的码来取代连续重复出现的原始资料”的压缩技术[3]。</p>
 </blockquote>
 <p>游程编码是十分简单重要的编码方式，通过数据对的方式来表示某个灰度值连续出现的次数，如$[127,10]$，表示10个灰度值为127的像素。</p>
-<h4 id="举个例子-3"><a href="#举个例子-3" class="headerlink" title="举个例子"></a>举个例子</h4><pre><code>IIIIIIIIIIDDDDAAAAAEEE -&gt; (I,10),(D,4),(A,5),(E,3)
+<p><strong>举个例子</strong></p>
+<pre><code>IIIIIIIIIIDDDDAAAAAEEE -&gt; (I,10),(D,4),(A,5),(E,3)
 </code></pre><!--### 其他
 还有许许多多别的编码方式如格伦布编码（Golomb coding），LZW编码等。这里只是举出最常用的两种编码方式，更多-->
 <h2 id="变换编码（Transform-coding）"><a href="#变换编码（Transform-coding）" class="headerlink" title="变换编码（Transform coding）"></a>变换编码（Transform coding）</h2><p>除了熵编码之外，还常使用变换编码或预测编码来对数据进行进一步的压缩，首先来介绍变换编码中最常用的变换——离散余弦变换。</p>
@@ -240,7 +228,7 @@ Digital Image Processing —— 理解笔记(I)/)
 <li>对变换后矩阵进行量化从而压缩数据或只保留N%重要数据。</li>
 </ol>
 <p><strong>实际上DCT变换是将原图分解成若干个其他图像，并使用“其他图像”在原图中的权重矩阵来表示原图。</strong></p>
-<h4 id="举个例子-4"><a href="#举个例子-4" class="headerlink" title="举个例子"></a>举个例子</h4><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-13%20%E4%B8%8A%E5%8D%8811.20.39.png?imageView/2/w/280" alt=""></p>
+<p><strong>举个例子</strong><br><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-13%20%E4%B8%8A%E5%8D%8811.20.39.png?imageView/2/w/280" alt=""></p>
 <p>4x4block的DCT矩阵如上。在经过DCT变换后，我们就得到一个4x4的数据矩阵，表示以上图像组成原图的权重。值得注意的是，图像的低频信息将聚集在矩阵的左上角，而中高频信息则往后下角扩散。</p>
 <p>因为人眼对图像中的低频信息也就是权重矩阵的左上角的信息更为敏感，所以我们能够通过只保留部分左上角信息的方法来高效压缩图像。</p>
 <p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-13%20%E4%B8%8A%E5%8D%8811.42.30.png?imageView/2/w/400" alt=""></p>
@@ -256,7 +244,7 @@ Digital Image Processing —— 理解笔记(I)/)
 <p>其效果如上图所示，由于原图中相邻像素的灰度值相近，所以在使用预测编码后编码值，也就是预测误差值十分集中地分布在0附近。左下角的图像为预测误差示意图，可以发现只有在边界的地方由于像素灰度值突变，其误差较大。</p>
 <p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%883.11.26.png?imageView/2/w/400" alt=""></p>
 <p>除了基于相邻像素的预测编码外，还能够对相邻帧的同一位置像素进行预测编码。上图所示为视频中某一帧图像基于前一帧图像的预测编码，由于视频的拍摄物较为稳定，所以误差集中分布在0附近。同样的左下角的图像为预测误差示意图，可以发现边界中不再有明显的误差，其误差是存在两帧图像的相对位移较多的地方，也就是原图的右上角部分。</p>
-<h4 id="举个例子-5"><a href="#举个例子-5" class="headerlink" title="举个例子"></a>举个例子</h4><p>假设我们需要编码的一连串像素灰度值为： </p>
+<p><strong>举个例子</strong><br>假设我们需要编码的一连串像素灰度值为： </p>
 <p>${123, 118, 117, 123, 125, 126, 122, 120}$</p>
 <p>假设我们仅使用前一为像素来预测该像素，那么预测编码的结果为：</p>
 <p>${123, -5, -1, 6, 2, -4, -2}$。</p>
