@@ -38,7 +38,7 @@ Digital Image Processing —— 理解笔记(I)/)
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-12%20%E4%B8%8A%E5%8D%8811.55.14.png?imageView/2/w/600">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-5920383646_1a1dbaf420.jpg?imageView/2/w/400">
 <meta property="og:image" content="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8B%E5%8D%883.04.56.png?imageView/2/w/600">
-<meta property="og:updated_time" content="2016-04-13T04:37:07.000Z">
+<meta property="og:updated_time" content="2016-04-13T04:39:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Digital Image Processing —— 理解笔记(II)">
 <meta name="twitter:description" content="前言这是Digital Image Processing理解笔记的第二篇，你可以点击
@@ -119,9 +119,9 @@ Digital Image Processing —— 理解笔记(I)/)
 <p>来查看之前的理解笔记。</p>
 <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>这篇我们将来了解图像压缩（Image Compression）。相信各位读者对图像压缩肯定不陌生，其技术渗透到我们生活中的点点滴滴，比如举起相机/手机拍照；浏览朋友圈/网页；看视频/直播等等。可是为什么需要进行图像压缩呢？</p>
 <p>举个例子，一部1080P（即每张图像的像素尺寸为1920*1080），30FPS（即每秒30帧）的高清的电影，不经过压缩前其每秒的数据大小为：</p>
-<p>$$ (1920 <em> 1080) \frac{pixels}{frame} </em> 3 \frac{bytes}{pixel} * 30 \frac{frame}{sec} = 186,624,000 \frac{Bytes}{sec} $$</p>
+<p>$$ (1920 \ast 1080) \frac{pixels}{frame} \ast 3 \frac{bytes}{pixel} \ast 30 \frac{frame}{sec} = 186,624,000 \frac{Bytes}{sec} $$</p>
 <p>如果这部电影的时常为2小时的话，则总数据大小为：</p>
-<p>$$ 186,624,000 \frac{Bytes}{sec} <em> 3600 \frac{sec}{hour} </em> 2 hours \approx 1.34T = 1372G $$</p>
+<p>$$ 186,624,000 \frac{Bytes}{sec} \ast 3600 \frac{sec}{hour} \ast 2 hours \approx 1.34T = 1372G $$</p>
 <p>也就是说，光是存储一部高清电影就需要1.34T的空间，多么可怕！所以图像压缩的意义就不明而喻了。</p>
 <p>也许你立马会想到，一部2个小时的电影实际数据量在1T左右，而网络上流传的高清电影大多在2G~10G左右，是什么导致能够将数据压缩百倍以上呢？</p>
 <h3 id="图像压缩技术"><a href="#图像压缩技术" class="headerlink" title="图像压缩技术"></a>图像压缩技术</h3><p><img src="http://7xjz11.com1.z0.glb.clouddn.com/%E5%8D%9A%E5%AE%A2-%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-11%20%E4%B8%8A%E5%8D%8811.11.37.png?imageView/2/w/400" alt=""><br>图1. 图像冗余数据示意图：左图中实际上只有4种不同的灰度值；中图中像素灰度值只在垂直方向发生变化；右图实际上有很难察觉的灰度值变化。</p>
